@@ -105,7 +105,7 @@
         if($kq){
             echo '<script>
             alert("Xóa thành công");
-            window.location.href = "http://localhost/Web%20qu%E1%BA%A3n%20l%C3%BD/DSSanpham";
+            window.location.href = "http://localhost/qlhs/DSSanpham";
                 </script>';
     exit();
         }
@@ -151,7 +151,7 @@
               
                 echo '<script>
                 alert("Sửathành công");
-                window.location.href = "http://localhost/Web%20qu%E1%BA%A3n%20l%C3%BD/DSSanpham";
+                window.location.href = "http://localhost/qlhs/DSSanpham";
                 </script>';
 
 

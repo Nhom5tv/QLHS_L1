@@ -96,7 +96,7 @@
         if($kq){
             echo '<script>
             alert("Xóa thành công");
-            window.location.href = "http://localhost/Web%20qu%E1%BA%A3n%20l%C3%BD/DSTaikhoan";
+            window.location.href = "http://localhost/qlhs/DSTaikhoan";
                 </script>';
     exit();
         }

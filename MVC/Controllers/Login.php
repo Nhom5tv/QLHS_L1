@@ -40,7 +40,7 @@ class Login extends controller{
                         // Gọi đến trang bán hàng
                         echo '<script>
                         alert("Đăng nhập thành công");
-                        window.location.href = "http://localhost/Web%20qu%E1%BA%A3n%20l%C3%BD/Showproduct_c";
+                        window.location.href = "http://localhost/qlhs/Showproduct_c";
                         </script>';
                         
                         
@@ -51,7 +51,7 @@ class Login extends controller{
                        
                         echo '<script>
                         alert("Đăng nhập thành công");
-                        window.location.href = "http://localhost/Web%20qu%E1%BA%A3n%20l%C3%BD/Trangchu";
+                        window.location.href = "http://localhost/qlhs/Trangchu";
                         </script>';
                     }
                     else{
@@ -64,7 +64,7 @@ class Login extends controller{
                else{
                 echo '<script>
                 alert("Sai mật khẩu");
-                window.location.href = "http://localhost/Web%20qu%E1%BA%A3n%20l%C3%BD/Login";
+                window.location.href = "http://localhost/qlhs/Login";
                 </script>';   
                }
                
@@ -74,7 +74,7 @@ class Login extends controller{
                {
                 echo '<script>
                 alert("Email chưa đăng ký");
-                window.location.href = "http://localhost/Web%20qu%E1%BA%A3n%20l%C3%BD/Login";
+                window.location.href = "http://localhost/qlhs/Login";
                 </script>';           
                }
 }

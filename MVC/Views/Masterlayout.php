@@ -10,7 +10,7 @@
     <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link rel="stylesheet"  href="http://localhost/Web%20qu%E1%BA%A3n%20l%C3%BD/Public/CSS/layout.css?v=<?php echo time();?>">
+    <link rel="stylesheet"  href="http://localhost/qlhs/Public/CSS/layout.css?v=<?php echo time();?>">
 </head>
 
 <body>
@@ -26,7 +26,7 @@
             </div>
             <ul class="sidebar-nav">
                 <li class="sidebar-item">
-                    <a href="http://localhost/Web%20qu%E1%BA%A3n%20l%C3%BD/Trangchu" class="sidebar-link">
+                    <a href="http://localhost/qlhs/Trangchu" class="sidebar-link">
                         <i class="lni lni-home"></i>
                         <span>Trang chủ</span>
                     </a>
@@ -42,15 +42,15 @@
                     <ul id="QLHT" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
 
                         <li class="sidebar-item">
-                            <a href="http://localhost/Web%20qu%E1%BA%A3n%20l%C3%BD/DSTaikhoan" class="sidebar-link">Quản lý tài khoản</a>
+                            <a href="http://localhost/qlhs/DSTaikhoan" class="sidebar-link">Quản lý tài khoản</a>
                         </li>
 
                         <li class="sidebar-item">
-                            <a href="http://localhost/Web%20qu%E1%BA%A3n%20l%C3%BD/DSNhanvien" class="sidebar-link">Quản lý nhân viên</a>
+                            <a href="http://localhost/qlhs/DSNhanvien" class="sidebar-link">Quản lý nhân viên</a>
                         </li>
 
                         <li class="sidebar-item">
-                            <a href="http://localhost/Web%20qu%E1%BA%A3n%20l%C3%BD/DSkhachhang" class="sidebar-link">Quản lý khách hàng</a>
+                            <a href="http://localhost/qlhs/DSkhachhang" class="sidebar-link">Quản lý khách hàng</a>
                         </li>
                     </ul>
                 </li>
@@ -64,19 +64,19 @@
                     <ul id="QLSP-DV" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
 
                         <li class="sidebar-item">
-                            <a href="http://localhost/Web%20qu%E1%BA%A3n%20l%C3%BD/DSDanhmuc" class="sidebar-link">Quản lý danh mục</a>
+                            <a href="http://localhost/qlhs/DSDanhmuc" class="sidebar-link">Quản lý danh mục</a>
                         </li>
 
                         <li class="sidebar-item">
-                            <a href="http://localhost/Web%20qu%E1%BA%A3n%20l%C3%BD/DSSanpham" class="sidebar-link">Quản lý sản phẩm</a>
+                            <a href="http://localhost/qlhs/DSSanpham" class="sidebar-link">Quản lý sản phẩm</a>
                         </li>
 
                         <li class="sidebar-item">
-                            <a href="http://localhost/Web%20qu%E1%BA%A3n%20l%C3%BD/DStintuc" class="sidebar-link">Quản lý tin tức</a>
+                            <a href="http://localhost/qlhs/DStintuc" class="sidebar-link">Quản lý tin tức</a>
                         </li>
 
                         <li class="sidebar-item">
-                            <a href="http://localhost/Web%20qu%E1%BA%A3n%20l%C3%BD/DSkhuyenmai" class="sidebar-link">Quản lý khuyến mãi</a>
+                            <a href="http://localhost/qlhs/DSkhuyenmai" class="sidebar-link">Quản lý khuyến mãi</a>
                         </li>
                     </ul>
                 </li>
@@ -90,23 +90,23 @@
                     <ul id="QLGD-DH" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
 
                         <!-- <li class="sidebar-item">
-                            <a href="http://localhost/Web%20qu%E1%BA%A3n%20l%C3%BD/DSDathang" class="sidebar-link">Đặt hàng</a>
+                            <a href="http://localhost/qlhs/DSDathang" class="sidebar-link">Đặt hàng</a>
                         </li> -->
 
                         <li class="sidebar-item">
-                            <a href="http://localhost/Web%20qu%E1%BA%A3n%20l%C3%BD/DSDonhang" class="sidebar-link">Đơn hàng</a>
+                            <a href="http://localhost/qlhs/DSDonhang" class="sidebar-link">Đơn hàng</a>
                         </li>
 
                         <li class="sidebar-item">
-                            <a href="http://localhost/Web%20qu%E1%BA%A3n%20l%C3%BD/DSGiaohang" class="sidebar-link">Giao hàng</a>
+                            <a href="http://localhost/qlhs/DSGiaohang" class="sidebar-link">Giao hàng</a>
                         </li>
 
                         <li class="sidebar-item">
-                            <a href="http://localhost/Web%20qu%E1%BA%A3n%20l%C3%BD/DSNhacungcap" class="sidebar-link">Nhà cung cấp</a>
+                            <a href="http://localhost/qlhs/DSNhacungcap" class="sidebar-link">Nhà cung cấp</a>
                         </li>
 
                         <li class="sidebar-item">
-                            <a href="http://localhost/Web%20qu%E1%BA%A3n%20l%C3%BD/DSNhaphang" class="sidebar-link">Nhập hàng</a>
+                            <a href="http://localhost/qlhs/DSNhaphang" class="sidebar-link">Nhập hàng</a>
                         </li>
                     </ul>
                 </li>
@@ -115,9 +115,10 @@
                 
                 
             </ul>
-            <img src="http://localhost/Web%20qu%E1%BA%A3n%20l%C3%BD/Public/Picture/nhandoi.png" alt="">
+            <!-- ảnh nhẫn menu -->
+            <img src="http://localhost/qlhs/Public/Picture/nhandoi.png" alt="">
             <div class="sidebar-footer">
-                <a href="http://localhost/Web%20qu%E1%BA%A3n%20l%C3%BD/Login/logout" class="sidebar-link">
+                <a href="http://localhost/qlhs/Login/logout" class="sidebar-link">
                     <i class="lni lni-exit"></i>
                     <span>Đăng xuất</span>
                 </a>
