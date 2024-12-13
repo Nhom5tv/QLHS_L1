@@ -1,7 +1,7 @@
 <?php
 class Dangky_m extends connectDB{
     function dangky_ins($email,$mk){
-        $sql="INSERT INTO taikhoan (Email, Matkhau, Quyen)  VALUES ('$email','$mk',N'Khách hàng')";
+        $sql="INSERT INTO tai_khoan (ten_dang_nhap, email, Matkhau, Quyen)  VALUES ('$email','$mk',N'Khách hàng')";
         return mysqli_query($this->con,$sql);
     }
      // hàm thêm mới

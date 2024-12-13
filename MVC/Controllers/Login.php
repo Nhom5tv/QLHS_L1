@@ -24,30 +24,38 @@ class Login extends controller{
             
             if(mysqli_num_rows($kq)){
                while($row = mysqli_fetch_array($kq)){
-                $id=$row['Id'];
-                $email=$row['Email'];
-                $quyen=$row['Quyen'];                
-                $mk=$row['Matkhau'];
+                $id=$row['ma_tai_khoan'];
+                $mk=$row['mat_khau'];
+                $email=$row['email'];
+                $quyen=$row['phan_quyen'];                
+                
                 
                
                }
                if ($mk==$mk_input)
                {
                     // tạo phiên đăng nhập
-                    $_SESSION['Id']=$id;
-                    $_SESSION['Email']=$email;
-                    if ($quyen == 'Khách hàng') {
+                    $_SESSION['ma_tai_khoan']=$id;
+                    $_SESSION['email']=$email;
+                    if ($quyen == 'admin') {
                         // Gọi đến trang bán hàng
                         echo '<script>
                         alert("Đăng nhập thành công");
-                        window.location.href = "http://localhost/qlhs/Showproduct_c";
+                        window.location.href = "http://localhost/qlhs/Masterlayout";
                         </script>';
                         
                         
                         $result_mess=true;                 
                         exit();
                     } 
-                    elseif ($quyen == 'Nhân viên') {
+                    elseif ($quyen == 'giang_vien') {
+                       
+                        echo '<script>
+                        alert("Đăng nhập thành công");
+                        window.location.href = "http://localhost/qlhs/Trangchu";
+                        </script>';
+                    }
+                    elseif ($quyen == 'sinh_vien') {
                        
                         echo '<script>
                         alert("Đăng nhập thành công");

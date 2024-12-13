@@ -1,4 +1,7 @@
 <?php
+require 'vendor/autoload.php'; // Đảm bảo bạn đã cài đặt PHPSpreadsheet qua Composer
+
+use PhpOffice\PhpSpreadsheet\IOFactory;
  class DSTaikhoan extends controller{
     private $dstk;
     function __construct()
@@ -23,74 +26,115 @@
             $this->view('Masterlayout',[
                 'page'=>'DSTaikhoan_v',
                 'dulieu'=>$dl,
-                'id'=>$id,
-                'quyen'=>$quyen
+                'ma_tai_khoan'=>$id,
+                'phan_quyen'=>$quyen
             ]);
-           
-
         
     }
-    if(isset($_POST['btnXuatExcel'])){
-        //code xuất excel
-        $objExcel=new PHPExcel();
-        $objExcel->setActiveSheetIndex(0);
-        $sheet=$objExcel->getActiveSheet()->setTitle('DSLS');
-        $rowCount=1;
-        //Tạo tiêu đề cho cột trong excel
-        
-        $sheet->setCellValue('A'.$rowCount,'Id');
-        $sheet->setCellValue('B'.$rowCount,'Email');
-        $sheet->setCellValue('C'.$rowCount,'Quyen');
-        $sheet->setCellValue('D'.$rowCount,'Matkhau');
-        $sheet->setCellValue('E'.$rowCount,'Ngaytao');
+
+    }
+
+    function uploadExcel() {
+        if (isset($_FILES['txtFile']) && $_FILES['txtFile']['error'] === UPLOAD_ERR_OK) {
+            $fileTmpPath = $_FILES['txtFile']['tmp_name'];
+
+            try {
+                // Đọc file Excel
+                $spreadsheet = IOFactory::load($fileTmpPath);
+                $sheet = $spreadsheet->getActiveSheet();
+                $data = $sheet->toArray();
+
+                // Bỏ qua dòng tiêu đề (giả sử tiêu đề nằm ở dòng đầu tiên)
+                array_shift($data);
+
+                $successCount = 0;
+                $failCount = 0;
+
+                foreach ($data as $row) {
+                    // Giả sử thứ tự cột: ID | Tên đăng nhập | Mật khẩu | Email | Quyền
+                    $tendn = isset($row[0]) ? trim($row[0]) : null;
+                    $mk = isset($row[1]) ? trim($row[1]) : null;
+                    $email = isset($row[2]) ? trim($row[2]) : null;
+                    $quyen = isset($row[3]) ? trim($row[3]) : null;
+
+                    // Bỏ qua các hàng thiếu dữ liệu cần thiết
+                    if ( !$tendn || !$mk || !$email || !$quyen) {
+                        $failCount++;
+                        continue;
+                    }
+
+                    // Lưu vào cơ sở dữ liệu
+                    $result = $this->dstk->taikhoan_ins( $tendn, $mk, $email, $quyen);
+                    if ($result) {
+                        $successCount++;
+                    } else {
+                        $failCount++;
+                    }
+                }
+
+                echo "<script>
+                        alert('Upload thành công: {$successCount} hàng, thất bại: {$failCount} hàng.');
+                        window.location.href = 'http://localhost/qlhs/DSTaikhoan';
+                      </script>";
+            } catch (Exception $e) {
+                echo "<script>
+                        alert('Có lỗi xảy ra khi xử lý file Excel: {$e->getMessage()}');
+                        window.location.href = 'http://localhost/qlhs/DSTaikhoan';
+                      </script>";
+            }
+        } else {
+            echo "<script>
+                    alert('Không có file nào được chọn hoặc có lỗi trong quá trình tải lên.');
+                    window.location.href = 'http://localhost/qlhs/DSTaikhoan';
+                  </script>";
+        }
+    }
+
+    function exportExcel() {
+        try {
+            $data = $this->dstk->taikhoan_find('', '');
     
-        //định dạng cột tiêu đề
-        $sheet->getColumnDimension('A')->setAutoSize(true);
-        $sheet->getColumnDimension('B')->setAutoSize(true);
-        $sheet->getColumnDimension('C')->setAutoSize(true);
-        $sheet->getColumnDimension('D')->setAutoSize(true);
-        //gán màu nền
-        $sheet->getStyle('A1:D1')->getFill()->setFillType(\PHPExcel_Style_Fill::FILL_SOLID)->getStartColor()->setRGB('00FF00');
-        //căn giữa
-        $sheet->getStyle('A1:D1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-        //Điền dữ liệu vào các dòng. Dữ liệu lấy từ DB
-        $id=$_POST['txtTKID'];
-        $quyen=$_POST['txtTKQuyen']; // lay du lieu nhap tu txt              
-        $data=$this->dstk->taikhoan_find($id,$quyen);
-       
-        while($row=mysqli_fetch_array($data)){
-            $rowCount++;           
-            $sheet->setCellValue('A'.$rowCount,$row['Id']);
-            $sheet->setCellValue('B'.$rowCount,$row['Email']);
-            $sheet->setCellValue('C'.$rowCount,$row['Quyen']);
-            $sheet->setCellValue('D'.$rowCount,$row['Matkhau']);
-
-            
-           
-           
-        
-        }
-        //Kẻ bảng 
-        $styleAray=array(
-            'borders'=>array(
-                'allborders'=>array(
-                    'style'=>PHPExcel_Style_Border::BORDER_THIN
-                )
-            )
-            );
-        $sheet->getStyle('A1:'.'D'.($rowCount))->applyFromArray($styleAray);
-        $objWriter=new PHPExcel_Writer_Excel2007($objExcel);
-        $fileName='ExportExcel.xlsx';
-        $objWriter->save($fileName);
-        header('Content-Disposition: attachment; filename="'.$fileName.'"');
-        header('Content-Type: application/vnd.openxlmformatsofficedocument.speadsheetml.sheet');
-        header('Content-Length: '.filesize($fileName));
-        header('Content-Transfer-Encoding:binary');
-        header('Cache-Control: must-revalidate');
-        header('Pragma: no-cache');
-        readfile($fileName);
+            $spreadsheet = new \PhpOffice\PhpSpreadsheet\Spreadsheet();
+            $sheet = $spreadsheet->getActiveSheet();
+    
+            $sheet->setCellValue('A1', 'ID');
+            $sheet->setCellValue('B1', 'Tên đăng nhập');
+            $sheet->setCellValue('C1', 'Mật khẩu');
+            $sheet->setCellValue('D1', 'Email');
+            $sheet->setCellValue('E1', 'Quyền');
+    
+            $rowNumber = 2;
+            foreach ($data as $row) {
+                $sheet->setCellValueExplicit('A' . $rowNumber, $row['ma_tai_khoan'] ?? 0, \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_NUMERIC);
+                $sheet->setCellValueExplicit('B' . $rowNumber, $row['ten_dang_nhap'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
+                $sheet->setCellValueExplicit('C' . $rowNumber, $row['mat_khau'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
+                $sheet->setCellValueExplicit('D' . $rowNumber, $row['email'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
+                $sheet->setCellValueExplicit('E' . $rowNumber, $row['phan_quyen'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
+                $rowNumber++;
+            }
+    
+            foreach (range('A', 'E') as $columnID) {
+                $sheet->getColumnDimension($columnID)->setAutoSize(true);
+            }
+    
+            header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+            header('Content-Disposition: attachment; filename="DanhSachTaiKhoan.xlsx"');
+            header('Cache-Control: no-cache, no-store, must-revalidate');
+            header('Pragma: no-cache');
+            header('Expires: 0');
+    
+            $writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xlsx');
+            ob_clean(); // Xóa các dữ liệu đầu ra trước đó
+            $writer->save('php://output');
+            exit;
+        } catch (Exception $e) {
+            echo "<script>
+                    alert('Có lỗi xảy ra khi xuất file Excel: {$e->getMessage()}');
+                    window.location.href = 'http://localhost/qlhs/DSTaikhoan';
+                  </script>";
         }
     }
+
     function xoa($id){
         $kq=$this->dstk->taikhoan_del($id);
         if($kq){
@@ -116,13 +160,14 @@
     function suadl(){
         if(isset($_POST['btnLuu'])){
             $id=$_POST['txtId'];
+            $tendn=$_POST['txtTendn'];
+            $mk=$_POST['txtMatkhau'];
             $email=$_POST['txtEmail'];
             $quyen=$_POST['txtQuyen'];
-            $mk=$_POST['txtMatkhau'];
            
             
                     // gọi hàm chèn dl tacgia_ins trong model tacgia_m
-            $kq=$this->dstk->taikhoan_upd($id,$email,$quyen,$mk);
+            $kq=$this->dstk->taikhoan_upd($id, $tendn, $mk, $email, $quyen);
             if($kq){
                 echo'<script>alert("Sửa thành công")</script>';
             }
