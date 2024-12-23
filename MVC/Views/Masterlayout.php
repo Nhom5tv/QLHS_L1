@@ -64,7 +64,7 @@
                     <ul id="QLSP-DV" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
 
                         <li class="sidebar-item">
-                            <a href="http://localhost/qlhs/DSDanhmuc" class="sidebar-link">Quản lý danh mục</a>
+                            <a href="http://localhost/qlhs/DSmonhoc" class="sidebar-link">Quản lý môn học</a>
                         </li>
 
                         <li class="sidebar-item">
