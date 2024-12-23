@@ -124,7 +124,7 @@ if ($row['phan_quyen'] == 'giang_vien' || $row['phan_quyen'] == 'sinh_vien' ) {
     // Hiển thị nút Sửa
     echo '<td class="btn_cn">';
     echo '<form action="http://localhost/QLHS_L1/DSTaikhoan/sua/' . $row['ma_tai_khoan'] . '" method="post">';
-    echo '<button class="button-85" role="button">Sửa</button>  ';
+    echo '<button class="button-85" role="button">Sửa</button> ';
     echo '</form>';
 
     // Hiển thị nút Xóa
