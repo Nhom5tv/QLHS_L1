@@ -46,7 +46,7 @@
             if($kq){
                 echo '<script>
                 alert("Thêm mới thành công");
-                window.location.href = "http://localhost/qlhs/Sanpham";
+                window.location.href = "http://localhost/QLHS_L1/Sanpham";
                 </script>';
                 // hiện thị alert trc khi chuyển trang
     exit();

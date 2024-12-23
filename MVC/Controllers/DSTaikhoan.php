@@ -74,18 +74,18 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
 
                 echo "<script>
                         alert('Upload thành công: {$successCount} hàng, thất bại: {$failCount} hàng.');
-                        window.location.href = 'http://localhost/qlhs/DSTaikhoan';
+                        window.location.href = 'http://localhost/QLHS_L1/DSTaikhoan';
                       </script>";
             } catch (Exception $e) {
                 echo "<script>
                         alert('Có lỗi xảy ra khi xử lý file Excel: {$e->getMessage()}');
-                        window.location.href = 'http://localhost/qlhs/DSTaikhoan';
+                        window.location.href = 'http://localhost/QLHS_L1/DSTaikhoan';
                       </script>";
             }
         } else {
             echo "<script>
                     alert('Không có file nào được chọn hoặc có lỗi trong quá trình tải lên.');
-                    window.location.href = 'http://localhost/qlhs/DSTaikhoan';
+                    window.location.href = 'http://localhost/QLHS_L1/DSTaikhoan';
                   </script>";
         }
     }
@@ -130,7 +130,7 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
         } catch (Exception $e) {
             echo "<script>
                     alert('Có lỗi xảy ra khi xuất file Excel: {$e->getMessage()}');
-                    window.location.href = 'http://localhost/qlhs/DSTaikhoan';
+                    window.location.href = 'http://localhost/QLHS_L1/DSTaikhoan';
                   </script>";
         }
     }
@@ -140,7 +140,7 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
         if($kq){
             echo '<script>
             alert("Xóa thành công");
-            window.location.href = "http://localhost/qlhs/DSTaikhoan";
+            window.location.href = "http://localhost/QLHS_L1/DSTaikhoan";
                 </script>';
     exit();
         }

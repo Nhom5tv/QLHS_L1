@@ -41,7 +41,7 @@ class Login extends controller{
                         // Gọi đến trang bán hàng
                         echo '<script>
                         alert("Đăng nhập thành công");
-                        window.location.href = "http://localhost/qlhs/Masterlayout";
+                        window.location.href = "http://localhost/QLHS_L1/Masterlayout";
                         </script>';
                         
                         
@@ -52,14 +52,14 @@ class Login extends controller{
                        
                         echo '<script>
                         alert("Đăng nhập thành công");
-                        window.location.href = "http://localhost/qlhs/Trangchu";
+                        window.location.href = "http://localhost/QLHS_L1/Trangchu";
                         </script>';
                     }
                     elseif ($quyen == 'sinh_vien') {
                        
                         echo '<script>
                         alert("Đăng nhập thành công");
-                        window.location.href = "http://localhost/qlhs/Trangchu";
+                        window.location.href = "http://localhost/QLHS_L1/Trangchu";
                         </script>';
                     }
                     else{
@@ -72,7 +72,7 @@ class Login extends controller{
                else{
                 echo '<script>
                 alert("Sai mật khẩu");
-                window.location.href = "http://localhost/qlhs/Login";
+                window.location.href = "http://localhost/QLHS_L1/Login";
                 </script>';   
                }
                
@@ -82,7 +82,7 @@ class Login extends controller{
                {
                 echo '<script>
                 alert("Email chưa đăng ký");
-                window.location.href = "http://localhost/qlhs/Login";
+                window.location.href = "http://localhost/QLHS_L1/Login";
                 </script>';           
                }
 }
