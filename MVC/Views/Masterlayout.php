@@ -64,11 +64,11 @@
                     <ul id="QLSP-DV" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
 
                         <li class="sidebar-item">
-                            <a href="http://localhost/qlhs/DSDanhmuc" class="sidebar-link">Quản lý danh mục</a>
+                            <a href="http://localhost/qlhs/dsmonhoc" class="sidebar-link">Quản lý đăng ký môn học</a>
                         </li>
 
                         <li class="sidebar-item">
-                            <a href="http://localhost/qlhs/DSSanpham" class="sidebar-link">Quản lý sản phẩm</a>
+                            <a href="http://localhost/qlhs/dslichhoc" class="sidebar-link">Quản lý lịch học</a>
                         </li>
 
                         <li class="sidebar-item">
@@ -94,15 +94,15 @@
                         </li> -->
 
                         <li class="sidebar-item">
-                            <a href="http://localhost/qlhs/DSDonhang" class="sidebar-link">Đơn hàng</a>
+                            <a href="http://localhost/qlhs/dslophoc" class="sidebar-link">Quản Lý Lớp Học</a>
                         </li>
 
                         <li class="sidebar-item">
-                            <a href="http://localhost/qlhs/DSGiaohang" class="sidebar-link">Giao hàng</a>
+                            <a href="http://localhost/qlhs/dktinchi" class="sidebar-link">Đăng Ký Tín Chỉ</a>
                         </li>
 
                         <li class="sidebar-item">
-                            <a href="http://localhost/qlhs/DSNhacungcap" class="sidebar-link">Nhà cung cấp</a>
+                            <a href="http://localhost/qlhs/svdktinchi" class="sidebar-link">Sinh Viên Đăng ký tin chỉ</a>
                         </li>
 
                         <li class="sidebar-item">
