@@ -10,7 +10,7 @@
     <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link rel="stylesheet"  href="http://localhost/qlhs/Public/CSS/layout.css?v=<?php echo time();?>">
+    <link rel="stylesheet"  href="http://localhost/QLHS_L1/Public/CSS/layout.css?v=<?php echo time();?>">
 </head>
 
 <body>
@@ -26,9 +26,15 @@
             </div>
             <ul class="sidebar-nav">
                 <li class="sidebar-item">
-                    <a href="http://localhost/qlhs/Trangchu" class="sidebar-link">
+                    <a href="http://localhost/QLHS_L1/Trangchu" class="sidebar-link">
                         <i class="lni lni-home"></i>
                         <span>Trang chủ</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="http://localhost/QLHS_L1/Taichinh" class="sidebar-link">
+                        <i class="lni lni-home"></i>
+                        <span>Tài chính</span>
                     </a>
                 </li>
               
@@ -42,15 +48,15 @@
                     <ul id="QLHT" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
 
                         <li class="sidebar-item">
-                            <a href="http://localhost/qlhs/DSTaikhoan" class="sidebar-link">Quản lý tài khoản</a>
+                            <a href="http://localhost/QLHS_L1/DSTaikhoan" class="sidebar-link">Quản lý tài khoản</a>
                         </li>
 
                         <li class="sidebar-item">
-                            <a href="http://localhost/qlhs/DSNhanvien" class="sidebar-link">Quản lý nhân viên</a>
+                            <a href="http://localhost/QLHS_L1/DSNhanvien" class="sidebar-link">Quản lý nhân viên</a>
                         </li>
 
                         <li class="sidebar-item">
-                            <a href="http://localhost/qlhs/DSkhachhang" class="sidebar-link">Quản lý khách hàng</a>
+                            <a href="http://localhost/QLHS_L1/DSkhachhang" class="sidebar-link">Quản lý khách hàng</a>
                         </li>
                     </ul>
                 </li>
@@ -64,19 +70,19 @@
                     <ul id="QLSP-DV" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
 
                         <li class="sidebar-item">
-                            <a href="http://localhost/qlhs/dsmonhoc" class="sidebar-link">Quản lý đăng ký môn học</a>
+                            <a href="http://localhost/QLHS_L1/DSDanhmuc" class="sidebar-link">Quản lý danh mục</a>
                         </li>
 
                         <li class="sidebar-item">
-                            <a href="http://localhost/qlhs/dslichhoc" class="sidebar-link">Quản lý lịch học</a>
+                            <a href="http://localhost/QLHS_L1/DSSanpham" class="sidebar-link">Quản lý sản phẩm</a>
                         </li>
 
                         <li class="sidebar-item">
-                            <a href="http://localhost/qlhs/DStintuc" class="sidebar-link">Quản lý tin tức</a>
+                            <a href="http://localhost/QLHS_L1/DStintuc" class="sidebar-link">Quản lý tin tức</a>
                         </li>
 
                         <li class="sidebar-item">
-                            <a href="http://localhost/qlhs/DSkhuyenmai" class="sidebar-link">Quản lý khuyến mãi</a>
+                            <a href="http://localhost/QLHS_L1/DSkhuyenmai" class="sidebar-link">Quản lý khuyến mãi</a>
                         </li>
                     </ul>
                 </li>
@@ -85,29 +91,26 @@
                     <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
                         data-bs-target="#QLGD-DH" aria-expanded="false" aria-controls="QLGD-DH">
                         <i class="lni lni-cart-full"></i>
-                        <span>Quản lý giao dịch và đơn hàng</span>
+                        <span>Quản lý học phí và tài chính</span>
                     </a>
                     <ul id="QLGD-DH" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
 
-                        <!-- <li class="sidebar-item">
-                            <a href="http://localhost/qlhs/DSDathang" class="sidebar-link">Đặt hàng</a>
-                        </li> -->
-
                         <li class="sidebar-item">
-                            <a href="http://localhost/qlhs/dslophoc" class="sidebar-link">Quản Lý Lớp Học</a>
+                            <a href="http://localhost/QLHS_L1/DSKhoanthu" class="sidebar-link">Quản lý khoản thu chung</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="http://localhost/QLHS_L1/DSKhoanthusv" class="sidebar-link">Quản lý khoản thu sinh viên</a>
                         </li>
 
                         <li class="sidebar-item">
-                            <a href="http://localhost/qlhs/dktinchi" class="sidebar-link">Đăng Ký Tín Chỉ</a>
+                            <a href="http://localhost/QLHS_L1/DSMiengiam" class="sidebar-link">Quản lý miễn giảm</a>
                         </li>
 
                         <li class="sidebar-item">
-                            <a href="http://localhost/qlhs/svdktinchi" class="sidebar-link">Sinh Viên Đăng ký tin chỉ</a>
+                            <a href="http://localhost/QLHS_L1/DSHoadon" class="sidebar-link">Quản lý hóa đơn</a>
                         </li>
 
-                        <li class="sidebar-item">
-                            <a href="http://localhost/qlhs/DSNhaphang" class="sidebar-link">Nhập hàng</a>
-                        </li>
+                       
                     </ul>
                 </li>
                     
@@ -116,9 +119,9 @@
                 
             </ul>
             <!-- ảnh nhẫn menu -->
-            <img src="http://localhost/qlhs/Public/Picture/nhandoi.png" alt="">
+            <img src="http://localhost/QLHS_L1/Public/Picture/nhandoi.png" alt="">
             <div class="sidebar-footer">
-                <a href="http://localhost/qlhs/Login/logout" class="sidebar-link">
+                <a href="http://localhost/QLHS_L1/Login/logout" class="sidebar-link">
                     <i class="lni lni-exit"></i>
                     <span>Đăng xuất</span>
                 </a>

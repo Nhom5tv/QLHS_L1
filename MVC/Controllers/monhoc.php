@@ -1,10 +1,12 @@
 <!-- goi giao dien và function -->
 <?php 
- class monhoc extends controller{
+ class Monhoc extends controller{
     private $monhoc;
+
     function __construct()
     {
-        $this->monhoc=$this->model('qlmonhoc');
+        $this->monhoc=$this->model('monhoc_m');
+    
         // khởi tạo đối tượng model('monhoc_m') gán cho $monhoc
     }
     function Get_data(){
@@ -13,19 +15,24 @@
     }
     function themmoi(){
         if(isset($_POST['btnLuu'])){
-            $ma_mon=$_POST['txtmamon'];
-            $ma_sinh_vien=$_POST['txtmasinhvien'];
-            $lich_hoc_du_kien=$_POST['txtlichhocdukien'];
-            $trang_thai=$_POST['txttrangthai'];
-            // Kiem tra trung id
-            // $kq1=$this->monhoc->checktrungmamonhoc($mamonhoc);
+            $ma_mon=$_POST['txtMaMon'];
+            $ten_mon=$_POST['txtTenMon'];
+            $ma_nganh=$_POST['txtMaNganh'];
+            $so_tin_chi=$_POST['txtSoTinChi'];
+            $so_tiet=$_POST['txtSoTiet'];
+           
             
-            // if($kq1){
-            //     echo'<script>alert("Trùng Mã Nhân Viên")</script>';
-            // }
-            // else{
-                    // gọi hàm chèn dl monhoc_ins trong model tacgia_m
-            $kq=$this->monhoc->monhoc_ins($ma_mon,$ma_sinh_vien,$lich_hoc_du_kien, $trang_thai);
+            // Kiem tra trung id
+            $kq1=$this->monhoc->checktrungmamon($ma_mon);
+            
+            if($kq1){
+                echo'<script>alert("Trùng ID");
+                window.location.href = "http://localhost/qlhs/monhoc";
+                </script>';
+                
+            }
+            else{
+            $kq=$this->monhoc->monhoc_ins($ma_mon, $ten_mon, $ma_nganh, $so_tin_chi, $so_tiet);
             if($kq){
                 echo '<script>
                 alert("Thêm mới thành công");
@@ -37,18 +44,9 @@
             }
             else
                 echo'<script>alert("Thêm mới thất bại")</script>';
-           // }
+            }
            
-            // gọi lại giao diện
-            // $this->view('Masterlayout',[
-            //     'page'=>'monhoc_them',
-            //     'id'=> $id,
-            //     'email'=>$email,
-            //     'quyen'=> $tdn,
-            //     'matkhau'=> $mk,
-            //     'ngaytao'=> $nt,
-                
-            // ]);
+           
         }
     }
     
