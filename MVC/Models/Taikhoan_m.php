@@ -1,4 +1,3 @@
-<!-- truy van sql -->
 <?php 
 class Taikhoan_m extends connectDB{
     function taikhoan_ins($tendn,$mk,$email,$quyen){
@@ -29,8 +28,8 @@ class Taikhoan_m extends connectDB{
          else {
             $sql = "SELECT * FROM tai_khoan WHERE ma_tai_khoan LIKE '%$id%' AND phan_quyen LIKE '%$quyen%'";
         }
-       
-        return mysqli_query($this->con,$sql);
+        
+        return mysqli_query($this->con, $sql);
     }
     
     function taikhoan_del($id){
@@ -42,7 +41,5 @@ class Taikhoan_m extends connectDB{
         WHERE ma_tai_khoan ='$id'";
         return mysqli_query($this->con,$sql);
     }
-    
-    
 }
 ?>
