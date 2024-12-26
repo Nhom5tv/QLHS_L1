@@ -2,18 +2,11 @@
 class connectDB {
     public $con;
     
-    // Constructor để kết nối cơ sở dữ liệu
-    function __construct() {
-        // Kết nối cơ sở dữ liệu
-        $this->con = mysqli_connect('localhost', 'root', '', 'qlhssv');
+    
+    function __construct() 
+    {
         
-        // Kiểm tra kết nối
-        if (mysqli_connect_errno()) {
-            echo "Kết nối cơ sở dữ liệu thất bại: " . mysqli_connect_error();
-            exit();
-        }
-
-        // Đặt charset UTF-8 cho kết nối
+        $this->con = mysqli_connect('localhost', 'root', '', 'qlhssv');
         mysqli_query($this->con, "SET NAMES 'utf8'");
     }
 }
