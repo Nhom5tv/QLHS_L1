@@ -63,7 +63,7 @@
             <table>
                 <thead>
                     <tr>
-                        <th> Mã khoản thu<span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Tên khoản thu<span class="icon-arrow">&UpArrow;</span></th>
                         <th> Mã sinh viên <span class="icon-arrow">&uparrow;</span></th>
                         <th> Số tiền ban đầu <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Số tiền miễn giảm <span class="icon-arrow">&UpArrow;</span></th>
@@ -81,7 +81,7 @@
 
                             ?>
                             <tr>
-                                <td><?php echo $row['ma_khoan_thu'] ?></td>
+                                <td><?php echo $row['ten_khoan_thu'] ?></td>
                                 <td><?php echo $row['ma_sinh_vien'] ?></td>
                                 <td> <?php echo $row['so_tien_ban_dau'] ?> </td>
                                 <td> <?php echo $row['so_tien_mien_giam'] ?> </td>

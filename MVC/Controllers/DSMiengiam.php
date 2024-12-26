@@ -12,9 +12,12 @@ class DSMiengiam extends controller {
 
     // Lấy dữ liệu để hiển thị khi load trang
     function Get_data() {
+        
+        
         $this->view('Masterlayout', [
             'page' => 'DSMiengiam_v',
             'dulieu' => $this->dsmg->miengiam_find('', ''),
+            
         ]);
     }
 
@@ -56,9 +59,11 @@ class DSMiengiam extends controller {
                 }
             }
         } else {
+            $dsloaikhoanthu=$this->dsmg->getAllLoaiKhoanThu();
             // Nếu chưa submit form, chỉ hiển thị form thêm mới
             $this->view('Masterlayout', [
-                'page' => 'Miengiam_them',  // Gọi view thêm mới miễn giảm
+                'page' => 'Miengiam_them',
+                'dsloaikhoanthu' => $dsloaikhoanthu,  // Gọi view thêm mới miễn giảm
             ]);
         }
     }
@@ -201,9 +206,11 @@ class DSMiengiam extends controller {
 
     // Hàm sửa
     function sua($id) {
+        $dsloaikhoanthu=$this->dsmg->getAllLoaiKhoanThu();
         $this->view('Masterlayout', [
             'page' => 'Miengiam_sua',
             'dulieu' => $this->dsmg->idmiengiam($id),
+            'dsloaikhoanthu' => $dsloaikhoanthu,
         ]);
     }
 

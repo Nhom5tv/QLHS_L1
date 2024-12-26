@@ -12,9 +12,10 @@ class DSHoadon extends controller {
 
     // Lấy dữ liệu để hiển thị khi load trang
     function Get_data() {
+        $dulieu = $this->dshd->getHoaDonWithTenKhoanThu();
         $this->view('Masterlayout', [
             'page' => 'DSHoadon_v',
-            'dulieu' => $this->dshd->hoadon_find('', ''), // Lấy danh sách hóa đơn
+            'dulieu' => $dulieu, // Lấy danh sách hóa đơn
         ]);
     }
 
@@ -51,9 +52,11 @@ class DSHoadon extends controller {
                 echo '<script>alert("Thêm mới hóa đơn thất bại")</script>';
             }
         } else {
+            $tenkhoanthu=$this->dshd->getKhoanThuList();
             // Nếu chưa submit form, chỉ hiển thị form thêm mới
             $this->view('Masterlayout', [
                 'page' => 'Hoadon_them',  // Gọi view thêm mới hóa đơn
+                'tenkhoanthu' => $tenkhoanthu,
             ]);
         }
     }
@@ -187,20 +190,42 @@ class DSHoadon extends controller {
 
     // Hàm xóa
     function xoa($id) {
-        $kq = $this->dshd->hoadon_del($id);
-        if ($kq) {
+        // Lấy thông tin hóa đơn trước khi xóa
+        $hoaDon = $this->dshd->getHoaDonById($id);
+    
+        if (!$hoaDon) {
             echo '<script>
-                    alert("Xóa thành công");
+                    alert("Hóa đơn không tồn tại!");
+                    window.history.back();
+                  </script>';
+            exit;
+        }
+    
+        $maKhoanThu = $hoaDon['ma_khoan_thu'];
+        $maSinhVien = $hoaDon['ma_sinh_vien'];
+    
+        // Thực hiện xóa hóa đơn
+        $kq = $this->dshd->hoadon_del($id);
+    
+        if ($kq) {
+            // Cập nhật trạng thái thanh toán
+            $this->dshd->capnhatTrangThaiThanhToan($maKhoanThu, $maSinhVien);
+    
+            echo '<script>
+                    alert("Xóa thành công và trạng thái đã được cập nhật");
                     window.location.href = "http://localhost/QLHS_L1/DSHoadon";
                   </script>';
         } else {
             echo '<script>alert("Xóa thất bại")</script>';
         }
     }
+    
     function sua($id) {
+        $tenkhoanthu=$this->dshd->getKhoanThuList();
         $this->view('Masterlayout', [
             'page' => 'Hoadon_sua',
             'dulieu' => $this->dshd->idhoadon($id),
+            'tenkhoanthu' => $tenkhoanthu,
         ]);
     }
 
@@ -222,11 +247,11 @@ class DSHoadon extends controller {
             } else {
                 echo '<script>alert("Sửa thất bại")</script>';
             }
-
+            $dulieu = $this->dshd->getHoaDonWithTenKhoanThu();
             // Gọi lại giao diện
             $this->view('Masterlayout', [
                 'page' => 'DSHoadon_v',
-                'dulieu' => $this->dshd->hoadon_find('', ''),
+                'dulieu' => $dulieu,
             ]);
         }
     }

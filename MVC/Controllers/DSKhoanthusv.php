@@ -14,7 +14,7 @@ class DSKhoanthusv extends controller {
     function Get_data() {
         $this->view('Masterlayout', [
             'page' => 'DSKhoanthusv_v',
-            'dulieu' => $this->dskt->khoanthu_find('', ''),
+            'dulieu' => $this->dskt->hienthidl(),
         ]);
     }
 

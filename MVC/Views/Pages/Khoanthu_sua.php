@@ -31,11 +31,27 @@
 
                 <div class="input-box">
                     <span class="icon">
-                        <img src="./Public/Picture/Pic_login/loai.png" alt="" width="15px">
+                        <img src="./Public/Picture/Pic_login/category.png" alt="" width="15px">
                     </span>
-                    <input type="text" required name="txtLoaikhoanthu" value="<?php echo $row['loai_khoan_thu'] ?>">
+                    <!-- Input kết hợp datalist -->
+                    <input 
+                        type="text" 
+                        required 
+                        name="txtLoaikhoanthu" 
+                        list="loaikhoanthuOptions" 
+                        value="<?php if(isset($row['loai_khoan_thu'])) echo $row['loai_khoan_thu']; ?>">
                     <label>Loại Khoản Thu</label>
+
+                    <!-- Datalist chứa các loại khoản thu có sẵn -->
+                    <datalist id="loaikhoanthuOptions">
+                        <option value="Học phí">
+                        <option value="BHYT">
+                        <option value="Khám sức khỏe">
+                        <option value="Bảo hiểm thân thể">
+                        <option value="Khác">
+                    </datalist>
                 </div>
+
 
                 <div class="input-box">
                     <span class="icon">

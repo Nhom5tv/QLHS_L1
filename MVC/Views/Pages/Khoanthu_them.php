@@ -30,8 +30,23 @@
                     <span class="icon">
                         <img src="./Public/Picture/Pic_login/category.png" alt="" width="15px">
                     </span>
-                    <input type="text" required name="txtLoaikhoanthu" value="<?php if(isset($data['loai_khoan_thu'])) echo $data['loai_khoan_thu']; ?>">
+                    <!-- Input kết hợp datalist -->
+                    <input 
+                        type="text" 
+                        required 
+                        name="txtLoaikhoanthu" 
+                        list="loaikhoanthuOptions" 
+                        value="<?php if(isset($data['loai_khoan_thu'])) echo $data['loai_khoan_thu']; ?>">
                     <label>Loại Khoản Thu</label>
+
+                    <!-- Datalist chứa các loại khoản thu có sẵn -->
+                    <datalist id="loaikhoanthuOptions">
+                        <option value="Học phí">
+                        <option value="BHYT">
+                        <option value="Khám sức khỏe">
+                        <option value="Bảo hiểm thân thể">
+                        <option value="Khác">
+                    </datalist>
                 </div>
 
                 <div class="input-box">
@@ -43,12 +58,18 @@
                 </div>
 
                 <div class="input-box">
-                    <span class="icon">
-                        <img src="./Public/Picture/Pic_login/calendar.png" alt="" width="15px">
-                    </span>
-                    <input type="date" required name="txtNgaytao" style="padding: 0px 5px 0 90px" value="<?php if(isset($data['ngay_tao'])) echo $data['ngay_tao']; ?>">
-                    <label>Ngày Tạo</label>
+            <span class="icon">
+                <img src="./Public/Picture/Pic_login/calendar.png" alt="" width="15px">
+            </span>
+            <input 
+                type="date" 
+                required 
+                name="txtNgaytao" 
+                style="padding: 0px 5px 0 90px" 
+                value="<?php echo isset($data['ngay_tao']) ? $data['ngay_tao'] : date('Y-m-d'); ?>">
+            <label>Ngày Tạo</label>
                 </div>
+
 
                 <div class="input-box">
                     <span class="icon">

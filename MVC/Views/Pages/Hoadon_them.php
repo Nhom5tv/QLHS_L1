@@ -31,21 +31,35 @@
                 </div>
 
                 <!-- Khoản Thu -->
-                <div class="input-box">
+                <label>Tên Khoản Thu</label>
+                <div class="input-box" style="text-align: center; margin:10px;" >
                     <span class="icon">
                         <img src="./Public/Picture/Pic_login/category.png" alt="" width="15px">
                     </span>
-                    <input type="text" required name="txtMakhoanthu" value="<?php if (isset($data['ma_khoan_thu'])) echo $data['ma_khoan_thu']; ?>">
-                    <label>Mã Khoản Thu</label>
+                    <select name="txtMakhoanthu" required style="text-align: center;">
+                        <option value="">Chọn khoản thu</option>
+                        <?php
+                        if (isset($data['tenkhoanthu']) && !empty($data['tenkhoanthu'])) {
+                            while ($row = mysqli_fetch_assoc($data['tenkhoanthu'])) {
+                                // Hiển thị tên khoản thu, nhưng lưu mã khoản thu
+                                $selected = (isset($row['ma_khoan_thu']) && $row['ma_khoan_thu'] === $row['ma_khoan_thu']) ? 'selected' : '';
+                                echo "<option value='{$row['ma_khoan_thu']}' $selected>{$row['ten_khoan_thu']}</option>";
+                            }
+                        }
+                        ?>
+                    </select>
+                    
                 </div>
 
+
                 <!-- Ngày Thanh Toán -->
-                <div class="input-box">
+                <label>Ngày Thanh Toán</label>
+                <div class="input-box" style="margin: 5px;">
                     <span class="icon">
                         <img src="./Public/Picture/Pic_login/calendar.png" alt="" width="15px">
                     </span>
-                    <input type="date" required name="txtNgaythanhtoan" style="padding: 0px 5px 0 90px" value="<?php if (isset($data['ngay_thanh_toan'])) echo $data['ngay_thanh_toan']; ?>">
-                    <label>Ngày Thanh Toán</label>
+                    <input type="date" required name="txtNgaythanhtoan" style="text-align: center;" value="<?php if (isset($data['ngay_thanh_toan'])) echo $data['ngay_thanh_toan']; ?>">
+                    
                 </div>
 
                 <!-- Số Tiền Đã Nộp -->
@@ -62,9 +76,22 @@
                     <span class="icon">
                         <img src="./Public/Picture/Pic_login/payment.png" alt="" width="15px">
                     </span>
-                    <input type="text" required name="txtHinhthucthanhtoan" value="<?php if (isset($data['hinh_thuc_thanh_toan'])) echo $data['hinh_thuc_thanh_toan']; ?>">
+                    <input 
+                        type="text" 
+                        required 
+                        name="txtHinhthucthanhtoan" 
+                        list="hinhThucThanhToanOptions" 
+                        value="<?php if (isset($data['hinh_thuc_thanh_toan'])) echo $data['hinh_thuc_thanh_toan']; ?>" 
+                        style="text-align: center;">
                     <label>Hình Thức Thanh Toán</label>
+
+                    <!-- Datalist chứa các giá trị mặc định -->
+                    <datalist id="hinhThucThanhToanOptions">
+                        <option value="Chuyển khoản">
+                        <option value="Tiền mặt">
+                    </datalist>
                 </div>
+
 
                 <!-- Nội Dung -->
                 <div class="input-box">

@@ -63,7 +63,7 @@
                     <tr>
                         <th> Mã hóa đơn<span class="icon-arrow">&UpArrow;</span></th>
                         <th> Mã sinh viên <span class="icon-arrow">&uparrow;</span></th>
-                        <th> Mã Khoản thu <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Tên Khoản thu <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Số tiền đã nộp <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Ngày thanh toán <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Hình thức thanh toán <span class="icon-arrow">&UpArrow;</span></th>
@@ -80,7 +80,7 @@
                                     <tr>
                                         <td><?php echo $row['ma_hoa_don']?></td>
                                         <td><?php echo $row['ma_sinh_vien']?></td>
-                                        <td> <?php echo $row['ma_khoan_thu']?> </td>
+                                        <td> <?php echo $row['ten_khoan_thu']?> </td>
                                         <td> <?php echo $row['so_tien_da_nop']?> </td>
                                         <td> <?php echo $row['ngay_thanh_toan']?> </td>
                                         <td> <?php echo $row['hinh_thuc_thanh_toan']?> </td>

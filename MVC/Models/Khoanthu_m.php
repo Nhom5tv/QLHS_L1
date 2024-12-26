@@ -17,6 +17,7 @@ class Khoanthu_m extends connectDB{
         }
         return $kq;
     }
+   
 
     // Hàm tìm kiếm theo tên và hạn nộp
     function khoanthu_find($tenKhoanThu, $hanNop ){

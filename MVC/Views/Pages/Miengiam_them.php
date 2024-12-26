@@ -27,7 +27,7 @@
                     <input type="text" required name="txtMasinhvien" style="text-align: center" value="<?php if(isset($data['ma_sinh_vien'])) echo $data['ma_sinh_vien']; ?>">
                     <label>Mã Sinh Viên</label>
                 </div>
-
+               
                 <!-- Mức Tiền -->
                 <div class="input-box">
                     <span class="icon">
@@ -38,13 +38,28 @@
                 </div>
 
                 <!-- Loại Miễn Giảm -->
+                <label>Loại Miễn Giảm</label>
                 <div class="input-box">
                     <span class="icon">
                         <img src="./Public/Picture/Pic_login/category.png" alt="" width="15px">
                     </span>
-                    <input type="text" required name="txtLoaimiengiam" style="text-align: center" value="<?php if(isset($data['loai_mien_giam'])) echo $data['loai_mien_giam']; ?>">
-                    <label>Loại Miễn Giảm</label>
-                </div>
+                    <select name="txtLoaimiengiam" required style="text-align: center;">
+                        <option value="">Chọn loại miễn giảm</option>
+                        <?php
+                        if (isset($data['dsloaikhoanthu']) && mysqli_num_rows($data['dsloaikhoanthu']) > 0) {
+                            while ($row = mysqli_fetch_assoc($data['dsloaikhoanthu'])) {
+                                // Hiển thị loại đã chọn nếu có
+                                $selected = (isset($data['loai_mien_giam']) && $data['loai_mien_giam'] === $row['loai_khoan_thu']) ? 'selected' : '';
+                                echo "<option value='{$row['loai_khoan_thu']}' $selected>{$row['loai_khoan_thu']}</option>";
+                            }
+                        } else {
+                            echo "<option value=''>Không có loại miễn giảm</option>";
+                        }
+                        ?>
+                    </select>
+                    </div>
+
+
                 <div class="input-box">
                     <span class="icon">
                         <img src="./Public/Picture/Pic_login/category.png" alt="" width="15px">

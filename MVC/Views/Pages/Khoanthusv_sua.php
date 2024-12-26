@@ -52,7 +52,7 @@
             </div>
 
           
-
+            <label>Trạng Thái Thanh Toán</label>
             <div class="input-box">
                 <span class="icon">
                     <img src="./Public/Picture/Pic_login/status.png" alt="" width="15px">
@@ -60,8 +60,9 @@
                 <select name="txtTrangThaiThanhToan" required>
                     <option value="Chưa thanh toán" <?php if($row['trang_thai_thanh_toan'] == "Chưa thanh toán") echo "selected"; ?>>Chưa thanh toán</option>
                     <option value="Đã thanh toán" <?php if($row['trang_thai_thanh_toan'] == "Đã thanh toán") echo "selected"; ?>>Đã thanh toán</option>
+                    <option value="Thanh toán 1 phần" <?php if($row['trang_thai_thanh_toan'] == "Thanh toán 1 phần") echo "selected"; ?>>Thanh toán 1 phần</option>
                 </select>
-                <label>Trạng Thái Thanh Toán</label>
+                
             </div>
 
             <button type="submit" class="btn" name="btnLuu">Lưu</button>

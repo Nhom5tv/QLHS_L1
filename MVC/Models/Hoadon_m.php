@@ -1,5 +1,10 @@
 <?php 
 class Hoadon_m extends connectDB {
+     // hàm lấy tên khoản thu
+     function getKhoanThuList() {
+        $sql = "SELECT ma_khoan_thu, ten_khoan_thu FROM khoan_thu";
+        return mysqli_query($this->con, $sql);
+    }
 
     // Hàm thêm mới hóa đơn
     function hoadon_ins($maSinhVien, $maKhoanThu, $ngayThanhToan, $soTien, $hinhThucThanhToan, $noiDung) {
@@ -40,6 +45,21 @@ class Hoadon_m extends connectDB {
     
         return mysqli_query($this->con, $sql);
     }
+    function getHoaDonWithTenKhoanThu() {
+        $sql = "SELECT 
+                    hd.ma_hoa_don,
+                    hd.ma_sinh_vien,
+                    hd.ma_khoan_thu,
+                    kt.ten_khoan_thu,
+                    hd.so_tien_da_nop,
+                    hd.ngay_thanh_toan,
+                    hd.hinh_thuc_thanh_toan,
+                    hd.noi_dung
+                FROM hoa_don AS hd
+                JOIN khoan_thu AS kt ON hd.ma_khoan_thu = kt.ma_khoan_thu";
+        return mysqli_query($this->con, $sql); // Trả về kết quả truy vấn
+    }
+    
     
 
     // Hàm lấy thông tin hóa đơn theo ID
@@ -47,6 +67,14 @@ class Hoadon_m extends connectDB {
         $sql = "SELECT * FROM hoa_don WHERE ma_hoa_don = '$id'";
         return mysqli_query($this->con, $sql);
     }
+    function getHoaDonById($maHoaDon) {
+        $sql = "SELECT * FROM hoa_don WHERE ma_hoa_don = '$maHoaDon'";
+        $result = mysqli_query($this->con, $sql);
+    
+        // Chuyển đổi kết quả truy vấn thành mảng
+        return mysqli_fetch_assoc($result); // Trả về dòng kết quả đầu tiên dưới dạng mảng liên kết
+    }
+    
 
     // Hàm xóa hóa đơn
     function hoadon_del($id) {
@@ -78,7 +106,13 @@ class Hoadon_m extends connectDB {
         $soTienPhaiNop = $rowKhoanThuSV['so_tien_phai_nop'] ?? 0;
     
         // Xác định trạng thái thanh toán
-        $trangThai = ($tongTienDaDong >= $soTienPhaiNop) ? 'Đã thanh toán' : 'Thanh toán 1 phần';
+        if ($tongTienDaDong == 0) {
+            $trangThai = 'Chưa thanh toán';
+        } elseif ($tongTienDaDong >= $soTienPhaiNop) {
+            $trangThai = 'Đã thanh toán';
+        } else {
+            $trangThai = 'Thanh toán 1 phần';
+        }
     
         // Cập nhật trạng thái trong bảng khoan_thu_sinh_vien
         $sqlUpdate = "UPDATE khoan_thu_sinh_vien 
@@ -86,6 +120,9 @@ class Hoadon_m extends connectDB {
                       WHERE ma_khoan_thu = '$maKhoanThu' AND ma_sinh_vien = '$maSinhVien'";
         return mysqli_query($this->con, $sqlUpdate);
     }
+    
+   
+    
     
 }
 ?>

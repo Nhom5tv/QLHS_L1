@@ -41,6 +41,22 @@ class Khoanthusv_m extends connectDB {
 
         return mysqli_query($this->con, $sql);
     }
+    function hienthidl(){
+        $sql = "SELECT 
+            ktsv.ma_khoan_thu, 
+            kt.ten_khoan_thu, 
+            ktsv.ma_sinh_vien, 
+            ktsv.so_tien_ban_dau, 
+            ktsv.so_tien_mien_giam, 
+            ktsv.so_tien_phai_nop, 
+            ktsv.trang_thai_thanh_toan
+        FROM 
+            khoan_thu_sinh_vien AS ktsv
+        JOIN 
+            khoan_thu AS kt ON ktsv.ma_khoan_thu = kt.ma_khoan_thu";
+        return mysqli_query($this->con, $sql);
+   
+    }
 
     // Hàm xóa khoản thu sinh viên
     function khoanthu_del($maKhoanThu, $maSinhVien) {

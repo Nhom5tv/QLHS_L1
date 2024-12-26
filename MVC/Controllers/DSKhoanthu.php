@@ -26,7 +26,14 @@ class DSKhoanthu extends controller {
             $soTien = $_POST['txtSoTien'];
             $ngayTao = $_POST['txtNgaytao'];
             $hanNop = $_POST['txtHannop'];
-    
+            // kiểm tra điều kiện ngày
+            if (strtotime($hanNop) < strtotime($ngayTao)) {
+                echo '<script>
+                    alert("Hạn nộp phải lớn hơn hoặc bằng ngày tạo!");
+                    window.location.href = "http://localhost/QLHS_L1/DSKhoanthu/themmoi";
+                </script>';
+                exit();
+            }
             // Kiểm tra trùng tên khoản thu
             $kq1 = $this->dskt->checktrungkhoanthu($tenKhoanThu);
     
@@ -254,7 +261,15 @@ class DSKhoanthu extends controller {
             $soTien = $_POST['txtSoTien'];
             $ngayTao = $_POST['txtNgaytao'];
             $hanNop = $_POST['txtHannop'];
-    
+            
+            // kiểm tra điều kiện ngày
+            if (strtotime($hanNop) < strtotime($ngayTao)) {
+                echo '<script>
+                    alert("Hạn nộp phải lớn hơn hoặc bằng ngày tạo!");
+                    window.location.href = "http://localhost/QLHS_L1/DSKhoanthu/suadl";
+                </script>';
+                exit();
+            }
             // Cập nhật khoản thu
             $kq = $this->dskt->khoanthu_upd($id, $tenKhoanThu, $loaiKhoanThu, $soTien, $ngayTao, $hanNop);
     

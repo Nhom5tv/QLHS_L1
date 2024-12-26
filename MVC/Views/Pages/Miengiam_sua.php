@@ -37,13 +37,28 @@
                     <label>Mức Tiền</label>
                 </div>
 
-                <div class="input-box">
-                    <span class="icon">
-                        <img src="./Public/Picture/Pic_login/category.png" alt="" width="15px">
-                    </span>
-                    <input type="text" required name="txtLoaimiengiam" value="<?php echo $row['loai_mien_giam'] ?>">
-                    <label>Loại Miễn Giảm</label>
-                </div>
+                <label>Loại Miễn Giảm</label>
+<div class="input-box">
+    <span class="icon">
+        <img src="./Public/Picture/Pic_login/category.png" alt="" width="15px">
+    </span>
+    <select name="txtLoaimiengiam" required style="text-align: center;">
+        <option value="">Chọn loại miễn giảm</option>
+        <?php
+        if (isset($data['dsloaikhoanthu']) && !empty($data['dsloaikhoanthu'])) {
+            while ($rowLoai = mysqli_fetch_assoc($data['dsloaikhoanthu'])) {
+                // So sánh loại miễn giảm hiện tại với danh sách loại khoản thu
+                $selected = (isset($row['loai_mien_giam']) && $row['loai_mien_giam'] === $rowLoai['loai_khoan_thu']) ? 'selected' : '';
+                echo "<option value='{$rowLoai['loai_khoan_thu']}' $selected>{$rowLoai['loai_khoan_thu']}</option>";
+            }
+        } else {
+            echo "<option value=''>Không có loại miễn giảm</option>";
+        }
+        ?>
+    </select>
+</div>
+
+
                 <div class="input-box">
                     <span class="icon">
                         <img src="./Public/Picture/Pic_login/category.png" alt="" width="15px">
