@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    
-    <link rel="stylesheet" href="http://localhost/qlhs/Public/CSS/login.css?v=<?php echo time();?>">
-    <base href="http://localhost/qlhs/">
+    <link rel="stylesheet" href="http://localhost/QLHS_L1/Public/CSS/login.css?v=<?php echo time();?>">
+    <base href="http://localhost/QLHS_L1/">
     <style>
         .content{
             margin-top: 70px;
@@ -72,7 +72,7 @@
                 </div>
                 <button type="submit" class="btn" name="btnDangnhap">Đăng nhập</button>
                 <div class="login-register">
-                    <p>Bạn chưa có tài khoản?&nbsp;<a href="http://localhost/qlhs/Dangky" class="register-link"> Đăng ký</a></p>
+                    <p>Bạn chưa có tài khoản?&nbsp;<a href="http://localhost/QLHS_L1/Dangky" class="register-link"> Đăng ký</a></p>
                     
                 </div>
             
