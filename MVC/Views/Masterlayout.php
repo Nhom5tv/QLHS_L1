@@ -64,19 +64,19 @@
                     <ul id="QLSP-DV" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
 
                         <li class="sidebar-item">
-                            <a href="http://localhost/qlhs/DSDanhmuc" class="sidebar-link">Quản lý danh mục</a>
+                            <a href="http://localhost/qlhs/DSGiangvien" class="sidebar-link">Quản lý danh mục</a>
                         </li>
 
                         <li class="sidebar-item">
-                            <a href="http://localhost/qlhs/DSSanpham" class="sidebar-link">Quản lý sản phẩm</a>
+                            <a href="http://localhost/qlhs/DSSinhvien" class="sidebar-link">Quản lý sản phẩm</a>
                         </li>
 
                         <li class="sidebar-item">
-                            <a href="http://localhost/qlhs/DStintuc" class="sidebar-link">Quản lý tin tức</a>
+                            <a href="http://localhost/qlhs/DSNganh" class="sidebar-link">Quản lý ngành</a>
                         </li>
 
                         <li class="sidebar-item">
-                            <a href="http://localhost/qlhs/DSkhuyenmai" class="sidebar-link">Quản lý khuyến mãi</a>
+                            <a href="http://localhost/qlhs/ThongTinSinhVien" class="sidebar-link">Quản lý thông tin cá nhân sinh viên</a>
                         </li>
                     </ul>
                 </li>
@@ -94,7 +94,7 @@
                         </li> -->
 
                         <li class="sidebar-item">
-                            <a href="http://localhost/qlhs/DSDonhang" class="sidebar-link">Đơn hàng</a>
+                            <a href="http://localhost/qlhs/DSKhoa" class="sidebar-link">quản lý khoa</a>
                         </li>
 
                         <li class="sidebar-item">
