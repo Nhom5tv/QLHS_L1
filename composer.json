@@ -1,0 +1,6 @@
+{
+    "name": "banhb/qlhs",
+    "require": {
+        "phpoffice/phpspreadsheet": "^3.6"
+    }
+}

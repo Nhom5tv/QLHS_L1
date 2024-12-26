@@ -5,9 +5,8 @@ class connectDB {
     
     function __construct() 
     {
-        
-        $this->con = mysqli_connect('localhost', 'root', '', 'qlhssv');
-        mysqli_query($this->con, "SET NAMES 'utf8'");
+       $this->con=mysqli_connect('localhost','root','','qlhssv') ;
+       mysqli_query($this->con,"SET NAMES 'utf8'");
     }
 }
 ?>

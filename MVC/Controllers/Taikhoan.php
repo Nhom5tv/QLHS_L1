@@ -2,11 +2,11 @@
  <?php 
  class Taikhoan extends controller{
     private $taikhoan;
-    private $check;
+
     function __construct()
     {
         $this->taikhoan=$this->model('Taikhoan_m');
-        $this->check=$this->model('Dangky_m');
+    
         // khởi tạo đối tượng model('Taikhoan_m') gán cho $taikhoan
     }
     function Get_data(){
@@ -15,27 +15,27 @@
     }
     function themmoi(){
         if(isset($_POST['btnLuu'])){
-            
+            $tendn=$_POST['txtTendn'];
+            $mk=$_POST['txtMatkhau'];
             $email=$_POST['txtEmail'];
             $quyen=$_POST['txtQuyen'];
-            $mk=$_POST['txtMatkhau'];
            
             
             // Kiem tra trung id
-            $kq1=$this->check->checktrungemail($email);
+            $kq1=$this->taikhoan->checktrungemail($email);
             
             if($kq1){
                 echo'<script>alert("Trùng ID");
-                window.location.href = "http://localhost/qlhs/Taikhoan";
+                window.location.href = "http://localhost/QLHS_L1/Taikhoan";
                 </script>';
                 
             }
             else{
-            $kq=$this->taikhoan->taikhoan_ins($email,$mk,$quyen);
+            $kq=$this->taikhoan->taikhoan_ins($tendn,$mk,$email,$quyen);
             if($kq){
                 echo '<script>
                 alert("Thêm mới thành công");
-                window.location.href = "http://localhost/qlhs/Taikhoan";
+                window.location.href = "http://localhost/QLHS_L1/Taikhoan";
                 </script>';
                 // hiện thị alert trc khi chuyển trang
     exit();
