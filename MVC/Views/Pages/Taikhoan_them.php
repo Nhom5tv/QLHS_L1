@@ -24,6 +24,15 @@
                     <span class="icon">
                         <img src="./Public/Picture/Pic_login/email.png" alt="" width="15px">
                     </span>
+                    <input type="text" required name="txtmaTK" value="<?php if(isset($data['ma_tai_khoan'])) echo $data['ma_tai_khoan']?>">
+                    <label>Mã tài khoản</label>
+                </div>
+
+
+            <div class="input-box">
+                    <span class="icon">
+                        <img src="./Public/Picture/Pic_login/email.png" alt="" width="15px">
+                    </span>
                     <input type="text" required name="txtTendn" value="<?php if(isset($data['ten_dang_nhap'])) echo $data['ten_dang_nhap']?>">
                     <label>Tên đăng nhập</label>
                 </div>
