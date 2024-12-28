@@ -15,6 +15,7 @@
     }
     function themmoi(){
         if(isset($_POST['btnLuu'])){
+            $ma_tai_khoan=$_POST['txtmaTK'];
             $tendn=$_POST['txtTendn'];
             $mk=$_POST['txtMatkhau'];
             $email=$_POST['txtEmail'];
@@ -31,7 +32,7 @@
                 
             }
             else{
-            $kq=$this->taikhoan->taikhoan_ins($tendn,$mk,$email,$quyen);
+            $kq=$this->taikhoan->taikhoan_ins($ma_tai_khoan,$tendn,$mk,$email,$quyen);
             if($kq){
                 echo '<script>
                 alert("Thêm mới thành công");
