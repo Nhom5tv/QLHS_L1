@@ -1,3 +1,13 @@
+<?php
+if(session_id()=='') session_start();
+if(isset($_SESSION['ma_tai_khoan'])== false){
+    echo'<script>alert("Chưa đăng ký tài khoản");
+    window.location.href = "http://localhost/QLHS/Login";
+    </script>';    
+}
+$id=$_SESSION['ma_tai_khoan'];
+echo $id;
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,36 +35,39 @@
                 <thead>
                     <tr>
                         <th>STT</th>
-                        <th>Mã học phần</th>
+                        <!-- <th>Mã học phần</th>
                         <th>Tên học phần</th>
-                        <th>Số tín chỉ</th>
+                        <th>Số tín chỉ</th> -->
                         <th>Lần học</th>
                         <th>Lần thi</th>
                         <th>Điểm hệ 10</th>
                         <th>Điểm hệ 4</th>
                         <th>Điểm chữ</th>
                         <th>Đánh giá</th>
+                        <th>Ghi chú</th>
                         <th>Chi tiết</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
                     if (isset($data['dulieu']) && mysqli_num_rows($data['dulieu']) > 0) {
+                        $i=1;
                         while ($row = mysqli_fetch_assoc($data['dulieu'])) {
                             ?>
                             <tr>
-                                <td><?php echo $stt++; ?></td>
-                                <td><?php echo $row['ma_mon']; ?></td>
+                                <td><?php echo $i++; ?></td>
+                                <!-- <td><?php echo $row['ma_mon']; ?></td>
                                 <td><?php echo $row['ten_mon']; ?></td>
-                                <td><?php echo $row['so_tin_chi']; ?></td>
+                                <td><?php echo $row['so_tin_chi']; ?></td> -->
                                 <td><?php echo $row['lan_hoc']; ?></td>
                                 <td><?php echo $row['lan_thi']; ?></td>
                                 <td><?php echo $row['diem_he_10']; ?></td>
                                 <td><?php echo $row['diem_he_4']; ?></td>
                                 <td><?php echo $row['diem_chu']; ?></td>
                                 <td><?php echo $row['danh_gia']; ?></td>
+                                <td><?php echo $row['ghi_chu']; ?></td>
                                 <td>
-                                  <a></a>  
+                                  <a href="#">Chi tiết</a>  
                                 </td>
                             </tr>
                             <?php

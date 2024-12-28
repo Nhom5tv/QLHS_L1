@@ -1,10 +1,10 @@
 <?php 
-class Diemchitiet extends controller {
+class Diemtheomon extends controller {
     private $diemchitiet;
 
     function __construct() {
         // Khởi tạo model Diemchitiet_m
-        $this->diemchitiet = $this->model('Diemchitiet_m');
+        $this->diemchitiet = $this->model('DSdiemtheomon_m');
     }
 
     // Hiển thị giao diện thêm điểm chi tiết

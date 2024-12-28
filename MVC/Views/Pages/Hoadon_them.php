@@ -12,11 +12,11 @@
             padding-top: 5px;
         }
     </style>
-    <link rel="stylesheet" href="http://localhost/QLHS_L1/Public/CSS/dulieu.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="http://localhost/QLHS/Public/CSS/dulieu.css?v=<?php echo time(); ?>">
 </head>
 
 <body>
-    <form id="myForm" method="post" action="http://localhost/QLHS_L1/DSHoadon/themmoi">
+    <form id="myForm" method="post" action="http://localhost/QLHS/DSHoadon/themmoi">
         <div class="content">
             <div class="form-box login">
                 <h2>Thêm Hóa Đơn</h2>
@@ -105,7 +105,7 @@
                 <button type="submit" class="btn" name="btnLuu">Lưu</button>
                 <br>
                 <div class="quaylai">
-                    <a href="http://localhost/QLHS_L1/DSHoadon">Quay lại</a>
+                    <a href="http://localhost/QLHS/DSHoadon">Quay lại</a>
                 </div>
             </div>
         </div>

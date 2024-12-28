@@ -41,7 +41,7 @@ class DSHoadon extends controller {
                     // Nếu thành công, thông báo và chuyển hướng
                     echo '<script>
                         alert("Thêm mới hóa đơn và cập nhật trạng thái thành công");
-                        window.location.href = "http://localhost/QLHS_L1/DSHoadon";
+                        window.location.href = "http://localhost/QLHS/DSHoadon";
                     </script>';
                     exit();  // Dừng lại sau khi redirect
                 } else {
@@ -122,18 +122,18 @@ class DSHoadon extends controller {
 
                 echo "<script>
                         alert('Upload thành công: {$successCount} hàng, thất bại: {$failCount} hàng.');
-                        window.location.href = 'http://localhost/QLHS_L1/DSHoadon';
+                        window.location.href = 'http://localhost/QLHS/DSHoadon';
                       </script>";
             } catch (Exception $e) {
                 echo "<script>
                         alert('Có lỗi xảy ra khi xử lý file Excel: {$e->getMessage()}');
-                        window.location.href = 'http://localhost/QLHS_L1/DSHoadon';
+                        window.location.href = 'http://localhost/QLHS/DSHoadon';
                       </script>";
             }
         } else {
             echo "<script>
                     alert('Không có file nào được chọn hoặc có lỗi trong quá trình tải lên.');
-                    window.location.href = 'http://localhost/QLHS_L1/DSHoadon';
+                    window.location.href = 'http://localhost/QLHS/DSHoadon';
                   </script>";
         }
     }
@@ -183,7 +183,7 @@ class DSHoadon extends controller {
         } catch (Exception $e) {
             echo "<script>
                     alert('Có lỗi xảy ra khi xuất file Excel: {$e->getMessage()}');
-                    window.location.href = 'http://localhost/QLHS_L1/DSHoadon';
+                    window.location.href = 'http://localhost/QLHS/DSHoadon';
                   </script>";
         }
     }
@@ -213,7 +213,7 @@ class DSHoadon extends controller {
     
             echo '<script>
                     alert("Xóa thành công và trạng thái đã được cập nhật");
-                    window.location.href = "http://localhost/QLHS_L1/DSHoadon";
+                    window.location.href = "http://localhost/QLHS/DSHoadon";
                   </script>';
         } else {
             echo '<script>alert("Xóa thất bại")</script>';

@@ -1,5 +1,5 @@
 <?php 
-class Diemchitiet_m extends connectDB {
+class Diemtheomon_m extends connectDB {
    
     // Hàm thêm mới điểm chi tiết
     function diemchitiet_ins($ma_lop, $ma_sinh_vien, $lan_hoc, $lan_thi, $diem_chuyen_can, $diem_giua_ky, $diem_cuoi_ky) {

@@ -30,7 +30,7 @@ class DSKhoanthu extends controller {
             if (strtotime($hanNop) < strtotime($ngayTao)) {
                 echo '<script>
                     alert("Hạn nộp phải lớn hơn hoặc bằng ngày tạo!");
-                    window.location.href = "http://localhost/QLHS_L1/DSKhoanthu/themmoi";
+                    window.location.href = "http://localhost/QLHS/DSKhoanthu/themmoi";
                 </script>';
                 exit();
             }
@@ -40,7 +40,7 @@ class DSKhoanthu extends controller {
             if ($kq1) {
                 echo '<script>
                     alert("Tên khoản thu đã tồn tại");
-                    window.location.href = "http://localhost/QLHS_L1/DSKhoanthu";
+                    window.location.href = "http://localhost/QLHS/DSKhoanthu";
                 </script>';
                 exit(); // Dừng lại nếu tên khoản thu đã tồn tại
             } else {
@@ -59,7 +59,7 @@ class DSKhoanthu extends controller {
                         if (!$resultHocPhi) {
                             echo '<script>
                                 alert("Thêm khoản thu thành công nhưng tính học phí thất bại!");
-                                window.location.href = "http://localhost/QLHS_L1/DSKhoanthu";
+                                window.location.href = "http://localhost/QLHS/DSKhoanthu";
                             </script>';
                             exit();
                         }
@@ -70,7 +70,7 @@ class DSKhoanthu extends controller {
                         if (!$resultSinhVien) {
                             echo '<script>
                                 alert("Thêm khoản thu thành công nhưng không có sinh viên nào để gán!");
-                                window.location.href = "http://localhost/QLHS_L1/DSKhoanthu";
+                                window.location.href = "http://localhost/QLHS/DSKhoanthu";
                             </script>';
                             exit();
                         }
@@ -82,12 +82,12 @@ class DSKhoanthu extends controller {
                     if ($capnhatMienGiam) {
                         echo '<script>
                             alert("Thêm khoản thu, gán sinh viên và cập nhật miễn giảm thành công!");
-                            window.location.href = "http://localhost/QLHS_L1/DSKhoanthu";
+                            window.location.href = "http://localhost/QLHS/DSKhoanthu";
                         </script>';
                     } else {
                         echo '<script>
                             alert("Thêm khoản thu thành công nhưng cập nhật miễn giảm thất bại!");
-                            window.location.href = "http://localhost/QLHS_L1/DSKhoanthu";
+                            window.location.href = "http://localhost/QLHS/DSKhoanthu";
                         </script>';
                     }
                 } else {
@@ -166,18 +166,18 @@ class DSKhoanthu extends controller {
 
                 echo "<script>
                         alert('Upload thành công: {$successCount} hàng, thất bại: {$failCount} hàng.');
-                        window.location.href = 'http://localhost/QLHS_L1/DSKhoanthu';
+                        window.location.href = 'http://localhost/QLHS/DSKhoanthu';
                       </script>";
             } catch (Exception $e) {
                 echo "<script>
                         alert('Có lỗi xảy ra khi xử lý file Excel: {$e->getMessage()}');
-                        window.location.href = 'http://localhost/QLHS_L1/DSKhoanthu';
+                        window.location.href = 'http://localhost/QLHS/DSKhoanthu';
                       </script>";
             }
         } else {
             echo "<script>
                     alert('Không có file nào được chọn hoặc có lỗi trong quá trình tải lên.');
-                    window.location.href = 'http://localhost/QLHS_L1/DSKhoanthu';
+                    window.location.href = 'http://localhost/QLHS/DSKhoanthu';
                   </script>";
         }
     }
@@ -225,7 +225,7 @@ class DSKhoanthu extends controller {
         } catch (Exception $e) {
             echo "<script>
                     alert('Có lỗi xảy ra khi xuất file Excel: {$e->getMessage()}');
-                    window.location.href = 'http://localhost/QLHS_L1/DSKhoanthu';
+                    window.location.href = 'http://localhost/QLHS/DSKhoanthu';
                   </script>";
         }
     }
@@ -236,7 +236,7 @@ class DSKhoanthu extends controller {
         if ($kq) {
             echo '<script>
                     alert("Xóa thành công");
-                    window.location.href = "http://localhost/QLHS_L1/DSKhoanthu";
+                    window.location.href = "http://localhost/QLHS/DSKhoanthu";
                   </script>';
             exit();
         } else {
@@ -266,7 +266,7 @@ class DSKhoanthu extends controller {
             if (strtotime($hanNop) < strtotime($ngayTao)) {
                 echo '<script>
                     alert("Hạn nộp phải lớn hơn hoặc bằng ngày tạo!");
-                    window.location.href = "http://localhost/QLHS_L1/DSKhoanthu/suadl";
+                    window.location.href = "http://localhost/QLHS/DSKhoanthu/suadl";
                 </script>';
                 exit();
             }
@@ -280,7 +280,7 @@ class DSKhoanthu extends controller {
                 if ($capnhatMienGiam) {
                     echo '<script>
                             alert("Sửa khoản thu và cập nhật miễn giảm thành công!");
-                            window.location.href = "http://localhost/QLHS_L1/DSKhoanthu";
+                            window.location.href = "http://localhost/QLHS/DSKhoanthu";
                           </script>';
                     exit();
                 } else {

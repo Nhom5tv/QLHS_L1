@@ -1,6 +1,5 @@
 <?php 
-class Masterlayout extends controller{
-    private $show;
+class Masterlayout_gv extends controller{
     function __construct()
     {
        
@@ -8,7 +7,7 @@ class Masterlayout extends controller{
     function Get_data(){
         
         
-        $this->view('Masterlayout',['page'=>'DSTaikhoan_v']);
+        $this->view('Masterlayout_gv',['page'=>'DSTaikhoan_v']);
         
         // gọi giao diện chính và truyền dữ liệu page là trang dangky view
     }

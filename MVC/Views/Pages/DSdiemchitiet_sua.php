@@ -23,16 +23,12 @@
                         <!-- ID Điểm Chi Tiết (thẻ ẩn) -->
                         <input type="hidden" name="txtId" value="<?php echo $row['ma_dct']; ?>">
 
-                        <div class="input-box">
-                            <label for="txtMaLop">Mã lớp:</label>
-                            <input type="text" id="txtMaLop" name="txtMaLop" value="<?= $row['ma_lop'] ?>" readonly>
-                        </div>
-                        
-                        <div class="input-box">
-                            <label for="txtMaSinhVien">Mã sinh viên:</label>
-                            <input type="text" id="txtMaSinhVien" name="txtMaSinhVien" value="<?= $row['ma_sinh_vien'] ?>" readonly>
-                        </div>
+                     
+                            <input type="hidden" id="txtMaLop" name="txtMaLop" value="<?= $row['ma_lop'] ?>" readonly>
+              
 
+                            <input type="hidden" id="txtMaSinhVien" name="txtMaSinhVien" value="<?= $row['ma_sinh_vien'] ?>" readonly>
+                        
                         <!-- Lần học -->
                         <div class="input-box">
                             <input type="number" required name="txtLanHoc" value="<?php echo $row['lan_hoc']; ?>">

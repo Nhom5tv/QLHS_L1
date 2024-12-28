@@ -33,8 +33,7 @@
                         <i class="fa-solid fa-house"></i>
                         <span>Trang chủ</span>
                     </a>
-                </li>
-                
+                </li> 
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
                         data-bs-target="#QLTK" aria-expanded="false" aria-controls="QLTK">
@@ -57,27 +56,20 @@
                     </ul>
                 </li>
 
+
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
                         data-bs-target="#QLKQHT" aria-expanded="false" aria-controls="QLKQHT">
                         <i class="fa-solid fa-medal"></i>
                         <span>Quản lý kết quả học tập</span>
                     </a>
-                    <ul id="QLKQHT" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                        <li class="sidebar-item">
-                            <a href="http://localhost/qlhs/DSdiemchitiet" class="sidebar-link">Tra cứu điểm</a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="http://localhost/qlhs/DSdiem" class="sidebar-link">Điểm tổng hợp</a>
-                        </li>
-                    </ul>
                 </li>
 
                  <li class="sidebar-item">
                     <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
                         data-bs-target="#QLHPTC" aria-expanded="false" aria-controls="QLHPTC">
                         <i class="fa-solid fa-coins"></i>
-                        <span>Quản lý học phí và tài chính</span>
+                        <span>Quản lý tài chính</span>
                     </a>
                     <ul id="QLHPTC" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
 

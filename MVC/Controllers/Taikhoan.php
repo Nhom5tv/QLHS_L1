@@ -26,7 +26,7 @@
             
             if($kq1){
                 echo'<script>alert("Trùng ID");
-                window.location.href = "http://localhost/QLHS_L1/Taikhoan";
+                window.location.href = "http://localhost/QLHS/Taikhoan";
                 </script>';
                 
             }
@@ -35,7 +35,7 @@
             if($kq){
                 echo '<script>
                 alert("Thêm mới thành công");
-                window.location.href = "http://localhost/QLHS_L1/Taikhoan";
+                window.location.href = "http://localhost/QLHS/Taikhoan";
                 </script>';
                 // hiện thị alert trc khi chuyển trang
     exit();

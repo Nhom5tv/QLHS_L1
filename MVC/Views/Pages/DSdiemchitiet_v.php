@@ -19,7 +19,7 @@
 </head>
 
 <body>
-    <form method="post" action="http://localhost/qlhs/DSTaikhoan/timkiem"></form>
+    <!-- <form method="post" action="http://localhost/qlhs/DSTaikhoan/timkiem"></form> -->
     <main class="table" id="customers_table">
     <section class="table__header">
             <div class="Insert">
