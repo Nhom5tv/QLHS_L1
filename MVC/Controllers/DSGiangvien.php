@@ -64,8 +64,7 @@ class DSGiangvien extends controller{
                     $email = isset($row[3]) ? trim($row[3]) : null;
                     $soDienThoai = isset($row[4]) ? trim($row[4]) : null;
                     $chuyenNganh = isset($row[5]) ? trim($row[5]) : null;
-                    $maTaiKhoan = isset($row[6]) ? trim($row[6]) : null;
-         
+                
                     
 
 
@@ -116,7 +115,6 @@ class DSGiangvien extends controller{
             $sheet->setCellValue('D1', 'Email');
             $sheet->setCellValue('E1', 'Số điện thoại');
             $sheet->setCellValue('F1', 'Chuyên ngành');
-            $sheet->setCellValue('G1', 'Mã tài khoản');
     
             $rowNumber = 2;
             foreach ($data as $row) {
@@ -128,7 +126,6 @@ class DSGiangvien extends controller{
                 $sheet->setCellValueExplicit('D' . $rowNumber, $row['email'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
                  $sheet->setCellValueExplicit('E' . $rowNumber, $row['so_dien_thoai'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
                  $sheet->setCellValueExplicit('F' . $rowNumber, $row['chuyen_nganh'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
-                 $sheet->setCellValueExplicit('G' . $rowNumber, $row['ma_tai_khoan'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_NUMERIC);
                 $rowNumber++;
             }
     
@@ -203,9 +200,8 @@ class DSGiangvien extends controller{
             $email = $_POST['txtEmail'];
             $soDienThoai = $_POST['txtSoDienThoai'];
             $chuyenNganh = $_POST['txtChuyenNganh'];
-            $maTaiKhoan = $_POST['txtIdTaiKhoan'];
 
-            $kq = $this->dsgv->giangvien_upd($maGV,$maKhoa,$hoTen, $email, $soDienThoai, $chuyenNganh , $maTaiKhoan);
+            $kq = $this->dsgv->giangvien_upd($maGV,$maKhoa,$hoTen, $email, $soDienThoai, $chuyenNganh);
 
             if ($kq) {
                 echo '<script>

@@ -69,7 +69,7 @@ class DSSinhvien extends controller{
                     $email = isset($row[7]) ? trim($row[7]) : null;
                     $soDienThoai = isset($row[8]) ? trim($row[8]) : null;
                     $khoaHoc = isset($row[9]) ? trim($row[9]) : null;
-                    $maTaiKhoan = isset($row[10]) ? trim($row[10]) : null;
+                 
 
 
                     // Kiểm tra và định dạng ngày sinh
@@ -137,7 +137,6 @@ if ($formattedDate && $formattedDate->format('Y-m-d') === $ngaySinh) {
             $sheet->setCellValue('H1', 'Email');
             $sheet->setCellValue('I1', 'Số điện thoại');
             $sheet->setCellValue('J1', 'Khóa học');
-            $sheet->setCellValue('K1', 'Mã tài khoản');
     
             $rowNumber = 2;
             foreach ($data as $row) {
@@ -176,8 +175,6 @@ $sheet->setCellValueExplicit('G' . $rowNumber, $row['que_quan'] ?? '', \PhpOffic
 $sheet->setCellValueExplicit('H' . $rowNumber, $row['email'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
 $sheet->setCellValueExplicit('I' . $rowNumber, $row['so_dien_thoai'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
 $sheet->setCellValueExplicit('J' . $rowNumber, $row['khoa_hoc'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_NUMERIC);
-$sheet->setCellValueExplicit('K' . $rowNumber, $row['ma_tai_khoan'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_NUMERIC);
-
 $rowNumber++;
 
             }
@@ -252,9 +249,8 @@ $rowNumber++;
             $email = $_POST['txtEmail'];
             $soDienThoai = $_POST['txtSoDienThoai'];
             $khoaHoc = $_POST['txtKhoaHoc'];
-            $masinhvien = $_POST['txtIdsinhvien'];
 
-            $kq = $this->dssv->sinhvien_upd($maSV,$maKhoa, $maNganh,$hoTen, $ngaySinh, $gioiTinh, $queQuan, $email, $soDienThoai, $khoaHoc , $masinhvien);
+            $kq = $this->dssv->sinhvien_upd($maSV,$maKhoa, $maNganh,$hoTen, $ngaySinh, $gioiTinh, $queQuan, $email, $soDienThoai, $khoaHoc);
 
             if ($kq) {
                 echo '<script>

@@ -101,12 +101,6 @@
                     <input type="text" name="txtKhoaHoc" value="<?php echo $row['khoa_hoc']; ?>" required>
                 </div>
 
-                <!-- Mã Tài Khoản -->
-                <div class="input-box">
-                    <label>Mã Tài Khoản</label>
-                    <input type="text" name="txtIdTaiKhoan" value="<?php echo $row['ma_tai_khoan']; ?>" readonly>
-                </div>
-
                 <!-- Nút Lưu -->
                 <button type="submit" class="btn" name="btnLuu">Lưu</button>
             </div>

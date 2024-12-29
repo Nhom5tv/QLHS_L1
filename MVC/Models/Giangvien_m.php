@@ -1,10 +1,10 @@
 <?php 
 class Giangvien_m extends connectDB{
     // Hàm thêm mới giang viên
-    function giangvien_ins($maGV, $maKhoa,$hoTen,$email,$soDienThoai, $chuyenNganh,$maTaiKhoan) {
+    function giangvien_ins($maGV, $maKhoa,$hoTen,$email,$soDienThoai, $chuyenNganh) {
         // Chuẩn bị câu SQL để thêm giang viên
-        $sql = "INSERT INTO giang_vien (ma_giang_vien, ma_khoa, ho_ten, email, so_dien_thoai, chuyen_nganh, ma_tai_khoan)
-                VALUES ('$maGV', '$maKhoa', '$hoTen', '$email', '$soDienThoai', '$chuyenNganh', '$maTaiKhoan')";
+        $sql = "INSERT INTO giang_vien (ma_giang_vien, ma_khoa, ho_ten, email, so_dien_thoai, chuyen_nganh)
+                VALUES ('$maGV', '$maKhoa', '$hoTen', '$email', '$soDienThoai', '$chuyenNganh')";
                  return mysqli_query($this->con, $sql);
     }
     // Hàm kiểm tra trùng mã giang viên
@@ -49,9 +49,9 @@ class Giangvien_m extends connectDB{
     }
 
     // Hàm cập nhật thông tin giang viên
-    function giangvien_upd($maGV, $maKhoa, $hoTen, $email, $soDienThoai, $chuyenNganh, $maTaiKhoan){
+    function giangvien_upd($maGV, $maKhoa, $hoTen, $email, $soDienThoai, $chuyenNganh){
         $sql = "UPDATE giang_vien 
-                SET ma_khoa='$maKhoa', ho_ten='$hoTen', email='$email', so_dien_thoai='$soDienThoai', chuyen_nganh='$chuyenNganh', ma_tai_khoan='$maTaiKhoan' 
+                SET ma_khoa='$maKhoa', ho_ten='$hoTen', email='$email', so_dien_thoai='$soDienThoai', chuyen_nganh='$chuyenNganh' 
                 WHERE ma_giang_vien='$maGV'";
         return mysqli_query($this->con, $sql);
     }

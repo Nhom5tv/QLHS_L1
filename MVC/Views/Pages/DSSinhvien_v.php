@@ -70,7 +70,6 @@
                         <th> Email <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Số điện thoại <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Khóa học <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> ID tài khoản <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Chức năng <span class="icon-arrow">&UpArrow;</span></th>
                     </tr>
                 </thead>
@@ -116,7 +115,6 @@
                                     <td><?php echo $row['email']?></td>
                                     <td><?php echo $row['so_dien_thoai']?></td>
                                     <td><?php echo $row['khoa_hoc']?></td>
-                                    <td><?php echo $row['ma_tai_khoan']?></td>
                                     <td class="btn_cn">
                                         <form action="http://localhost/qlhs/DSSinhvien/sua/<?php echo $row['ma_sinh_vien'] ?>" method="post">
                                             <button class="button-85" role="button">Sửa</button>

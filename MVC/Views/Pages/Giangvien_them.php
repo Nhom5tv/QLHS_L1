@@ -126,12 +126,6 @@
                     <input type="text" name="txtChuyenNganh" id="chuyen_nganh" placeholder="Nhập chuyên ngành" required>
                 </div>
 
-                <div class="input-group">
-                    <label for="ma_tai_khoan">ID Tài Khoản</label>
-                    <input type="text" name="txtIdTaiKhoan" id="ma_tai_khoan" placeholder="Nhập ID tài khoản" required>
-                </div>
-            </div>
-
             <button type="submit" class="btn" name="btnLuu">Lưu</button>
             <br>
                 <div class="quaylai">

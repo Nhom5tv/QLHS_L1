@@ -21,7 +21,7 @@ class Giangvien extends controller{
             $email = $_POST['txtEmail'];
             $soDienThoai = $_POST['txtSoDienThoai'];
             $chuyenNganh = $_POST['txtChuyenNganh']; // Thêm Khoá Học
-            $maTaiKhoan = $_POST['txtIdTaiKhoan'];
+           
 
             // Kiểm tra trùng mã sinh viên
             $kq1 = $this->Giangvien->checktrungmagv($maGV);
@@ -30,7 +30,7 @@ class Giangvien extends controller{
                 echo '<script>alert("Trùng mã giảng viên")</script>';
             } else {
                 // Thêm Mã Khoa, Mã Ngành, và Khoá Học vào hàm Giangvien_ins
-                $kq = $this->Giangvien->giangvien_ins($maGV, $maKhoa, $hoTen, $email, $soDienThoai, $chuyenNganh, $maTaiKhoan);
+                $kq = $this->Giangvien->giangvien_ins($maGV, $maKhoa, $hoTen, $email, $soDienThoai, $chuyenNganh);
 
                 if ($kq) {
                     echo '<script>

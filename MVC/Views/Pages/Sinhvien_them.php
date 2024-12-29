@@ -159,11 +159,6 @@
                     <input type="text" name="txtKhoaHoc" id="khoa_hoc" placeholder="Nhập khóa học" required>
                 </div>
 
-                <div class="input-group">
-                    <label for="id_tai_khoan">ID Tài Khoản</label>
-                    <input type="text" name="txtIdTaiKhoan" id="ma_tai_khoan" placeholder="Nhập ID tài khoản" required>
-                </div>
-            </div>
 
             <button type="submit" class="btn" name="btnLuu">Lưu</button>
             <br>

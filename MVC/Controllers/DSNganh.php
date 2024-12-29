@@ -14,10 +14,11 @@ class DSNganh extends controller{
    // Trong controller
 function Get_data() {
     
+    $khoaList = $this->dsnganh->getKhoa();
         $this->view('Masterlayout', [
         'page' => 'DSNganh_v',
         'dulieu' => $this->dsnganh->nganh_find('', ''),
-         // Truyền danh sách khoa vào view
+        'khoaList' => $khoaList,
     ]);
 }
     function Timkiem(){
@@ -163,14 +164,6 @@ $rowNumber++;
         // Lấy danh sách khoa từ cơ sở dữ liệu
         $khoaList = $this->dsnganh->getKhoa(); // Lấy dữ liệu từ model
         
-        // Kiểm tra xem có dữ liệu khoa hay không
-        if (!$khoaList) {
-            echo "Không có dữ liệu khoa!";
-        } else {
-            echo "Có dữ liệu khoa!";
-        }
-    
-        // Lấy thông tin ngành dựa trên mã ngành
         $nganhData = $this->dsnganh->nganh_find($maNganh, "");
     
         // Truyền dữ liệu vào View
