@@ -1,5 +1,5 @@
 <?php
-require 'C:\xampp\htdocs\vendor\autoload.php'; // Đảm bảo bạn đã cài đặt PHPSpreadsheet qua Composer
+require 'vendor/autoload.php'; // Đảm bảo bạn đã cài đặt PHPSpreadsheet qua Composer
 
 use PhpOffice\PhpSpreadsheet\IOFactory;
 class DSKhoa extends controller{
@@ -60,15 +60,15 @@ class DSKhoa extends controller{
                     $ngayThanhLap = isset($row[3]) ? trim($row[3]) : null;
                     $tienMoiTinChi= isset($row[4]) ? trim($row[4]) : null;
          
-                    $formattedDate = DateTime::createFromFormat('Y-m-d', $ngaySinh);
-if ($formattedDate && $formattedDate->format('Y-m-d') === $ngaySinh) {
-    $ngaySinh = $formattedDate->format('Y-m-d');
-} else {
-    // Nếu ngày không hợp lệ, thiết lập ngày sinh mặc định hoặc bỏ qua
-    $ngaySinh = '0000-00-00'; // Hoặc có thể bỏ qua
-    $failCount++;
-    continue;
-}
+//                     $formattedDate = DateTime::createFromFormat('Y-m-d', $ngaySinh);
+// if ($formattedDate && $formattedDate->format('Y-m-d') === $ngaySinh) {
+//     $ngaySinh = $formattedDate->format('Y-m-d');
+// } else {
+//     // Nếu ngày không hợp lệ, thiết lập ngày sinh mặc định hoặc bỏ qua
+//     $ngaySinh = '0000-00-00'; // Hoặc có thể bỏ qua
+//     $failCount++;
+//     continue;
+// }
                     // Bỏ qua các hàng thiếu dữ liệu cần thiết
                     if (!$tenKhoa || !$lienHe|| !$ngayThanhLap || !$tienMoiTinChi) {
                         $failCount++;

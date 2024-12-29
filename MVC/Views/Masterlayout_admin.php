@@ -38,7 +38,7 @@
                     <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
                         data-bs-target="#QLTK" aria-expanded="false" aria-controls="QLTK">
                         <i class="fa-solid fa-user"></i>
-                        <span>Quản lý tài khoản</span>
+                        <span>Quản lý hệ thống</span>
                     </a>
                     <ul id="QLTK" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
 
@@ -47,11 +47,17 @@
                         </li>
 
                         <li class="sidebar-item">
-                            <a href="http://localhost/QLHS/DSNhanvien" class="sidebar-link">Quản lý nhân viên</a>
+                            <a href="http://localhost/QLHS/DSGiangvien" class="sidebar-link">Quản lý giảng viên</a>
                         </li>
 
                         <li class="sidebar-item">
-                            <a href="http://localhost/QLHS/DSkhachhang" class="sidebar-link">Quản lý khách hàng</a>
+                            <a href="http://localhost/QLHS/DSSinhvien" class="sidebar-link">Quản lý sinh viên</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="http://localhost/QLHS/DSKhoa" class="sidebar-link">Quản lý khoa</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="http://localhost/QLHS/DSNganh" class="sidebar-link">Quản lý ngành</a>
                         </li>
                     </ul>
                 </li>

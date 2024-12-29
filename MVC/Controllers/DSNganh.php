@@ -1,5 +1,5 @@
 <?php
-require 'C:\xampp\htdocs\vendor\autoload.php'; // Đảm bảo bạn đã cài đặt PHPSpreadsheet qua Composer
+require 'vendor/autoload.php'; // Đảm bảo bạn đã cài đặt PHPSpreadsheet qua Composer
 
 use PhpOffice\PhpSpreadsheet\IOFactory;
 class DSNganh extends controller{
@@ -13,10 +13,11 @@ class DSNganh extends controller{
     // getdata de hien thi du lieu khi load trang
    // Trong controller
 function Get_data() {
-    
+        $khoaList = $this->dsnganh->getKhoa();
         $this->view('Masterlayout', [
         'page' => 'DSNganh_v',
         'dulieu' => $this->dsnganh->nganh_find('', ''),
+        'khoaList' => $khoaList,
          // Truyền danh sách khoa vào view
     ]);
 }
