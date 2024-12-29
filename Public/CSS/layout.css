@@ -37,7 +37,7 @@ body {
     background-color: #fafbfe;
     display: flex;
     justify-content: center;
-    background: url(../Picture/imagesDT/nencuahang.jpg) center / cover;
+    background: url(../Picture/nen.jpg) center / cover;
 }
 
 #sidebar {
@@ -45,7 +45,7 @@ body {
     min-width: 70px;
     z-index: 1000;
     transition: all .25s ease-in-out;
-    background-color: #000000;
+    background-color: #f67219;
     display: flex;
     flex-direction: column;
 }

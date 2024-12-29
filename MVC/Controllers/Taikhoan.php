@@ -15,6 +15,7 @@
     }
     function themmoi(){
         if(isset($_POST['btnLuu'])){
+            $ma_tai_khoan=$_POST['txtmaTK'];
             $tendn=$_POST['txtTendn'];
             $mk=$_POST['txtMatkhau'];
             $email=$_POST['txtEmail'];
@@ -26,16 +27,16 @@
             
             if($kq1){
                 echo'<script>alert("Trùng ID");
-                window.location.href = "http://localhost/QLHS_L1/Taikhoan";
+                window.location.href = "http://localhost/QLHS/Taikhoan";
                 </script>';
                 
             }
             else{
-            $kq=$this->taikhoan->taikhoan_ins($tendn,$mk,$email,$quyen);
+            $kq=$this->taikhoan->taikhoan_ins($ma_tai_khoan,$tendn,$mk,$email,$quyen);
             if($kq){
                 echo '<script>
                 alert("Thêm mới thành công");
-                window.location.href = "http://localhost/QLHS_L1/Taikhoan";
+                window.location.href = "http://localhost/QLHS/Taikhoan";
                 </script>';
                 // hiện thị alert trc khi chuyển trang
     exit();

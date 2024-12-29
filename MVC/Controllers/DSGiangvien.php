@@ -1,5 +1,5 @@
 <?php
-require 'C:\xampp\htdocs\vendor\autoload.php'; // Đảm bảo bạn đã cài đặt PHPSpreadsheet qua Composer
+require 'vendor/autoload.php'; // Đảm bảo bạn đã cài đặt PHPSpreadsheet qua Composer
 
 use PhpOffice\PhpSpreadsheet\IOFactory;
 class DSGiangvien extends controller{
@@ -13,7 +13,7 @@ class DSGiangvien extends controller{
     // getdata de hien thi du lieu khi load trang
     function Get_data() {
         $khoaList = $this->dsgv->getKhoa();  // Lấy dữ liệu khoa
-        $this->view('Masterlayout', [
+        $this->view('Masterlayout_admin', [
             'page' => 'DSGiangvien_v',
             'dulieu' => $this->dsgv->giangvien_find('', ''),
             'khoaList' => $khoaList   // Truyền dữ liệu khoa vào view
@@ -31,7 +31,7 @@ class DSGiangvien extends controller{
     
             $dl = $this->dsgv->giangvien_find($maGV, $hoTen);
             $khoaList = $this->dsgv->getKhoa();  // Lấy danh sách khoa
-            $this->view('Masterlayout', [
+            $this->view('Masterlayout_admin', [
                 'page' => 'DSGiangvien_v',
                 'dulieu' => $dl,
                 'ma_giang_vien' => $maGV,
@@ -185,7 +185,7 @@ class DSGiangvien extends controller{
         // Lấy thông tin ngành dựa trên mã ngành
         $gvData = $this->dsgv->giangvien_find($maGV, "");
     
-        $this->view('Masterlayout', [
+        $this->view('Masterlayout_admin', [
             'page' => 'Giangvien_sua',
             'dulieu' => $gvData,
             'khoaList' => $khoaList   // Truyền dữ liệu khoa vào view
@@ -212,7 +212,7 @@ class DSGiangvien extends controller{
                 echo '<script>alert("Sửa thất bại")</script>';
             }
 
-            $this->view('Masterlayout', [
+            $this->view('Masterlayout_admin', [
                 'page' => 'DSGiangvien_v',
                 'dulieu' => $this->dsgv->giangvien_find('', '')
             ]);

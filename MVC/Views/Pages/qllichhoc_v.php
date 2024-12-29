@@ -55,7 +55,7 @@
                     <tr>
                         <th> ID <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Mã Môn Học <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Số Lượng <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Còn Lại <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Số Lượng Tối Đa <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Lịch Học <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Trạng Thái <span class="icon-arrow">&UpArrow;</span></th>

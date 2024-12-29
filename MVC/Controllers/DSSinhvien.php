@@ -1,5 +1,5 @@
 <?php
-require 'C:\xampp\htdocs\vendor\autoload.php'; // Đảm bảo bạn đã cài đặt PHPSpreadsheet qua Composer
+require 'vendor/autoload.php'; // Đảm bảo bạn đã cài đặt PHPSpreadsheet qua Composer
 
 use PhpOffice\PhpSpreadsheet\IOFactory;
 class DSSinhvien extends controller{
@@ -14,7 +14,7 @@ class DSSinhvien extends controller{
     function Get_data(){
         $khoaList = $this->dssv->getKhoa(); 
         $nganhList = $this->dssv->getNganh();
-        $this->view('Masterlayout', [
+        $this->view('Masterlayout_admin', [
             'page' => 'DSSinhvien_v',
             'dulieu' => $this->dssv->sinhvien_find('', ''),
             'khoaList'=> $khoaList,
@@ -33,7 +33,7 @@ class DSSinhvien extends controller{
             $hoTen = $_POST['txtTimkiemHoTen'];
             
             $dl = $this->dssv->sinhvien_find($maSV, $hoTen);
-            $this->view('Masterlayout', [
+            $this->view('Masterlayout_admin', [
                 'page' => 'DSSinhvien_v',
                 'dulieu' => $dl,
                 'ma_sinh_vien' => $maSV,
@@ -228,7 +228,7 @@ $rowNumber++;
         // Lấy thông tin ngành dựa trên mã ngành
         $svData = $this->dssv->sinhvien_find($maSV, "");
 
-        $this->view('Masterlayout', [
+        $this->view('Masterlayout_admin', [
             'page' => 'Sinhvien_sua',
             'dulieu' =>$svData,
             'khoaList'=> $khoaList,
@@ -261,7 +261,7 @@ $rowNumber++;
                 echo '<script>alert("Sửa thất bại")</script>';
             }
 
-            $this->view('Masterlayout', [
+            $this->view('Masterlayout_admin', [
                 'page' => 'DSSinhvien_v',
                 'dulieu' => $this->dssv->sinhvien_find('', '')
             ]);

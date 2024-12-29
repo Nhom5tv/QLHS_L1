@@ -10,7 +10,7 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
     }
     // getdata de hien thi du lieu khi load trang
     function Get_data(){
-        $this->view('Masterlayout',[
+        $this->view('Masterlayout_admin',[
             'page'=>'DSTaikhoan_v',
             'dulieu'=>$this->dstk->taikhoan_find('','')
         ]);
@@ -23,7 +23,7 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
             
             $dl=$this->dstk->taikhoan_find($id,$quyen); // goi ham tim kiem
             // goi lai giao dien render lại trang va truyen $ dl ra 
-            $this->view('Masterlayout',[
+            $this->view('Masterlayout_admin',[
                 'page'=>'DSTaikhoan_v',
                 'dulieu'=>$dl,
                 'ma_tai_khoan'=>$id,
@@ -52,19 +52,20 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
 
                 foreach ($data as $row) {
                     // Giả sử thứ tự cột: ID | Tên đăng nhập | Mật khẩu | Email | Quyền
-                    $tendn = isset($row[0]) ? trim($row[0]) : null;
-                    $mk = isset($row[1]) ? trim($row[1]) : null;
-                    $email = isset($row[2]) ? trim($row[2]) : null;
-                    $quyen = isset($row[3]) ? trim($row[3]) : null;
+                    $ma_tai_khoan = isset($row[0]) ? trim($row[0]) : null;
+                    $tendn = isset($row[1]) ? trim($row[1]) : null;
+                    $mk = isset($row[2]) ? trim($row[2]) : null;
+                    $email = isset($row[3]) ? trim($row[3]) : null;
+                    $quyen = isset($row[4]) ? trim($row[4]) : null;
 
                     // Bỏ qua các hàng thiếu dữ liệu cần thiết
-                    if ( !$tendn || !$mk || !$email || !$quyen) {
+                    if ( !$ma_tai_khoan || !$tendn || !$mk || !$email || !$quyen) {
                         $failCount++;
                         continue;
                     }
 
                     // Lưu vào cơ sở dữ liệu
-                    $result = $this->dstk->taikhoan_ins( $tendn, $mk, $email, $quyen);
+                    $result = $this->dstk->taikhoan_ins($ma_tai_khoan, $tendn, $mk, $email, $quyen);
                     if ($result) {
                         $successCount++;
                     } else {
@@ -74,18 +75,18 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
 
                 echo "<script>
                         alert('Upload thành công: {$successCount} hàng, thất bại: {$failCount} hàng.');
-                        window.location.href = 'http://localhost/QLHS_L1/DSTaikhoan';
+                        window.location.href = 'http://localhost/QLHS/DSTaikhoan';
                       </script>";
             } catch (Exception $e) {
                 echo "<script>
                         alert('Có lỗi xảy ra khi xử lý file Excel: {$e->getMessage()}');
-                        window.location.href = 'http://localhost/QLHS_L1/DSTaikhoan';
+                        window.location.href = 'http://localhost/QLHS/DSTaikhoan';
                       </script>";
             }
         } else {
             echo "<script>
                     alert('Không có file nào được chọn hoặc có lỗi trong quá trình tải lên.');
-                    window.location.href = 'http://localhost/QLHS_L1/DSTaikhoan';
+                    window.location.href = 'http://localhost/QLHS/DSTaikhoan';
                   </script>";
         }
     }
@@ -105,7 +106,7 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
     
             $rowNumber = 2;
             foreach ($data as $row) {
-                $sheet->setCellValueExplicit('A' . $rowNumber, $row['ma_tai_khoan'] ?? 0, \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_NUMERIC);
+                $sheet->setCellValueExplicit('A' . $rowNumber, $row['ma_tai_khoan'] ?? 0, \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
                 $sheet->setCellValueExplicit('B' . $rowNumber, $row['ten_dang_nhap'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
                 $sheet->setCellValueExplicit('C' . $rowNumber, $row['mat_khau'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
                 $sheet->setCellValueExplicit('D' . $rowNumber, $row['email'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
@@ -130,7 +131,7 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
         } catch (Exception $e) {
             echo "<script>
                     alert('Có lỗi xảy ra khi xuất file Excel: {$e->getMessage()}');
-                    window.location.href = 'http://localhost/QLHS_L1/DSTaikhoan';
+                    window.location.href = 'http://localhost/QLHS/DSTaikhoan';
                   </script>";
         }
     }
@@ -140,7 +141,7 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
         if($kq){
             echo '<script>
             alert("Xóa thành công");
-            window.location.href = "http://localhost/QLHS_L1/DSTaikhoan";
+            window.location.href = "http://localhost/QLHS/DSTaikhoan";
                 </script>';
     exit();
         }
@@ -152,7 +153,7 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
 
     }
     function sua($id){
-        $this->view('Masterlayout',[
+        $this->view('Masterlayout_admin',[
             'page'=>'Taikhoan_sua',
             'dulieu'=>$this->dstk->taikhoan_find($id,"")
         ]);
@@ -176,7 +177,7 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
             }
             
             // gọi lại giao diện
-            $this->view('Masterlayout',[
+            $this->view('Masterlayout_admin',[
                 'page'=>'DSTaikhoan_v',
                 'dulieu'=>$this->dstk->taikhoan_find('','')
             ]);

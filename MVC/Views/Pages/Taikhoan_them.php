@@ -11,7 +11,7 @@
     padding-top: 5px;
 }
     </style>
-    <link rel="stylesheet" href="http://localhost/QLHS_L1/Public/CSS/dulieu.css?v=<?php echo time();?>">
+    <link rel="stylesheet" href="http://localhost/QLHS/Public/CSS/dulieu.css?v=<?php echo time();?>">
 </head>
 <body>
     <form id="myForm" method="post" action="./Taikhoan/themmoi">
@@ -19,6 +19,15 @@
     <div class="form-box login">
             <h2>Thêm tài khoản</h2>
             <form action="#">
+
+            <div class="input-box">
+                    <span class="icon">
+                        <img src="./Public/Picture/Pic_login/email.png" alt="" width="15px">
+                    </span>
+                    <input type="text" required name="txtmaTK" value="<?php if(isset($data['ma_tai_khoan'])) echo $data['ma_tai_khoan']?>">
+                    <label>Mã tài khoản</label>
+                </div>
+
 
             <div class="input-box">
                     <span class="icon">
@@ -62,7 +71,7 @@
                 <button type="submit" class="btn" name="btnLuu">Lưu</button>
                 <br>
                 <div class="quaylai">
-                <a href="http://localhost/QLHS_L1/DSTaikhoan">Quay lại</a>
+                <a href="http://localhost/QLHS/DSTaikhoan">Quay lại</a>
                 </div>
                 
                 <script>

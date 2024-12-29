@@ -6,11 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
-    <title>Web quản lý bán hàng</title>
+    <title>quản lý hồ sơ sinh viên</title>
     <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link rel="icon" href="http://localhost/qlhs/Public/Picture/favicon.png" type="image/png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link rel="stylesheet"  href="http://localhost/QLHS/Public/CSS/layout.css?v=<?php echo time();?>">
+    <link rel="stylesheet"  href="http://localhost/qlhs/Public/CSS/layout.css?v=<?php echo time();?>">
+    
 </head>
 
 <body>
@@ -18,34 +21,27 @@
         <aside id="sidebar">
             <div class="d-flex">
                 <button class="toggle-btn" type="button">
-                    <i class="lni lni-grid-alt"></i>
+                    <i class="fa-solid fa-school"></i>
                 </button>
                 <div class="sidebar-logo">
-                    <a href="#">LUXURY</a>
+                    <a href="#">University of Transport and Technology</a>
                 </div>
             </div>
             <ul class="sidebar-nav">
                 <li class="sidebar-item">
-                    <a href="http://localhost/QLHS/Trangchu" class="sidebar-link">
-                        <i class="lni lni-home"></i>
+                    <a href="http://localhost/qlhs/Trangchu" class="sidebar-link">
+                        <i class="fa-solid fa-house"></i>
                         <span>Trang chủ</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
-                    <a href="http://localhost/QLHS/Taichinh" class="sidebar-link">
-                        <i class="lni lni-home"></i>
-                        <span>Tài chính</span>
-                    </a>
-                </li>
-              
                 
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
-                        data-bs-target="#QLHT" aria-expanded="false" aria-controls="QLHT">
-                        <i class="lni lni-protection"></i>
-                        <span>Quản lý hệ thống</span>
+                        data-bs-target="#QLTK" aria-expanded="false" aria-controls="QLTK">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Quản lý tài khoản</span>
                     </a>
-                    <ul id="QLHT" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                    <ul id="QLTK" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
 
                         <li class="sidebar-item">
                             <a href="http://localhost/QLHS/DSTaikhoan" class="sidebar-link">Quản lý tài khoản</a>
@@ -63,44 +59,27 @@
 
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
-                        data-bs-target="#QLSP-DV" aria-expanded="false" aria-controls="QLSP-DV">
-                        <i class="lni lni-diamond-alt"></i>
-                        <span>Quản lý sản phẩm và dịch vụ</span>
+                        data-bs-target="#QLKQHT" aria-expanded="false" aria-controls="QLKQHT">
+                        <i class="fa-solid fa-medal"></i>
+                        <span>Quản lý kết quả học tập</span>
                     </a>
-                    <ul id="QLSP-DV" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-
+                    <ul id="QLKQHT" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="http://localhost/qlhs/DSGiangvien" class="sidebar-link">Quản lý giảng viên</a>
-                        </li>
-
-                        <li class="sidebar-item">
-                            <a href="http://localhost/qlhs/DSSinhvien" class="sidebar-link">Quản lý sinh viên</a>
-                        </li>
-
-                        <li class="sidebar-item">
-                            <a href="http://localhost/qlhs/DSKhoa" class="sidebar-link">Quản lý khoa </a>
+                            <a href="http://localhost/qlhs/DSdiemchitiet" class="sidebar-link">Tra cứu điểm</a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="http://localhost/qlhs/DSNganh" class="sidebar-link">Quản lý ngành </a>
-                        </li>
-                       
-                       
-                        
-
-
-                        <li class="sidebar-item">
-                            <a href="http://localhost/qlhs/ThongTinSinhVien" class="sidebar-link">Quản lý thông tin cá nhân sinh viên</a>
+                            <a href="http://localhost/qlhs/DSdiem" class="sidebar-link">Điểm tổng hợp</a>
                         </li>
                     </ul>
                 </li>
 
                  <li class="sidebar-item">
                     <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
-                        data-bs-target="#QLGD-DH" aria-expanded="false" aria-controls="QLGD-DH">
-                        <i class="lni lni-cart-full"></i>
+                        data-bs-target="#QLHPTC" aria-expanded="false" aria-controls="QLHPTC">
+                        <i class="fa-solid fa-coins"></i>
                         <span>Quản lý học phí và tài chính</span>
                     </a>
-                    <ul id="QLGD-DH" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                    <ul id="QLHPTC" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
 
                         <li class="sidebar-item">
                             <a href="http://localhost/QLHS/DSKhoanthu" class="sidebar-link">Quản lý khoản thu chung</a>
@@ -123,7 +102,7 @@
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
                         data-bs-target="#QLHT" aria-expanded="false" aria-controls="QLHT">
-                        <i class="lni lni-protection"></i>
+                        <i class="fas fa-graduation-cap"></i>
                         <span>Hệ thống đăng ký tín chỉ</span>
                     </a>
                     <ul id="QLHT" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
@@ -151,10 +130,9 @@
                 
             </ul>
             <!-- ảnh nhẫn menu -->
-            <img src="http://localhost/QLHS/Public/Picture/nhandoi.png" alt="">
             <div class="sidebar-footer">
-                <a href="http://localhost/QLHS/Login/logout" class="sidebar-link">
-                    <i class="lni lni-exit"></i>
+                <a href="http://localhost/qlhs/Login/logout" class="sidebar-link">
+                    <i class="fa-solid fa-person-walking-arrow-right"></i>
                     <span>Đăng xuất</span>
                 </a>
             </div>

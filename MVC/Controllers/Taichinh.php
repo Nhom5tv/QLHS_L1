@@ -7,8 +7,9 @@ class Taichinh extends controller{
         // khởi tạo đối tượng model('tintuc_m') gán cho $tintuc
     }
     function Get_data(){
-        $dataHoaDon=$this->taichinh->getHoaDonBySinhVien('SV003');
-        $dataDSphainop=$this->taichinh->getThongTinPhaiNopBySinhVien('SV003');
+        $id=$_SESSION['ma_tai_khoan'];
+        $dataHoaDon=$this->taichinh->getHoaDonBySinhVien($id);
+        $dataDSphainop=$this->taichinh->getThongTinPhaiNopBySinhVien($id);
        
         $this->view('Masterlayout',['page'=>'Taichinh_v', 'dulieu'=>$dataHoaDon,'dsphainop'=>$dataDSphainop]);
     }

@@ -78,6 +78,7 @@
                                     <td><?php echo $row['ten_nganh']?></td>                                   
                                     <td>
     <?php
+    
     if (isset($data['khoaList']) && !empty($data['khoaList'])) {
         foreach ($data['khoaList'] as $khoa) {
             if ($khoa['ma_khoa'] == $row['ma_khoa']) {

@@ -30,13 +30,6 @@
                     <span class="icon">
                     <img src="./Public/Picture/id-card_9424609.png" alt="" width="15px">
                     </span>
-                    <input type="text" required name="txtsoluong"  value="<?php  echo $row['so_luong']?>">
-                    <label>Số Lượng</label>
-                </div> 
-                <div class="input-box">
-                    <span class="icon">
-                    <img src="./Public/Picture/id-card_9424609.png" alt="" width="15px">
-                    </span>
                     <input type="text" required name="txtmaxsoluong"  value="<?php  echo $row['so_luong_toi_da']?>">
                     <label>Số Lượng Tối Đa</label>
                 </div>                    
@@ -45,7 +38,7 @@
                     <span class="icon">
                     <img src="./Public/Picture/Pic_login/khoa.png" alt="" width="15px">
                     </span>
-                    <input type="date" required name="txtlichhoc"  value="<?php  echo $row['lich_hoc']?>">
+                    <input type="text" required name="txtlichhoc"  value="<?php  echo $row['lich_hoc']?>">
                     <label>Lịch Học</label>
                 </div>
                 <div class="input-box">

@@ -13,7 +13,7 @@ class DSHoadon extends controller {
     // Lấy dữ liệu để hiển thị khi load trang
     function Get_data() {
         $dulieu = $this->dshd->getHoaDonWithTenKhoanThu();
-        $this->view('Masterlayout', [
+        $this->view('Masterlayout_admin', [
             'page' => 'DSHoadon_v',
             'dulieu' => $dulieu, // Lấy danh sách hóa đơn
         ]);
@@ -41,7 +41,7 @@ class DSHoadon extends controller {
                     // Nếu thành công, thông báo và chuyển hướng
                     echo '<script>
                         alert("Thêm mới hóa đơn và cập nhật trạng thái thành công");
-                        window.location.href = "http://localhost/QLHS_L1/DSHoadon";
+                        window.location.href = "http://localhost/QLHS/DSHoadon";
                     </script>';
                     exit();  // Dừng lại sau khi redirect
                 } else {
@@ -54,7 +54,7 @@ class DSHoadon extends controller {
         } else {
             $tenkhoanthu=$this->dshd->getKhoanThuList();
             // Nếu chưa submit form, chỉ hiển thị form thêm mới
-            $this->view('Masterlayout', [
+            $this->view('Masterlayout_admin', [
                 'page' => 'Hoadon_them',  // Gọi view thêm mới hóa đơn
                 'tenkhoanthu' => $tenkhoanthu,
             ]);
@@ -70,7 +70,7 @@ class DSHoadon extends controller {
 
             $dl = $this->dshd->hoadon_find($maSinhVien, $ngayThanhToan); // gọi hàm tìm kiếm
             // gọi lại giao diện render lại trang và truyền $dl ra
-            $this->view('Masterlayout', [
+            $this->view('Masterlayout_admin', [
                 'page' => 'DSHoadon_v',
                 'dulieu' => $dl,
                 'ma_sinh_vien' => $maSinhVien,
@@ -122,18 +122,18 @@ class DSHoadon extends controller {
 
                 echo "<script>
                         alert('Upload thành công: {$successCount} hàng, thất bại: {$failCount} hàng.');
-                        window.location.href = 'http://localhost/QLHS_L1/DSHoadon';
+                        window.location.href = 'http://localhost/QLHS/DSHoadon';
                       </script>";
             } catch (Exception $e) {
                 echo "<script>
                         alert('Có lỗi xảy ra khi xử lý file Excel: {$e->getMessage()}');
-                        window.location.href = 'http://localhost/QLHS_L1/DSHoadon';
+                        window.location.href = 'http://localhost/QLHS/DSHoadon';
                       </script>";
             }
         } else {
             echo "<script>
                     alert('Không có file nào được chọn hoặc có lỗi trong quá trình tải lên.');
-                    window.location.href = 'http://localhost/QLHS_L1/DSHoadon';
+                    window.location.href = 'http://localhost/QLHS/DSHoadon';
                   </script>";
         }
     }
@@ -183,7 +183,7 @@ class DSHoadon extends controller {
         } catch (Exception $e) {
             echo "<script>
                     alert('Có lỗi xảy ra khi xuất file Excel: {$e->getMessage()}');
-                    window.location.href = 'http://localhost/QLHS_L1/DSHoadon';
+                    window.location.href = 'http://localhost/QLHS/DSHoadon';
                   </script>";
         }
     }
@@ -213,7 +213,7 @@ class DSHoadon extends controller {
     
             echo '<script>
                     alert("Xóa thành công và trạng thái đã được cập nhật");
-                    window.location.href = "http://localhost/QLHS_L1/DSHoadon";
+                    window.location.href = "http://localhost/QLHS/DSHoadon";
                   </script>';
         } else {
             echo '<script>alert("Xóa thất bại")</script>';
@@ -222,7 +222,7 @@ class DSHoadon extends controller {
     
     function sua($id) {
         $tenkhoanthu=$this->dshd->getKhoanThuList();
-        $this->view('Masterlayout', [
+        $this->view('Masterlayout_admin', [
             'page' => 'Hoadon_sua',
             'dulieu' => $this->dshd->idhoadon($id),
             'tenkhoanthu' => $tenkhoanthu,
@@ -249,7 +249,7 @@ class DSHoadon extends controller {
             }
             $dulieu = $this->dshd->getHoaDonWithTenKhoanThu();
             // Gọi lại giao diện
-            $this->view('Masterlayout', [
+            $this->view('Masterlayout_admin', [
                 'page' => 'DSHoadon_v',
                 'dulieu' => $dulieu,
             ]);

@@ -7,8 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Quản lý miễn giảm sinh viên</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="http://localhost/QLHS_L1/Public/CSS/button.css?v=<?php echo time();?>">
-    <link rel="stylesheet" href="http://localhost/QLHS_L1/Public/CSS/styleDT.css">
+    <link rel="stylesheet" href="http://localhost/QLHS/Public/CSS/button.css?v=<?php echo time();?>">
+    <link rel="stylesheet" href="http://localhost/QLHS/Public/CSS/styleDT.css">
     <style>
         .btn_cn {
             display: flex;
@@ -18,30 +18,30 @@
 </head>
 
 <body>
-    <form method="post" action="http://localhost/QLHS_L1/DSMiengiam/timkiem"></form>
+    <form method="post" action="http://localhost/QLHS/DSMiengiam/timkiem"></form>
     <main class="table" id="customers_table">
         <section class="table__header">
             <h1>Quản lý miễn giảm </h1>
            
             <div class="input-group">
-                <form action="http://localhost/QLHS_L1/DSMiengiam/timkiem" method="post">
+                <form action="http://localhost/QLHS/DSMiengiam/timkiem" method="post">
                     <input type="search" placeholder="Mã sinh viên" name="txtTKMasinhvien" value="<?php if (isset($data['ma_sinh_vien'])) echo $data['ma_sinh_vien']?>">
                 
             </div>
             <div class="input-group">
-                <form action="http://localhost/QLHS_L1/DSMiengiam/timkiem" method="post">
+                <form action="http://localhost/QLHS/DSMiengiam/timkiem" method="post">
                     <input type="search" placeholder="Loại miễn giảm" name="txtTKLoaimiengiam" value="<?php if (isset($data['loai_mien_giam'])) echo $data['loai_mien_giam']?>">
                 
             </div>
             <button style="border: none; background: transparent;" type="submit" name="btnTimkiem"><i class="fa fa-search" ></i></button>
             </form>
             <div class="Insert">
-                <form action="http://localhost/QLHS_L1/DSMiengiam/themmoi" method="post">
+                <form action="http://localhost/QLHS/DSMiengiam/themmoi" method="post">
                     <button class="button-85" role="button">Thêm miễn giảm</button>
                 </form>
             </div>
             <div class="Upload">
-                <form action="http://localhost/QLHS_L1/DSMiengiam/uploadExcel" method="post" enctype="multipart/form-data">
+                <form action="http://localhost/QLHS/DSMiengiam/uploadExcel" method="post" enctype="multipart/form-data">
                     <input type="file" name="txtFile">
                     <button class="button-85" role="button">Upload</button>
                 </form>
@@ -52,7 +52,7 @@
                 <input type="checkbox" id="export-file">
                 <div class="export__file-options">
                     <label>Export As &nbsp; &#10140;</label>
-                    <form action="http://localhost/QLHS_L1/DSMiengiam/exportExcel" method="post">
+                    <form action="http://localhost/QLHS/DSMiengiam/exportExcel" method="post">
                         <button style="width: 176px;" name="btnXuatExcel"><label for="export-file" id="toEXCEL">EXCEL</label></button>
                     </form>
                 </div>
@@ -84,10 +84,10 @@
                                 <td><?php echo $row['loai_mien_giam'] ?></td>
                                 <td><?php echo $row['ghi_chu'] ?></td>
                                 <td class="btn_cn">
-                                    <form action="http://localhost/QLHS_L1/DSMiengiam/sua/<?php echo $row['ma_mien_giam']; ?>" method="post">
+                                    <form action="http://localhost/QLHS/DSMiengiam/sua/<?php echo $row['ma_mien_giam']; ?>" method="post">
                                         <button class="button-85" role="button">Sửa</button>
                                     </form>
-                                    <form action="http://localhost/QLHS_L1/DSMiengiam/xoa/<?php echo $row['ma_mien_giam']; ?>" method="post">
+                                    <form action="http://localhost/QLHS/DSMiengiam/xoa/<?php echo $row['ma_mien_giam']; ?>" method="post">
                                         <button class="button-85" onclick="return confirm('Bạn có chắc muốn xóa?')" role="button">Xóa</button>
                                     </form>
                                 </td>
