@@ -7,9 +7,9 @@ class Svdktinchi extends controller{
         // khởi tạo đối tượng model('tintuc_m') gán cho $tintuc
     }
     function Get_data(){
-        $svdktin=$this->svdktinchi->tinchi_ins();
-        $ma_sinh_vien ='SV001';
-       $svddk=$this->svdktinchi->ddk_ins($ma_sinh_vien);
+        $id=$_SESSION['ma_tai_khoan'];
+        $svdktin=$this->svdktinchi->tinchi_ins($id);
+       $svddk=$this->svdktinchi->ddk_ins($id);
         $this->view('Masterlayout',['page'=>'SVdktinchi_v', 'dulieu'=>$svdktin,'dulieu2'=>$svddk]);
         
     }
@@ -32,11 +32,15 @@ class Svdktinchi extends controller{
             // Lấy dữ liệu từ POST
             $ma_mon_hoc = $_POST['ma_mon_hoc'];
             $lich_hoc_du_kien = $_POST['lich_hoc_du_kien'];
-            $ma_sinh_vien = 'SV001';
-            // Gọi model để xóa bản ghi
-            $kq = $this->svdktinchi->dk_ins($ma_mon_hoc, $ma_sinh_vien,$lich_hoc_du_kien,);
+            $id = $_SESSION['ma_tai_khoan'];
+    
+            // Gọi model để thêm bản ghi đăng ký môn học
+            $kq = $this->svdktinchi->dk_ins($ma_mon_hoc, $id, $lich_hoc_du_kien);
     
             if ($kq) {
+                // Gọi hàm cập nhật số lượng trong bảng lich_hoc
+                $this->svdktinchi->capNhatSoLuong($ma_mon_hoc);
+    
                 echo '<script>
                         alert("Đăng Ký thành công");
                         window.location.href = "http://localhost/QLHS/SVdktinchi";
@@ -51,6 +55,7 @@ class Svdktinchi extends controller{
             exit();
         }
     }
+    
     function xoa($ma_dang_ky){
         $kq=$this->svdktinchi->ddk_del($ma_dang_ky);
         if($kq){

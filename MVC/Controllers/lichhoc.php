@@ -26,7 +26,7 @@
             // }
             // else{
                     // gọi hàm chèn dl lichhoc_ins trong model tacgia_m
-            $kq=$this->lichhoc->lichhoc_ins($ma_mon_hoc,$so_luong,$so_luong_toi_da, $lich_hoc,$trang_thai);
+            $kq=$this->lichhoc->lichhoc_ins($ma_mon_hoc,$so_luong_toi_da,$so_luong_toi_da, $lich_hoc,$trang_thai);
             if($kq){
                 echo '<script>
                 alert("Thêm mới thành công");

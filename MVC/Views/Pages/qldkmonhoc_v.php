@@ -31,7 +31,7 @@
             <button style="border: none; background: transparent;" type="submit" name="btnTimkiem"><i class="fa fa-search" ></i></button>
             </form>  
             <div class="Insert">
-                <form action="http://localhost/qlhs/monhoc" method="post">
+                <form action="http://localhost/qlhs/qldkmonhoc" method="post">
                 <button class="button-85" role="button">Thêm môn học</button>
                 </form>
             </div>
@@ -80,11 +80,11 @@
                                     <td><?php echo $row['lich_hoc_du_kien'] ?></td>
                                     <td><?php echo $row['trang_thai'] ?></td>
                                     <td class="btn_cn">
-                                        <form action="http://localhost/qlhs/dsdkmonhoc/sua/<?php echo $row['ma_mon'] ?>" method="post">
+                                        <form action="http://localhost/qlhs/dsdkmonhoc/sua/<?php echo $row['ma_dang_ky'] ?>" method="post">
                                             <button class="button-85" role="button">Sửa</button>
                                         </form>
 
-                                        <form action="http://localhost/qlhs/dsdkmonhoc/xoa/<?php echo $row['ma_mon'] ?>" method="post">
+                                        <form action="http://localhost/qlhs/dsdkmonhoc/xoa/<?php echo $row['ma_dang_ky'] ?>" method="post">
                                             <button class="button-85" onclick="return confirm('Bạn có chắc muốn xóa')" role="button">Xóa</button>
                                         </form>
                                     </td>

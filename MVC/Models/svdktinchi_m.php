@@ -1,7 +1,7 @@
 <!-- truy van sql -->
 <?php 
 class svdktinchi_m extends connectDB{
-    function tinchi_ins(){
+    function tinchi_ins($ma_sinh_vien){
         $sql="SELECT 
     mh.ma_mon AS ma_mon_hoc, 
     mh.ten_mon AS ten_mon_hoc, 
@@ -16,7 +16,7 @@ FROM
 LEFT JOIN 
     dang_ky_mon_hoc AS dk
 ON 
-    mh.ma_mon = dk.ma_mon AND dk.ma_sinh_vien = 'SV001'
+    mh.ma_mon = dk.ma_mon AND dk.ma_sinh_vien = '$ma_sinh_vien'
 LEFT JOIN 
     lich_hoc AS lh
 ON 
@@ -25,6 +25,7 @@ LEFT JOIN
     dang_ky_mon_hoc AS dk2
 ON 
     mh.ma_mon = dk2.ma_mon
+    WHERE lh.trang_thai = N'Đang Mở'
 GROUP BY 
     mh.ma_mon, 
     mh.ten_mon, 
@@ -33,6 +34,7 @@ GROUP BY
     dk.trang_thai, 
     lh.so_luong_toi_da, 
     lh.lich_hoc;
+
  ";
          return mysqli_query($this->con,$sql);
         
@@ -42,6 +44,32 @@ GROUP BY
          return mysqli_query($this->con,$sql);
         
     }
+    function capNhatSoLuong($maMonHoc) {
+        // Tạo biến @so_luong_da_dang_ky để lưu số lượng sinh viên đã đăng ký
+        $sqlSetVariable = "
+            SET @so_luong_da_dang_ky = (
+                SELECT COUNT(*) 
+                FROM dang_ky_mon_hoc 
+                WHERE ma_mon = '$maMonHoc' AND trang_thai = 'Đang Chờ Duyệt'
+            );
+        ";
+    
+        // Câu lệnh UPDATE để cập nhật số lượng trong bảng lich_hoc
+        $sqlUpdate = "
+            UPDATE lich_hoc 
+            SET so_luong = so_luong_toi_da - @so_luong_da_dang_ky
+            WHERE ma_mon_hoc = '$maMonHoc';
+        ";
+    
+        // Thực thi cả hai câu lệnh SQL
+        $resultSetVariable = mysqli_query($this->con, $sqlSetVariable);
+        $resultUpdate = mysqli_query($this->con, $sqlUpdate);
+    
+        // Kiểm tra nếu cả hai câu lệnh đều thực thi thành công
+        return $resultSetVariable && $resultUpdate;
+    }
+    
+    
     function ddk_ins($ma_sinh_vien){
         $sql="SELECT 
     dk.ma_dang_ky,
@@ -62,7 +90,7 @@ JOIN
 LEFT JOIN 
     dang_ky_mon_hoc dk ON mh.ma_mon = dk.ma_mon
 WHERE 
-    dk.ma_sinh_vien = 'SV001' AND dk.trang_thai = N'Đang Chờ Duyệt'
+    dk.ma_sinh_vien = '$ma_sinh_vien' AND dk.trang_thai = N'Đang Chờ Duyệt' and lh.trang_thai = N'Đang Mở'
 GROUP BY 
     mh.ma_mon, mh.ten_mon, mh.so_tin_chi, lh.so_luong_toi_da, dk.lich_hoc_du_kien, dk.ma_dang_ky;
 ";

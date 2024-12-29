@@ -1,14 +1,14 @@
 <!-- goi giao dien và function -->
 <?php 
  class qldkmonhoc extends controller{
-    private $monhoc;
+    private $dkmonhoc;
     function __construct()
     {
-        $this->monhoc=$this->model('qlmonhoc');
+        $this->dkmonhoc=$this->model('qlmonhoc');
         // khởi tạo đối tượng model('monhoc_m') gán cho $monhoc
     }
     function Get_data(){
-        $this->view('Masterlayout',['page'=>'monhoc_them']);
+        $this->view('Masterlayout',['page'=>'qldkmonhoc_them']);
         // gọi giao diện chính và truyền dữ liệu page là trang monhoc view
     }
     function themmoi(){
@@ -25,7 +25,7 @@
             // }
             // else{
                     // gọi hàm chèn dl monhoc_ins trong model tacgia_m
-            $kq=$this->monhoc->monhoc_ins($ma_mon,$ma_sinh_vien,$lich_hoc_du_kien, $trang_thai);
+            $kq=$this->dkmonhoc->qldkmonhoc_ins($ma_mon,$ma_sinh_vien,$lich_hoc_du_kien, $trang_thai);
             if($kq){
                 echo '<script>
                 alert("Thêm mới thành công");
