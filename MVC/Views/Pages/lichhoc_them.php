@@ -24,16 +24,38 @@
                     <span class="icon">
                     <img src="./Public/Picture/id-card_9424609.png" alt="" width="15px">
                     </span>
-                    <input type="text" required name="txtmamon" value="<?php if(isset($data['ma_mon'])) echo $data['ma_mon']?>">
+                    <?php
+                   // Kết nối cơ sở dữ liệu
+$servername = "localhost";
+$username = "root";
+$password = "";
+$database = "qlhssv"; // Thay bằng tên cơ sở dữ liệu của bạn
+
+$conn = new mysqli($servername, $username, $password, $database);
+
+// Kiểm tra kết nối
+if ($conn->connect_error) {
+    die("Kết nối thất bại: " . $conn->connect_error);
+}
+                   $sql = "SELECT ma_mon FROM mon_hoc";
+                   $result = $conn->query($sql);
+                   ?>
+                   <!-- Tạo dropdown -->
+<select name="txtmamon" required>
+    <option value="">-- Chọn mã môn --</option>
+    <?php
+    if ($result->num_rows > 0) {
+        // Lặp qua kết quả truy vấn và tạo các option
+        while ($row = $result->fetch_assoc()) {
+            echo '<option value="' . $row['ma_mon'] . '">' . $row['ma_mon'] . '</option>';
+        }
+    } else {
+        echo '<option value="">Không có dữ liệu</option>';
+    }
+    ?>
+</select>
                     <label>Mã Môn Học</label>
                 </div>            
-                <div class="input-box">
-                    <span class="icon">
-                        <img src="./Public/Picture/Pic_login/email.png" alt="" width="15px">
-                    </span>
-                    <input type="text" required name="txtsoluong" value="<?php if(isset($data['so_luong'])) echo $data['so_luong']?>">
-                    <label>Số Lượng</label>
-                </div>
                 <div class="input-box">
                     
                     <input type="text" name="txtmaxsoluong" value="<?php if(isset($data['so_luong_toi_da'])) echo $data['so_luong_toi_da']?>">
@@ -44,7 +66,7 @@
                     <img src="./Public/Picture/Pic_login/khoa.png" alt="" width="15px">
                     </span>
 
-                    <input type="date" name="txtlichhoc" value="<?php echo date('Y-m-d'); ?>" />
+                    <input type="Text" name="txtlichhoc" value="<?php  if(isset($data['lich_hoc'])) echo $data['lich_hoc'] ?>" />
 
                     <label>Lịch Học</label>
                 </div>
