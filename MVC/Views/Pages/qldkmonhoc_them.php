@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="http://localhost/qlhs/Public/CSS/dulieu.css">
 </head>
 <body>
-    <form id="myForm" method="post" action="./monhoc/themmoi">
+    <form id="myForm" method="post" action="./qldkmonhoc/themmoi">
     <div class="content">
     <div class="form-box login">
             <h2>Thêm Môn Học</h2>
@@ -24,7 +24,36 @@
                     <span class="icon">
                     <img src="./Public/Picture/id-card_9424609.png" alt="" width="15px">
                     </span>
-                    <input type="text" required name="txtmamon" value="<?php if(isset($data['mon_hoc'])) echo $data['mon_hoc']?>">
+                    <?php
+                   // Kết nối cơ sở dữ liệu
+$servername = "localhost";
+$username = "root";
+$password = "";
+$database = "qlhssv"; // Thay bằng tên cơ sở dữ liệu của bạn
+
+$conn = new mysqli($servername, $username, $password, $database);
+
+// Kiểm tra kết nối
+if ($conn->connect_error) {
+    die("Kết nối thất bại: " . $conn->connect_error);
+}
+                   $sql = "SELECT ma_mon FROM mon_hoc";
+                   $result = $conn->query($sql);
+                   ?>
+                   <!-- Tạo dropdown -->
+<select name="txtmamon" required>
+    <option value="">-- Chọn mã môn --</option>
+    <?php
+    if ($result->num_rows > 0) {
+        // Lặp qua kết quả truy vấn và tạo các option
+        while ($row = $result->fetch_assoc()) {
+            echo '<option value="' . $row['ma_mon'] . '">' . $row['ma_mon'] . '</option>';
+        }
+    } else {
+        echo '<option value="">Không có dữ liệu</option>';
+    }
+    ?>
+</select>
                     <label>Mã Môn Học</label>
                 </div>            
                 <div class="input-box">
@@ -44,7 +73,7 @@
                     <img src="./Public/Picture/Pic_login/khoa.png" alt="" width="15px">
                     </span>
 
-                    <input type="date" name="txtlichhocdukien" value="<?php echo date('Y-m-d'); ?>" />
+                    <input type="text" name="txtlichhocdukien" value="<?php if(isset($data['lich_hoc_du_kien'])) echo $data['lich_hoc_du_kien'] ?>" />
 
                     <label>Lịch Học Dự Kiến</label>
                 </div>

@@ -1,7 +1,7 @@
 <!-- truy van sql -->
 <?php 
 class qlmonhoc extends connectDB{
-    function monhoc_ins($ma_mon,$ma_sinh_vien,$lich_hoc_du_kien,$trang_thai){
+    function qldkmonhoc_ins($ma_mon,$ma_sinh_vien,$lich_hoc_du_kien,$trang_thai){
         $sql="INSERT INTO dang_ky_mon_hoc(ma_mon,ma_sinh_vien,lich_hoc_du_kien,trang_thai) VALUES ('$ma_mon','$ma_sinh_vien','$lich_hoc_du_kien',N'$trang_thai')";
          return mysqli_query($this->con,$sql);
         
@@ -15,7 +15,7 @@ class qlmonhoc extends connectDB{
     //     }
     //     return $kq;
     // }
-    function monhoc_find($ma_mon,$ma_sinh_vien){
+    function qldkmonhoc_find($ma_mon,$ma_sinh_vien){
         // trường hợp loaddata
        
         // trường hợp tìm kiếm
@@ -25,12 +25,22 @@ class qlmonhoc extends connectDB{
        
         return mysqli_query($this->con,$sql);
     }
+    function qldkmonhoc_findsua($ma_dang_ky){
+        // trường hợp loaddata
+       
+        // trường hợp tìm kiếm
+        
+            $sql = "SELECT * FROM dang_ky_mon_hoc WHERE ma_dang_ky ='$ma_dang_ky'";
+       
+       
+        return mysqli_query($this->con,$sql);
+    }
     
-    function monhoc_del($ma_dang_ky){
+    function qldkmonhoc_del($ma_dang_ky){
         $sql="DELETE FROM dang_ky_mon_hoc WHERE ma_dang_ky ='$ma_dang_ky'";
         return mysqli_query($this->con,$sql);
     }
-    function monhoc_upd($ma_dang_ky,$ma_mon,$ma_sinh_vien,$ma_lop,$lich_hoc_du_kien,$trang_thai){
+    function qldkmonhoc_upd($ma_dang_ky,$ma_mon,$ma_sinh_vien,$ma_lop,$lich_hoc_du_kien,$trang_thai){
         $sql="UPDATE dang_ky_mon_hoc SET ma_mon= '$ma_mon' , ma_sinh_vien= '$ma_sinh_vien' , ma_lop= '$ma_lop' , lich_hoc_du_kien= '$lich_hoc_du_kien' , trang_thai= N'$trang_thai'  
         WHERE ma_dang_ky='$ma_dang_ky'";
         return mysqli_query($this->con,$sql);

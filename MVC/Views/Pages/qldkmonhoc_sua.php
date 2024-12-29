@@ -7,9 +7,10 @@
     <link rel="stylesheet" href="http://localhost/qlhs/Public/CSS/dulieu.css">
 </head>
 <body>
-    <form method="post" action="http://localhost/qlhs/dsmonhoc/suadl">
+    <form method="post" action="http://localhost/qlhs/dsdkmonhoc/suadl">
     <div class="content">
     <?php
+  
             if (isset($data['dulieu']) && mysqli_num_rows($data['dulieu'])>0){
                 
                     while($row=mysqli_fetch_array($data['dulieu'])){
@@ -21,28 +22,28 @@
             <input type="hidden" name="txtmadangky" value="<?php echo $row['ma_dang_ky'] ?>">  
             <div class="input-box">
                     <span class="icon">
-                    <img src="./Public/Picture/id-card_9424609.png" alt="" width="15px">
+                        <img src="./Public/Picture/Pic_login/email.png" alt="" width="15px">
                     </span>
-                    <input type="text" required name="txtmamon"  value="<?php  echo $row['ma_mon']?>">
+                    <input type="text" required name="txtmamon" readonly  value="<?php echo $row['ma_mon'] ?>"/>
                     <label>Mã Môn Học</label>
-                </div>            
+                </div>  
                 <div class="input-box">
                     <span class="icon">
                         <img src="./Public/Picture/Pic_login/email.png" alt="" width="15px">
                     </span>
-                    <input type="text" required name="txtmasinhvien"  value="<?php  echo $row['ma_sinh_vien']?>">
+                    <input type="text" required name="txtmasinhvien" readonly  value="<?php echo $row['ma_sinh_vien'] ?>"/>
                     <label>Mã Sinh Viên</label>
                 </div>
                 <div class="input-box">
                     
-                    <input type="text"  name="txtmalop"  value="<?php  echo $row['ma_lop']?>">
+                    <input type="text"  name="txtmalop" readonly  value="<?php  echo $row['ma_lop'] ?>"/>
                     <label>Mã Lớp</label>
                 </div>
                 <div class="input-box">
                     <span class="icon">
                     <img src="./Public/Picture/Pic_login/khoa.png" alt="" width="15px">
                     </span>
-                    <input type="date" required name="txtlichhocdukien"  value="<?php  echo $row['lich_hoc_du_kien']?>">
+                    <input type="text" required name="txtlichhocdukien"  value="<?php  echo $row['lich_hoc_du_kien'] ?>"/>
                     <label>Lịch Học Dự Kiến</label>
                 </div>
                 <div class="input-box">
@@ -52,9 +53,8 @@
                     <!-- <input type="text" required name="txttrangthai"  value=""> -->
                     <div class="input-box">
                         <select name="txttrangthai">
-                        <option value="Còn Chỗ Trống" <?php if(isset($row['trang_thai']) && $row['trang_thai'] === 'Còn Chỗ Trống') echo 'selected'; ?>>Còn Chỗ Trống</option>
-                        <option value="Đã Đủ Sinh Viên" <?php if(isset($row['trang_thai']) && $row['trang_thai'] === 'Đã Đủ Sinh Viên') echo 'selected'; ?>>Đã Đủ Sinh Viên</option>
-                        <option value="Đã Đóng Đăng Ký" <?php if(isset($row['trang_thai']) && $row['trang_thai'] === 'Đã Đóng Đăng Ký') echo 'selected'; ?>>Đã Đóng Đăng Ký</option>
+                        <option value="Đang Chờ Duyệt" <?php if(isset($row['trang_thai']) && $row['trang_thai'] === 'Đang Chờ Duyệt') echo 'selected'; ?>>Đang Chờ Duyệt</option>
+                        <option value="Đã Duyệt" <?php if(isset($row['trang_thai']) && $row['trang_thai'] === 'Đã Duyệt') echo 'selected'; ?>>Đã Duyệt</option>
                         </select>
 </div>
                    

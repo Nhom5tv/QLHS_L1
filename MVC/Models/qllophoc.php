@@ -1,10 +1,19 @@
 <!-- truy van sql -->
 <?php 
 class qllophoc extends connectDB{
-    function lophoc_ins($ma_nganh,$hoc_ky,$ma_giang_vien,$lich_hoc){
-        $sql="INSERT INTO lop(ma_nganh,hoc_ky,ma_giang_vien,lich_hoc) VALUES ('$ma_nganh','$hoc_ky','$ma_giang_vien','$lich_hoc')";
+    function lophoc_ins($ma_mon,$hoc_ky,$ma_giang_vien,$lich_hoc){
+        $sql="INSERT INTO lop(ma_mon,hoc_ky,ma_giang_vien,lich_hoc) VALUES ('$ma_mon','$hoc_ky','$ma_giang_vien','$lich_hoc')";
          return mysqli_query($this->con,$sql);
         
+    }
+    function capNhatMaLopVaoDangKy($ma_lop, $ma_mon) {
+        $sql = "UPDATE dang_ky_mon_hoc 
+                SET ma_lop = '$ma_lop' , trang_thai = N'Đã Duyệt'
+                WHERE ma_mon = '$ma_mon' AND trang_thai = N'Đang Chờ Duyệt'";
+        return mysqli_query($this->con, $sql);
+    }
+    function getLastInsertedId() {
+        return mysqli_insert_id($this->con);
     }
     // function checktrungmamon($manhanvien){
     //     $sql="SELECT * FROM qlnhanvien WHERE Manhanvien='$manhanvien'";
@@ -15,12 +24,12 @@ class qllophoc extends connectDB{
     //     }
     //     return $kq;
     // }
-    function lophoc_find($ma_nganh,$ma_giang_vien){
+    function lophoc_find($ma_mon,$ma_giang_vien){
         // trường hợp loaddata
        
         // trường hợp tìm kiếm
         
-            $sql = "SELECT * FROM lop WHERE ma_nganh LIKE '%$ma_nganh%' AND ma_giang_vien LIKE '%$ma_giang_vien%'";
+            $sql = "SELECT * FROM lop WHERE ma_mon LIKE '%$ma_mon%' AND ma_giang_vien LIKE '%$ma_giang_vien%'";
        
        
         return mysqli_query($this->con,$sql);
@@ -37,8 +46,8 @@ class qllophoc extends connectDB{
         $sql="DELETE FROM lop WHERE ma_lop ='$ma_lop'";
         return mysqli_query($this->con,$sql);
     }
-    function lophoc_upd($ma_lop,$ma_nganh,$hoc_ky,$ma_giang_vien,$lich_hoc){
-        $sql="UPDATE lop SET ma_nganh= '$ma_nganh' , hoc_ky= '$hoc_ky' , ma_giang_vien= '$ma_giang_vien' , lich_hoc= N'$lich_hoc'  
+    function lophoc_upd($ma_lop,$ma_mon,$hoc_ky,$ma_giang_vien,$lich_hoc){
+        $sql="UPDATE lop SET ma_mon= '$ma_mon' , hoc_ky= '$hoc_ky' , ma_giang_vien= '$ma_giang_vien' , lich_hoc= N'$lich_hoc'  
         WHERE ma_lop='$ma_lop'";
         return mysqli_query($this->con,$sql);
     }
