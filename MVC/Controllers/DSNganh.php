@@ -14,7 +14,7 @@ class DSNganh extends controller{
    // Trong controller
 function Get_data() {
         $khoaList = $this->dsnganh->getKhoa();
-        $this->view('Masterlayout', [
+        $this->view('Masterlayout_admin', [
         'page' => 'DSNganh_v',
         'dulieu' => $this->dsnganh->nganh_find('', ''),
         'khoaList' => $khoaList,
@@ -27,7 +27,7 @@ function Get_data() {
             $tenNganh = $_POST['txtTimkiemTenNganh'];
             
             $dl = $this->dsnganh->nganh_find($maNganh, $tenNganh);
-            $this->view('Masterlayout', [
+            $this->view('Masterlayout_admin', [
                 'page' => 'DSNganh_v',
                 'dulieu' => $dl,
                 'ma_nganh' => $maNganh,
@@ -175,7 +175,7 @@ $rowNumber++;
         $nganhData = $this->dsnganh->nganh_find($maNganh, "");
     
         // Truyền dữ liệu vào View
-        $this->view('Masterlayout', [
+        $this->view('Masterlayout_admin', [
             'page' => 'Nganh_sua', 
             'dulieu' => $nganhData, // Thông tin ngành
             'khoaList' => $khoaList // Danh sách khoa
@@ -203,7 +203,7 @@ $rowNumber++;
                 echo '<script>alert("Sửa thất bại")</script>';
             }
 
-            $this->view('Masterlayout', [
+            $this->view('Masterlayout_admin', [
                 'page' => 'DSNganh_v',
                 'dulieu' => $this->dsnganh->nganh_find('', '')
             ]);

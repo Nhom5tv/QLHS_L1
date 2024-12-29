@@ -14,7 +14,7 @@ class DSMiengiam extends controller {
     function Get_data() {
         
         
-        $this->view('Masterlayout', [
+        $this->view('Masterlayout_admin', [
             'page' => 'DSMiengiam_v',
             'dulieu' => $this->dsmg->miengiam_find('', ''),
             
@@ -61,7 +61,7 @@ class DSMiengiam extends controller {
         } else {
             $dsloaikhoanthu=$this->dsmg->getAllLoaiKhoanThu();
             // Nếu chưa submit form, chỉ hiển thị form thêm mới
-            $this->view('Masterlayout', [
+            $this->view('Masterlayout_admin', [
                 'page' => 'Miengiam_them',
                 'dsloaikhoanthu' => $dsloaikhoanthu,  // Gọi view thêm mới miễn giảm
             ]);
@@ -76,7 +76,7 @@ class DSMiengiam extends controller {
 
             $dl = $this->dsmg->miengiam_find($maSinhVien, $loaiMienGiam); // gọi hàm tìm kiếm
             // gọi lại giao diện render lại trang và truyền $dl ra
-            $this->view('Masterlayout', [
+            $this->view('Masterlayout_admin', [
                 'page' => 'DSMiengiam_v',
                 'dulieu' => $dl,
                 'ma_sinh_vien' => $maSinhVien,
@@ -207,7 +207,7 @@ class DSMiengiam extends controller {
     // Hàm sửa
     function sua($id) {
         $dsloaikhoanthu=$this->dsmg->getAllLoaiKhoanThu();
-        $this->view('Masterlayout', [
+        $this->view('Masterlayout_admin', [
             'page' => 'Miengiam_sua',
             'dulieu' => $this->dsmg->idmiengiam($id),
             'dsloaikhoanthu' => $dsloaikhoanthu,
@@ -231,7 +231,7 @@ class DSMiengiam extends controller {
             }
 
             // Gọi lại giao diện
-            $this->view('Masterlayout', [
+            $this->view('Masterlayout_admin', [
                 'page' => 'DSMiengiam_v',
                 'dulieu' => $this->dsmg->miengiam_find('', ''),
             ]);

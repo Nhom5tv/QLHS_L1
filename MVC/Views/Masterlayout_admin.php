@@ -63,13 +63,7 @@
                 </li>
 
 
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
-                        data-bs-target="#QLKQHT" aria-expanded="false" aria-controls="QLKQHT">
-                        <i class="fa-solid fa-medal"></i>
-                        <span>Quản lý kết quả học tập</span>
-                    </a>
-                </li>
+                
 
                  <li class="sidebar-item">
                     <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
@@ -116,9 +110,7 @@
                         <li class="sidebar-item">
                             <a href="http://localhost/QLHS/dslophoc" class="sidebar-link">Quản lý lớp học</a>
                         </li>
-                        <li class="sidebar-item">
-                            <a href="http://localhost/QLHS/SVdktinchi" class="sidebar-link">Quản lý đăng ký tín chỉ sv</a>
-                        </li>
+                        
                     </ul>
                 </li>
 
