@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="http://localhost/QLHS_L1/Public/CSS/dulieu.css?v=<?php echo time();?>">
+    <link rel="stylesheet" href="http://localhost/QLHS/Public/CSS/dulieu.css?v=<?php echo time();?>">
 </head>
 <body>
-    <form method="post" action="http://localhost/QLHS_L1/DSTaikhoan/suadl">
+    <form method="post" action="http://localhost/QLHS/DSTaikhoan/suadl">
     <div class="content">
     <?php
             if (isset($data['dulieu']) && mysqli_num_rows($data['dulieu'])>0){

@@ -41,10 +41,18 @@ function checktrungmiengiam($maSinhVien, $loaiMienGiam) {
 
         return mysqli_query($this->con, $sql);
     }
+    // hàm lấy id miễn giảm 
     function idmiengiam($id){
         $sql = "SELECT * FROM mien_giam_sinh_vien WHERE ma_mien_giam='$id'";
         return mysqli_query($this->con, $sql);
     }
+    // hàm lấy tất cả các loại khoản thu
+    function getAllLoaiKhoanThu() {
+        $sql = "SELECT DISTINCT loai_khoan_thu FROM khoan_thu"; // Lấy danh sách các loại khoản thu duy nhất
+        return mysqli_query($this->con, $sql);
+           
+    }
+    
 
     // Hàm xóa miễn giảm
     function miengiam_del($id) {

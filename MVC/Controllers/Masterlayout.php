@@ -8,7 +8,7 @@ class Masterlayout extends controller{
     function Get_data(){
         
         
-        $this->view('Masterlayout',['page'=>'DSTaikhoan']);
+        $this->view('Masterlayout',['page'=>'DSTaikhoan_v']);
         
         // gọi giao diện chính và truyền dữ liệu page là trang dangky view
     }

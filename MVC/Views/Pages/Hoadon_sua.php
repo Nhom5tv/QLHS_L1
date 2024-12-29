@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sửa Hóa Đơn</title>
-    <link rel="stylesheet" href="http://localhost/QLHS_L1/Public/CSS/dulieu.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="http://localhost/QLHS/Public/CSS/dulieu.css?v=<?php echo time(); ?>">
 </head>
 
 <body>
-    <form method="post" action="http://localhost/QLHS_L1/DSHoadon/suadl">
+    <form method="post" action="http://localhost/QLHS/DSHoadon/suadl">
         <div class="content">
             <?php
                 if (isset($data['dulieu']) && mysqli_num_rows($data['dulieu']) > 0) {
@@ -31,13 +31,26 @@
                                 </div>
 
                                 <!-- Mã Khoản Thu -->
-                                <div class="input-box">
-                                    <span class="icon">
-                                        <img src="./Public/Picture/Pic_login/category.png" alt="" width="15px">
-                                    </span>
-                                    <input type="text" required name="txtMakhoanthu" value="<?php echo $row['ma_khoan_thu']; ?>">
-                                    <label>Mã Khoản Thu</label>
-                                </div>
+                                <label>Loại khoản thu</label>
+                    <div class="input-box">
+                        <span class="icon">
+                            <img src="./Public/Picture/Pic_login/category.png" alt="" width="15px">
+                        </span>
+                        <select name="txtMakhoanthu" required style="text-align: center;">
+                            <option value="">Tên khoản thu</option>
+                            <?php
+                            if (isset($data['tenkhoanthu']) && !empty($data['tenkhoanthu'])) {
+                                while ($rowLoai = mysqli_fetch_assoc($data['tenkhoanthu'])) {
+                                    // So sánh loại miễn giảm hiện tại với danh sách loại khoản thu
+                                    $selected = (isset($row['ma_khoan_thu']) && $row['ma_khoan_thu'] === $rowLoai['ma_khoan_thu']) ? 'selected' : '';
+                                    echo "<option value='{$rowLoai['ma_khoan_thu']}' $selected>{$rowLoai['ten_khoan_thu']}</option>";
+                                }
+                            } else {
+                                echo "<option value=''>Không có tên khoản thu</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
 
                                 <!-- Ngày Thanh Toán -->
                                 <div class="input-box">

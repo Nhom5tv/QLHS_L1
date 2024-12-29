@@ -12,9 +12,12 @@ class DSMiengiam extends controller {
 
     // Lấy dữ liệu để hiển thị khi load trang
     function Get_data() {
+        
+        
         $this->view('Masterlayout', [
             'page' => 'DSMiengiam_v',
             'dulieu' => $this->dsmg->miengiam_find('', ''),
+            
         ]);
     }
 
@@ -36,7 +39,7 @@ class DSMiengiam extends controller {
                 // Nếu trùng, thông báo lỗi
                 echo '<script>
                     alert("Mã sinh viên và loại miễn giảm đã tồn tại");
-                    window.location.href = "http://localhost/QLHS_L1/DSMiengiam";
+                    window.location.href = "http://localhost/QLHS/DSMiengiam";
                     </script>';
                 exit();  // Dừng lại ngay sau khi thông báo lỗi
             } else {
@@ -47,7 +50,7 @@ class DSMiengiam extends controller {
                     // Nếu thành công, thông báo và chuyển hướng
                     echo '<script>
                         alert("Thêm mới miễn giảm thành công");
-                        window.location.href = "http://localhost/QLHS_L1/DSMiengiam";
+                        window.location.href = "http://localhost/QLHS/DSMiengiam";
                     </script>';
                     exit();  // Dừng lại sau khi redirect
                 } else {
@@ -56,9 +59,11 @@ class DSMiengiam extends controller {
                 }
             }
         } else {
+            $dsloaikhoanthu=$this->dsmg->getAllLoaiKhoanThu();
             // Nếu chưa submit form, chỉ hiển thị form thêm mới
             $this->view('Masterlayout', [
-                'page' => 'Miengiam_them',  // Gọi view thêm mới miễn giảm
+                'page' => 'Miengiam_them',
+                'dsloaikhoanthu' => $dsloaikhoanthu,  // Gọi view thêm mới miễn giảm
             ]);
         }
     }
@@ -121,18 +126,18 @@ class DSMiengiam extends controller {
 
                 echo "<script>
                         alert('Upload thành công: {$successCount} hàng, thất bại: {$failCount} hàng.');
-                        window.location.href = 'http://localhost/QLHS_L1/DSMiengiam';
+                        window.location.href = 'http://localhost/QLHS/DSMiengiam';
                       </script>";
             } catch (Exception $e) {
                 echo "<script>
                         alert('Có lỗi xảy ra khi xử lý file Excel: {$e->getMessage()}');
-                        window.location.href = 'http://localhost/QLHS_L1/DSMiengiam';
+                        window.location.href = 'http://localhost/QLHS/DSMiengiam';
                       </script>";
             }
         } else {
             echo "<script>
                     alert('Không có file nào được chọn hoặc có lỗi trong quá trình tải lên.');
-                    window.location.href = 'http://localhost/QLHS_L1/DSMiengiam';
+                    window.location.href = 'http://localhost/QLHS/DSMiengiam';
                   </script>";
         }
     }
@@ -180,7 +185,7 @@ class DSMiengiam extends controller {
         } catch (Exception $e) {
             echo "<script>
                     alert('Có lỗi xảy ra khi xuất file Excel: {$e->getMessage()}');
-                    window.location.href = 'http://localhost/QLHS_L1/DSMiengiam';
+                    window.location.href = 'http://localhost/QLHS/DSMiengiam';
                   </script>";
         }
     }
@@ -191,7 +196,7 @@ class DSMiengiam extends controller {
         if ($kq) {
             echo '<script>
                     alert("Xóa thành công");
-                    window.location.href = "http://localhost/QLHS_L1/DSMiengiam";
+                    window.location.href = "http://localhost/QLHS/DSMiengiam";
                   </script>';
             exit();
         } else {
@@ -201,9 +206,11 @@ class DSMiengiam extends controller {
 
     // Hàm sửa
     function sua($id) {
+        $dsloaikhoanthu=$this->dsmg->getAllLoaiKhoanThu();
         $this->view('Masterlayout', [
             'page' => 'Miengiam_sua',
             'dulieu' => $this->dsmg->idmiengiam($id),
+            'dsloaikhoanthu' => $dsloaikhoanthu,
         ]);
     }
 

@@ -7,8 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="http://localhost/QLHS_L1/Public/CSS/button.css">
-    <link rel="stylesheet" type="text/css" href="http://localhost/QLHS_L1/Public/CSS/styleDT.css">
+    <link rel="stylesheet" href="http://localhost/QLHS/Public/CSS/button.css">
+    <link rel="stylesheet" type="text/css" href="http://localhost/QLHS/Public/CSS/styleDT.css">
     <style >
         .btn_cn {
             display: flex;
@@ -20,7 +20,7 @@
     </style>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/fontawesome.css">
-    <link rel="stylesheet" href="http://localhost/QLHS_L1/Public/CSS/select2.css?v=<?php echo time();?>">
+    <link rel="stylesheet" href="http://localhost/QLHS/Public/CSS/select2.css?v=<?php echo time();?>">
 
     <style>
         .quaylai {
@@ -33,7 +33,7 @@
       display: flex;
     }
     </style>
-    <link rel="stylesheet" href="http://localhost/QLHS_L1/Public/CSS/dulieu.css?v=<?php echo time();?>">
+    <link rel="stylesheet" href="http://localhost/QLHS/Public/CSS/dulieu.css?v=<?php echo time();?>">
     <style>
       .content{
         width: 550px;
@@ -49,7 +49,7 @@
 </head>
 
 <body>
-    <form method="post" action="http://localhost/QLHS_L1/DSDonhang/timkiem"></form>
+    <form method="post" action="http://localhost/QLHS/DSDonhang/timkiem"></form>
     <main class="table" id="customers_table" style="margin-top: 30px;">
         <section class="table__header">
             <h1>Các khoản phải nộp</h1>

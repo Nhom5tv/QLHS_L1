@@ -14,7 +14,7 @@ class DSKhoanthusv extends controller {
     function Get_data() {
         $this->view('Masterlayout', [
             'page' => 'DSKhoanthusv_v',
-            'dulieu' => $this->dskt->khoanthu_find('', ''),
+            'dulieu' => $this->dskt->hienthidl(),
         ]);
     }
 
@@ -34,7 +34,7 @@ class DSKhoanthusv extends controller {
             if ($kq1) {
                 echo '<script>
                     alert("Khoản thu đã tồn tại");
-                    window.location.href = "http://localhost/QLHS_L1/DSKhoanthusv";
+                    window.location.href = "http://localhost/QLHS/DSKhoanthusv";
                     </script>';
                 exit();
             } else {
@@ -43,7 +43,7 @@ class DSKhoanthusv extends controller {
                 if ($kq) {
                     echo '<script>
                         alert("Thêm mới khoản thu thành công");
-                        window.location.href = "http://localhost/QLHS_L1/DSKhoanthusv";
+                        window.location.href = "http://localhost/QLHS/DSKhoanthusv";
                     </script>';
                     exit();
                 } else {
@@ -111,18 +111,18 @@ class DSKhoanthusv extends controller {
 
                 echo "<script>
                         alert('Upload thành công: {$successCount} hàng, thất bại: {$failCount} hàng.');
-                        window.location.href = 'http://localhost/QLHS_L1/DSKhoanthusv';
+                        window.location.href = 'http://localhost/QLHS/DSKhoanthusv';
                       </script>";
             } catch (Exception $e) {
                 echo "<script>
                         alert('Có lỗi xảy ra khi xử lý file Excel: {$e->getMessage()}');
-                        window.location.href = 'http://localhost/QLHS_L1/DSKhoanthusv';
+                        window.location.href = 'http://localhost/QLHS/DSKhoanthusv';
                       </script>";
             }
         } else {
             echo "<script>
                     alert('Không có file nào được chọn hoặc có lỗi trong quá trình tải lên.');
-                    window.location.href = 'http://localhost/QLHS_L1/DSKhoanthusv';
+                    window.location.href = 'http://localhost/QLHS/DSKhoanthusv';
                   </script>";
         }
     }
@@ -170,7 +170,7 @@ class DSKhoanthusv extends controller {
         } catch (Exception $e) {
             echo "<script>
                     alert('Có lỗi xảy ra khi xuất file Excel: {$e->getMessage()}');
-                    window.location.href = 'http://localhost/QLHS_L1/DSKhoanthusv';
+                    window.location.href = 'http://localhost/QLHS/DSKhoanthusv';
                   </script>";
         }
     }
@@ -188,7 +188,7 @@ class DSKhoanthusv extends controller {
             if ($kq) {
                 echo '<script>
                         alert("Xóa thành công");
-                        window.location.href = "http://localhost/QLHS_L1/DSKhoanthusv";
+                        window.location.href = "http://localhost/QLHS/DSKhoanthusv";
                       </script>';
                 exit();
             } else {
@@ -196,7 +196,7 @@ class DSKhoanthusv extends controller {
             }
         } else {
             echo '<script>alert("Phương thức không hợp lệ!")</script>';
-            header('Location: http://localhost/QLHS_L1/DSKhoanthusv');
+            header('Location: http://localhost/QLHS/DSKhoanthusv');
             exit();
         }
     }
@@ -216,7 +216,7 @@ class DSKhoanthusv extends controller {
             ]);
         } else {
             echo '<script>alert("Phương thức không hợp lệ!");</script>';
-            header('Location: http://localhost/QLHS_L1/DSKhoanthusv');
+            header('Location: http://localhost/QLHS/DSKhoanthusv');
             exit();
         }
     }
