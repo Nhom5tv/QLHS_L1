@@ -87,13 +87,13 @@ if ($formattedDate && $formattedDate->format('Y-m-d') === $ngaySinh) {
 
 
                     // Bỏ qua các hàng thiếu dữ liệu cần thiết
-                    if ( !$maKhoa || !$maNganh || !$hoTen || !$ngaySinh || !$gioiTinh || !$queQuan || !$email || !$soDienThoai || !$khoaHoc || !$maTaiKhoan) {
+                    if ( !$maKhoa || !$maNganh || !$hoTen || !$ngaySinh || !$gioiTinh || !$queQuan || !$email || !$soDienThoai || !$khoaHoc ) {
                         $failCount++;
                         continue;
                     }
 
                     // Lưu vào cơ sở dữ liệu
-                    $result = $this->dssv->sinhvien_ins( $maSV,$maKhoa, $maNganh, $hoTen, $ngaySinh,$gioiTinh,$queQuan,$email,$soDienThoai,$khoaHoc,$maTaiKhoan);
+                    $result = $this->dssv->sinhvien_ins( $maSV,$maKhoa, $maNganh, $hoTen, $ngaySinh,$gioiTinh,$queQuan,$email,$soDienThoai,$khoaHoc);
                     if ($result) {
                         $successCount++;
                     } else {
