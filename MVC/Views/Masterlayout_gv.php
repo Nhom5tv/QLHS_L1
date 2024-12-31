@@ -41,7 +41,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="http://localhost/qlhs/DSdiemchitiet" class="sidebar-link">
+                    <a href="http://localhost/qlhs/DSdiemtungmon_gv" class="sidebar-link">
                     <i class="fa-solid fa-medal"></i>
                     <span>Quản lý điểm sinh viên</span>
                     </a>

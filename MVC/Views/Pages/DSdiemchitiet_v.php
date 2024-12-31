@@ -22,12 +22,6 @@
     <!-- <form method="post" action="http://localhost/qlhs/DSTaikhoan/timkiem"></form> -->
     <main class="table" id="customers_table">
     <section class="table__header">
-            <div class="Insert">
-                <form action="http://localhost/qlhs/Diemchitiet" method="post">
-                <button class="button-85" role="button">Thêm điểm sinh viên</button>
-                </form>
-            
-            </div>
         </section>
         <section class="table__body">
             <table>
@@ -39,7 +33,6 @@
                         <th>Điểm chuyên cần <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Điểm giữa kì <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Điểm cuối kì <span class="icon-arrow">&UpArrow;</span></th>
-                        <th style="padding-left:50px"> Chức năng <span class="icon-arrow">&UpArrow;</span></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -59,12 +52,7 @@
                                            
                                             <?php
                                               
-                                                    // Hiển thị nút Sửa
-                                                    echo '<td class="btn_cn">';
-                                                    echo '<form action="http://localhost/qlhs/DSdiemchitiet/sua/' . $row['ma_dct'] . '" method="post">';
-                                                    echo '<button class="button-85" role="button">Sửa</button>  ';
-                                                    echo '</form>';
-                                            
+                                                    
 ?>
 
 

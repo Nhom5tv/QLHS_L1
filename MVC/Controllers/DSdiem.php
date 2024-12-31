@@ -79,7 +79,8 @@ class DSdiem extends controller {
 
     // Hiển thị danh sách điểm tổng hợp
     public function Get_data() {
-        $diemTongHop = $this->diemModel->getAllSummaryScores();
+        $id=$_SESSION['ma_tai_khoan'];
+        $diemTongHop = $this->diemModel->getAllSummaryScores($id);
         $this->view('MasterLayout', [
             'page' => 'Diemsinhvien',
             'dulieu' => $diemTongHop
