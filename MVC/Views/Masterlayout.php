@@ -47,13 +47,6 @@
                             <a href="http://localhost/QLHS/DSTaikhoan" class="sidebar-link">Quản lý tài khoản</a>
                         </li>
 
-                        <li class="sidebar-item">
-                            <a href="http://localhost/QLHS/DSNhanvien" class="sidebar-link">Quản lý nhân viên</a>
-                        </li>
-
-                        <li class="sidebar-item">
-                            <a href="http://localhost/QLHS/DSkhachhang" class="sidebar-link">Quản lý khách hàng</a>
-                        </li>
                     </ul>
                 </li>
 

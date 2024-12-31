@@ -69,13 +69,13 @@ class DSGiangvien extends controller{
 
 
                     // Bỏ qua các hàng thiếu dữ liệu cần thiết
-                    if ( !$maKhoa || !$hoTen || !$email || !$soDienThoai || !$chuyenNganh || !$maTaiKhoan) {
+                    if ( !$maKhoa || !$hoTen || !$email || !$soDienThoai || !$chuyenNganh) {
                         $failCount++;
                         continue;
                     }
 
                     // Lưu vào cơ sở dữ liệu
-                    $result = $this->dsgv->giangvien_ins( $maGV,$maKhoa, $hoTen,$email,$soDienThoai,$chuyenNganh,$maTaiKhoan);
+                    $result = $this->dsgv->giangvien_ins( $maGV,$maKhoa, $hoTen,$email,$soDienThoai,$chuyenNganh);
                     if ($result) {
                         $successCount++;
                     } else {

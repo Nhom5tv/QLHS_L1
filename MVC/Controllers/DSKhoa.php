@@ -12,7 +12,7 @@ class DSKhoa extends controller{
 
     // getdata de hien thi du lieu khi load trang
     function Get_data(){
-        $this->view('Masterlayout', [
+        $this->view('Masterlayout_admin', [
             'page' => 'DSKhoa_v',
             'dulieu' => $this->dskhoa->khoa_find('', '')
         ]);
@@ -28,7 +28,7 @@ class DSKhoa extends controller{
             $tenKhoa = $_POST['txtTimkiemTenKhoa'];
             
             $dl = $this->dskhoa->khoa_find($maKhoa, $tenKhoa);
-            $this->view('Masterlayout', [
+            $this->view('Masterlayout_admin', [
                 'page' => 'DSKhoa_v',
                 'dulieu' => $dl,
                 'ma_Khoa' => $maKhoa,
@@ -171,7 +171,7 @@ $rowNumber++;
     }
 
     function sua($maKhoa){
-        $this->view('Masterlayout', [
+        $this->view('Masterlayout_admin', [
             'page' => 'Khoa_sua',
             'dulieu' => $this->dskhoa->khoa_find($maKhoa, "")
         ]);
@@ -195,7 +195,7 @@ $rowNumber++;
                 echo '<script>alert("Sửa thất bại")</script>';
             }
 
-            $this->view('Masterlayout', [
+            $this->view('Masterlayout_admin', [
                 'page' => 'DSKhoa_v',
                 'dulieu' => $this->dskhoa->khoa_find('', '')
             ]);
