@@ -7,7 +7,7 @@
     }
     // getdata de hien thi du lieu khi load trang
     function Get_data(){
-        $this->view('Masterlayout',[
+        $this->view('Masterlayout_admin',[
             'page'=>'dslophoc_v',
             'dulieu'=>$this->dslh->lophoc_find('','')
         ]);
@@ -20,7 +20,7 @@
             $ma_giang_vien=$_POST['txtTimkiemmagiangvien'];
             $dl=$this->dslh->lophoc_find($ma_nganh,$ma_giang_vien); // goi ham tim kiem
             // goi lai giao dien render lại trang va truyen $ dl ra 
-            $this->view('Masterlayout',[
+            $this->view('Masterlayout_admin',[
                 'page'=>'dslophoc_v',
                 'dulieu'=>$dl,
                 'ma_nganh'=>$ma_nganh,
@@ -49,7 +49,7 @@
 
     }
     function sua($ma_lop){
-        $this->view('Masterlayout',[
+        $this->view('Masterlayout_admin',[
             'page'=>'lophoc_sua',
             'dulieu'=>$this->dslh->lophoc_findsua($ma_lop,"")
         ]);
@@ -74,8 +74,8 @@
             }
             
             // gọi lại giao diện
-            $this->view('Masterlayout',[
-                'page'=>'DSTaikhoan_v',
+            $this->view('Masterlayout_admin',[
+                'page'=>'dslophoc_v',
                 'dulieu'=>$this->dslh->lophoc_find('','')
             ]);
            

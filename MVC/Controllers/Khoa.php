@@ -8,7 +8,7 @@ class Khoa extends controller{
     }
 
     function Get_data(){
-        $this->view('Masterlayout', ['page' => 'Khoa_them']);
+        $this->view('Masterlayout_admin', ['page' => 'Khoa_them']);
     }
 
     function themmoi(){

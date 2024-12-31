@@ -21,7 +21,7 @@
     <form method="post" action="http://localhost/qlhs/dslophoc/timkiem"></form>
     <main class="table" id="customers_table">
         <section class="table__header">
-            <h1>Quản lý Đăng Ký Môn Học</h1>
+            <h1>Quản lý Đăng Ký Lớp Học</h1>
            
             <div class="input-group"> 
             <form action="http://localhost/qlhs/dslophoc/timkiem" method="post">         
@@ -54,7 +54,7 @@
                 <thead>
                     <tr>
                         <th> Mã Lớp <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Mã Ngành <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Mã Môn <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Học Kỳ <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Mã Giảng Viên <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Lịch Học <span class="icon-arrow">&UpArrow;</span></th>
@@ -73,7 +73,7 @@
                                             <td>
                                                 <?php echo $row['ma_lop']?>
                                             </td>
-                                            <td> <?php echo $row['ma_nganh']?> </td>
+                                            <td> <?php echo $row['ma_mon']?> </td>
                                             <td> <?php echo $row['hoc_ky']?> </td>
                                             <td> <?php echo $row['ma_giang_vien']?> </td>
                                             <td> <?php echo $row['lich_hoc']?> </td>

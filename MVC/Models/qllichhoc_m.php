@@ -15,6 +15,19 @@ class qllichhoc_m extends connectDB{
     //     }
     //     return $kq;
     // }
+    function capNhatSoLuong($ma_mon_hoc) {
+    // Câu lệnh SQL để cập nhật số lượng
+    $sql = "UPDATE lich_hoc 
+            SET so_luong = so_luong_toi_da - (
+                SELECT COUNT(*) 
+                FROM dang_ky_mon_hoc 
+                WHERE ma_mon = '$ma_mon_hoc' AND trang_thai = 'Đang Chờ duyệt'
+            )
+            WHERE ma_mon_hoc = '$ma_mon_hoc'";
+
+    // Thực thi câu lệnh SQL
+    return mysqli_query($this->con, $sql);
+}
     function lichhoc_find($ma_mon_hoc,$lich_hoc){
         // trường hợp loaddata
        

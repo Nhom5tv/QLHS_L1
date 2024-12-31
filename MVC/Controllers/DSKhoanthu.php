@@ -13,7 +13,7 @@ class DSKhoanthu extends controller {
 
     // Lấy dữ liệu để hiển thị khi load trang
     function Get_data() {
-        $this->view('Masterlayout', [
+        $this->view('Masterlayout_admin', [
             'page' => 'DSKhoanthu_v',
             'dulieu' => $this->dskt->khoanthu_find('', ''),
         ]);
@@ -96,7 +96,7 @@ class DSKhoanthu extends controller {
             }
         } else {
             // Hiển thị form thêm khoản thu
-            $this->view('Masterlayout', [
+            $this->view('Masterlayout_admin', [
                 'page' => 'Khoanthu_them', // Gọi view thêm khoản thu
             ]);
         }
@@ -115,7 +115,7 @@ class DSKhoanthu extends controller {
 
             $dl = $this->dskt->khoanthu_find($tenKhoanThu, $hanNop); // gọi hàm tìm kiếm
             // gọi lại giao diện render lại trang và truyền $dl ra
-            $this->view('Masterlayout', [
+            $this->view('Masterlayout_admin', [
                 'page' => 'DSKhoanthu_v',
                 'dulieu' => $dl,
                 'ten_khoan_thu' => $tenKhoanThu,
@@ -246,7 +246,7 @@ class DSKhoanthu extends controller {
 
     // Hàm sửa
     function sua($id) {
-        $this->view('Masterlayout', [
+        $this->view('Masterlayout_admin', [
             'page' => 'Khoanthu_sua',
             'dulieu' => $this->dskt->sua_id($id),
         ]);
@@ -291,7 +291,7 @@ class DSKhoanthu extends controller {
             }
     
             // Gọi lại giao diện
-            $this->view('Masterlayout', [
+            $this->view('Masterlayout_admin', [
                 'page' => 'DSKhoanthu_v',
                 'dulieu' => $this->dskt->khoanthu_find('', ''),
             ]);

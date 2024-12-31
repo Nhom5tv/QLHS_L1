@@ -90,7 +90,12 @@ if (isset($data['dulieu']) && mysqli_num_rows($data['dulieu']) > 0) {
                 <?php if (isset($row['trang_thai_dang_ky']) && trim($row['trang_thai_dang_ky']) == 'Đang Chờ Duyệt') : ?>
                     <!-- Nếu đã đăng ký hoặc đang chờ duyệt -->
                     <button class="button-85" disabled style="background-color: gray; cursor: not-allowed;">Đã đăng ký</button>
-                <?php else : ?>
+                <?php elseif (isset($row['con_lai']) && trim($row['con_lai']) == 0) :  ?>
+                    <!-- Nếu chưa đăng ký -->
+                    <form action="http://localhost/QLHS/svdktinchi/dk" method="post">
+                        <button class="button-85" disabled style="background-color: gray; cursor: not-allowed;">Đã Hết Chỗ</button>
+                    </form>
+                    <?php else : ?>
                     <!-- Nếu chưa đăng ký -->
                     <form action="http://localhost/QLHS/svdktinchi/dk" method="post">
                         <input type="hidden" name="ma_mon_hoc" value="<?php echo $row['ma_mon_hoc']; ?>">

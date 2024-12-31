@@ -9,6 +9,8 @@ class Nganh extends controller{
 
     function Get_data(){
         $khoaList = $this->Nganh->getKhoa();
+       
+
         $this->view('Masterlayout', ['page' => 'Nganh_them','khoaList' => $khoaList ]);
     }
 

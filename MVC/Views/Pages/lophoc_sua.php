@@ -23,8 +23,8 @@
                     <span class="icon">
                     <img src="./Public/Picture/id-card_9424609.png" alt="" width="15px">
                     </span>
-                    <input type="text" required name="txtmanganh"  value="<?php  echo $row['ma_nganh']?>">
-                    <label>Mã Ngành Học</label>
+                    <input type="text" required name="txtmanganh"  value="<?php  echo $row['ma_mon']?>">
+                    <label>Mã Môn Học</label>
                 </div>            
                 <div class="input-box">
                     <span class="icon">
@@ -42,7 +42,7 @@
                     <span class="icon">
                     <img src="./Public/Picture/Pic_login/khoa.png" alt="" width="15px">
                     </span>
-                    <input type="date" required name="txtlichhoc"  value="<?php  echo $row['lich_hoc']?>">
+                    <input type="text" required name="txtlichhoc"  value="<?php  echo $row['lich_hoc']?>">
                     <label>Lịch Học</label>
                 </div>
                 

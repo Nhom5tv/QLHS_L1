@@ -10,7 +10,7 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
     }
     // getdata de hien thi du lieu khi load trang
     function Get_data(){
-        $this->view('Masterlayout',[
+        $this->view('Masterlayout_admin',[
             'page'=>'DSTaikhoan_v',
             'dulieu'=>$this->dstk->taikhoan_find('','')
         ]);
@@ -23,7 +23,7 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
             
             $dl=$this->dstk->taikhoan_find($id,$quyen); // goi ham tim kiem
             // goi lai giao dien render lại trang va truyen $ dl ra 
-            $this->view('Masterlayout',[
+            $this->view('Masterlayout_admin',[
                 'page'=>'DSTaikhoan_v',
                 'dulieu'=>$dl,
                 'ma_tai_khoan'=>$id,
@@ -153,7 +153,7 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
 
     }
     function sua($id){
-        $this->view('Masterlayout',[
+        $this->view('Masterlayout_admin',[
             'page'=>'Taikhoan_sua',
             'dulieu'=>$this->dstk->taikhoan_find($id,"")
         ]);
@@ -177,7 +177,7 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
             }
             
             // gọi lại giao diện
-            $this->view('Masterlayout',[
+            $this->view('Masterlayout_admin',[
                 'page'=>'DSTaikhoan_v',
                 'dulieu'=>$this->dstk->taikhoan_find('','')
             ]);

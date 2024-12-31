@@ -12,7 +12,7 @@ class DSKhoanthusv extends controller {
 
     // Lấy dữ liệu để hiển thị khi load trang
     function Get_data() {
-        $this->view('Masterlayout', [
+        $this->view('Masterlayout_admin', [
             'page' => 'DSKhoanthusv_v',
             'dulieu' => $this->dskt->hienthidl(),
         ]);
@@ -51,7 +51,7 @@ class DSKhoanthusv extends controller {
                 }
             }
         } else {
-            $this->view('Masterlayout', [
+            $this->view('Masterlayout_admin', [
                 'page' => 'Khoanthusv_them',
             ]);
         }
@@ -65,7 +65,7 @@ class DSKhoanthusv extends controller {
 
             $dl = $this->dskt->khoanthu_find($maSinhVien, $trangThaiThanhToan);
 
-            $this->view('Masterlayout', [
+            $this->view('Masterlayout_admin', [
                 'page' => 'DSKhoanthusv_v',
                 'dulieu' => $dl,
                 'ma_sinh_vien' => $maSinhVien,
@@ -210,7 +210,7 @@ class DSKhoanthusv extends controller {
             $maSinhVien = $_POST['ma_sinh_vien'];
     
             // Gọi view và truyền dữ liệu từ model
-            $this->view('Masterlayout', [
+            $this->view('Masterlayout_admin', [
                 'page' => 'Khoanthusv_sua',
                 'dulieu' => $this->dskt->sua_id($maKhoanThu, $maSinhVien),
             ]);
@@ -239,7 +239,7 @@ class DSKhoanthusv extends controller {
                 echo '<script>alert("Sửa thất bại")</script>';
             }
 
-            $this->view('Masterlayout', [
+            $this->view('Masterlayout_admin', [
                 'page' => 'DSKhoanthusv_v',
                 'dulieu' => $this->dskt->khoanthu_find('', ''),
             ]);

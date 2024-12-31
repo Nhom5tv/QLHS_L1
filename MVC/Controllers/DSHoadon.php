@@ -13,7 +13,7 @@ class DSHoadon extends controller {
     // Lấy dữ liệu để hiển thị khi load trang
     function Get_data() {
         $dulieu = $this->dshd->getHoaDonWithTenKhoanThu();
-        $this->view('Masterlayout', [
+        $this->view('Masterlayout_admin', [
             'page' => 'DSHoadon_v',
             'dulieu' => $dulieu, // Lấy danh sách hóa đơn
         ]);
@@ -54,7 +54,7 @@ class DSHoadon extends controller {
         } else {
             $tenkhoanthu=$this->dshd->getKhoanThuList();
             // Nếu chưa submit form, chỉ hiển thị form thêm mới
-            $this->view('Masterlayout', [
+            $this->view('Masterlayout_admin', [
                 'page' => 'Hoadon_them',  // Gọi view thêm mới hóa đơn
                 'tenkhoanthu' => $tenkhoanthu,
             ]);
@@ -70,7 +70,7 @@ class DSHoadon extends controller {
 
             $dl = $this->dshd->hoadon_find($maSinhVien, $ngayThanhToan); // gọi hàm tìm kiếm
             // gọi lại giao diện render lại trang và truyền $dl ra
-            $this->view('Masterlayout', [
+            $this->view('Masterlayout_admin', [
                 'page' => 'DSHoadon_v',
                 'dulieu' => $dl,
                 'ma_sinh_vien' => $maSinhVien,
@@ -222,7 +222,7 @@ class DSHoadon extends controller {
     
     function sua($id) {
         $tenkhoanthu=$this->dshd->getKhoanThuList();
-        $this->view('Masterlayout', [
+        $this->view('Masterlayout_admin', [
             'page' => 'Hoadon_sua',
             'dulieu' => $this->dshd->idhoadon($id),
             'tenkhoanthu' => $tenkhoanthu,
@@ -249,7 +249,7 @@ class DSHoadon extends controller {
             }
             $dulieu = $this->dshd->getHoaDonWithTenKhoanThu();
             // Gọi lại giao diện
-            $this->view('Masterlayout', [
+            $this->view('Masterlayout_admin', [
                 'page' => 'DSHoadon_v',
                 'dulieu' => $dulieu,
             ]);
