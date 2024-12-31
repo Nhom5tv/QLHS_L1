@@ -10,15 +10,17 @@
 
 <body>
     <!-- Form sửa điểm chi tiết -->
-    <form method="post" action="http://localhost/qlhs/DSdiemchitiet/suadl">
+    <form method="post" action="http://localhost/qlhs/DSdiemtungmon_gv/suadl">
         <div class="content">
             <?php
             // Kiểm tra xem dữ liệu có tồn tại
+            
             if (isset($data['dulieu']) && mysqli_num_rows($data['dulieu']) > 0) {
                 while ($row = mysqli_fetch_array($data['dulieu'])) {
                     ?>
                     <div class="form-box login">
                         <h2>Sửa Điểm Chi Tiết</h2>
+
 
                         <!-- ID Điểm Chi Tiết (thẻ ẩn) -->
                         <input type="hidden" name="txtId" value="<?php echo $row['ma_dct']; ?>">
@@ -28,6 +30,7 @@
               
 
                             <input type="hidden" id="txtMaSinhVien" name="txtMaSinhVien" value="<?= $row['ma_sinh_vien'] ?>" readonly>
+                            <input type="hidden" name="class_id" value="<?= $data['class_id'] ?>"> <!-- Lấy class_id từ $data -->
                         
                         <!-- Lần học -->
                         <div class="input-box">
