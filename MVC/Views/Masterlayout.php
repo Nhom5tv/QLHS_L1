@@ -28,12 +28,7 @@
                 </div>
             </div>
             <ul class="sidebar-nav">
-                <li class="sidebar-item">
-                    <a href="http://localhost/qlhs/Trangchu" class="sidebar-link">
-                        <i class="fa-solid fa-house"></i>
-                        <span>Trang chủ</span>
-                    </a>
-                </li>
+               
                 
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
@@ -44,20 +39,13 @@
                     <ul id="QLTK" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
 
                         <li class="sidebar-item">
-                            <a href="http://localhost/QLHS/DSTaikhoan" class="sidebar-link">Quản lý tài khoản</a>
+                            <a href="http://localhost/QLHS/ThongTinSinhVien" class="sidebar-link">Profile</a>
                         </li>
 
                     </ul>
                 </li>
 
-                <!-- <li class="sidebar-item">
-                    <a href="http://localhost/qlhs/DSdiem" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
-                        data-bs-target="#QLKQHT" aria-expanded="false" >
-                        <i class="fa-solid fa-medal"></i>
-                        <span>Quản lý kết quả học tập</span>
-                    </a>
-                   
-                </li> -->
+               
 
                 <li class="sidebar-item">
                     <a href="http://localhost/qlhs/DSdiem" class="sidebar-link">
@@ -66,31 +54,11 @@
                     </a>
                 </li>
 
-                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
-                        data-bs-target="#QLHPTC" aria-expanded="false" aria-controls="QLHPTC">
-                        <i class="fa-solid fa-coins"></i>
-                        <span>Quản lý học phí và tài chính</span>
+                <li class="sidebar-item">
+                    <a href="http://localhost/qlhs/Taichinh" class="sidebar-link">
+                        <i class="fa-solid fa-house"></i>
+                        <span>Tài chính và học phí</span>
                     </a>
-                    <ul id="QLHPTC" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-
-                        <li class="sidebar-item">
-                            <a href="http://localhost/QLHS/DSKhoanthu" class="sidebar-link">Quản lý khoản thu chung</a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="http://localhost/QLHS/DSKhoanthusv" class="sidebar-link">Quản lý khoản thu sinh viên</a>
-                        </li>
-
-                        <li class="sidebar-item">
-                            <a href="http://localhost/QLHS/DSMiengiam" class="sidebar-link">Quản lý miễn giảm</a>
-                        </li>
-
-                        <li class="sidebar-item">
-                            <a href="http://localhost/QLHS/DSHoadon" class="sidebar-link">Quản lý hóa đơn</a>
-                        </li>
-
-                       
-                    </ul>
                 </li>
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
@@ -101,19 +69,10 @@
                     <ul id="QLHT" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
 
                         <li class="sidebar-item">
-                            <a href="http://localhost/QLHS/dsdkmonhoc" class="sidebar-link">Quản lý đăng ký môn học</a>
+                            <a href="http://localhost/QLHS/SVdktinchi" class="sidebar-link">Đăng ký tín chỉ</a>
                         </li>
 
-                        <li class="sidebar-item">
-                            <a href="http://localhost/QLHS/dslichhoc" class="sidebar-link">Quản lý lịch học</a>
-                        </li>
-
-                        <li class="sidebar-item">
-                            <a href="http://localhost/QLHS/dslophoc" class="sidebar-link">Quản lý lớp học</a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="http://localhost/QLHS/SVdktinchi" class="sidebar-link">Quản lý đăng ký tín chỉ sv</a>
-                        </li>
+                       
                     </ul>
                 </li>
 

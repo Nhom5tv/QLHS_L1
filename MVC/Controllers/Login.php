@@ -52,14 +52,14 @@ class Login extends controller{
                        
                         echo '<script>
                         alert("Đăng nhập thành công");
-                        window.location.href = "http://localhost/QLHS/Masterlayout_gv";
+                        window.location.href = "http://localhost/qlhs/DSdiemtungmon_gv";
                         </script>';
                     }
                     elseif ($quyen == 'sinh_vien') {
                        
                         echo '<script>
                         alert("Đăng nhập thành công");
-                        window.location.href = "http://localhost/QLHS/Masterlayout";
+                        window.location.href = "http://localhost/QLHS/ThongTinSinhVien";
                         </script>';
                     }
                     else{

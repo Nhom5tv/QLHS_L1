@@ -107,6 +107,12 @@ function checktrungmiengiam($maSinhVien, $loaiMienGiam) {
                                   so_tien_phai_nop = '$soTienPhaiNop' 
                               WHERE ma_khoan_thu = '$maKhoanThu' AND ma_sinh_vien = '$maSinhVien'";
                 mysqli_query($this->con, $sqlUpdate);
+                if ($soTienPhaiNop == 0) {
+                    $sqlUpdateTrangThai = "UPDATE khoan_thu_sinh_vien 
+                                           SET trang_thai_thanh_toan = N'Đã thanh toán' 
+                                           WHERE ma_khoan_thu = '$maKhoanThu' AND ma_sinh_vien = '$maSinhVien'";
+                    mysqli_query($this->con, $sqlUpdateTrangThai);
+                }
             }
         }
     

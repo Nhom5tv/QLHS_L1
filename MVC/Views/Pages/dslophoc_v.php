@@ -58,6 +58,7 @@
                         <th> Học Kỳ <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Mã Giảng Viên <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Lịch Học <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Trạng thái <span class="icon-arrow">&UpArrow;</span></th>
                         <th style="padding-left:50px"> TOOL <span class="icon-arrow">&UpArrow;</span></th>
                     </tr>
                 </thead>
@@ -77,6 +78,7 @@
                                             <td> <?php echo $row['hoc_ky']?> </td>
                                             <td> <?php echo $row['ma_giang_vien']?> </td>
                                             <td> <?php echo $row['lich_hoc']?> </td>
+                                            <td> <?php echo $row['trang_thai']?> </td>
                                                                                       
                                            
                                            

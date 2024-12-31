@@ -8,7 +8,7 @@
         // khởi tạo đối tượng model('monhoc_m') gán cho $monhoc
     }
     function Get_data(){
-        $this->view('Masterlayout',['page'=>'qldkmonhoc_them']);
+        $this->view('Masterlayout_admin',['page'=>'qldkmonhoc_them']);
         // gọi giao diện chính và truyền dữ liệu page là trang monhoc view
     }
     function themmoi(){
@@ -40,7 +40,7 @@
            // }
            
             // gọi lại giao diện
-            // $this->view('Masterlayout',[
+            // $this->view('Masterlayout_admin',[
             //     'page'=>'monhoc_them',
             //     'id'=> $id,
             //     'email'=>$email,

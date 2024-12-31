@@ -61,9 +61,10 @@
             $hoc_ky=$_POST['txthocky'];
             $ma_giang_vien=$_POST['txtmagiangvien'];
             $lich_hoc=$_POST['txtlichhoc'];
+            $trang_thai=$_POST['txttrangthai'];
         
                     // gọi hàm chèn dl tacgia_ins trong model tacgia_m
-            $kq=$this->dslh->lophoc_upd($ma_lop,$ma_nganh,$hoc_ky,$ma_giang_vien,$lich_hoc);
+            $kq=$this->dslh->lophoc_upd($ma_lop,$ma_nganh,$hoc_ky,$ma_giang_vien,$lich_hoc,$trang_thai);
             if($kq){
                 echo'<script>alert("Sửa thành công")
                 window.location.href = "http://localhost/qlhs/dslophoc";

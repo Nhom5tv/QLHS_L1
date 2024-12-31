@@ -1,8 +1,8 @@
 <!-- truy van sql -->
 <?php 
 class qllophoc extends connectDB{
-    function lophoc_ins($ma_mon,$hoc_ky,$ma_giang_vien,$lich_hoc){
-        $sql="INSERT INTO lop(ma_mon,hoc_ky,ma_giang_vien,lich_hoc) VALUES ('$ma_mon','$hoc_ky','$ma_giang_vien','$lich_hoc')";
+    function lophoc_ins($ma_mon,$hoc_ky,$ma_giang_vien,$lich_hoc,$trang_thai){
+        $sql="INSERT INTO lop(ma_mon,hoc_ky,ma_giang_vien,lich_hoc,trang_thai) VALUES ('$ma_mon','$hoc_ky','$ma_giang_vien','$lich_hoc','$trang_thai')";
          return mysqli_query($this->con,$sql);
         
     }
@@ -75,8 +75,8 @@ class qllophoc extends connectDB{
         $sql="DELETE FROM lop WHERE ma_lop ='$ma_lop'";
         return mysqli_query($this->con,$sql);
     }
-    function lophoc_upd($ma_lop,$ma_mon,$hoc_ky,$ma_giang_vien,$lich_hoc){
-        $sql="UPDATE lop SET ma_mon= '$ma_mon' , hoc_ky= '$hoc_ky' , ma_giang_vien= '$ma_giang_vien' , lich_hoc= N'$lich_hoc'  
+    function lophoc_upd($ma_lop,$ma_mon,$hoc_ky,$ma_giang_vien,$lich_hoc,$trang_thai){
+        $sql="UPDATE lop SET ma_mon= '$ma_mon' , hoc_ky= '$hoc_ky' , ma_giang_vien= '$ma_giang_vien' , lich_hoc= N'$lich_hoc',trang_thai= N'$trang_thai'  
         WHERE ma_lop='$ma_lop'";
         return mysqli_query($this->con,$sql);
     }

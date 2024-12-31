@@ -100,7 +100,7 @@
                     <ul id="QLHT" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
 
                         <li class="sidebar-item">
-                            <a href="http://localhost/QLHS/dsdkmonhoc" class="sidebar-link">Quản lý đăng ký môn học</a>
+                            <a href="http://localhost/QLHS/dsdkmonhoc" class="sidebar-link">Danh sách đăng ký môn học</a>
                         </li>
 
                         <li class="sidebar-item">
