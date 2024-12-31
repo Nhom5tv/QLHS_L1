@@ -57,20 +57,20 @@
                     </ul>
                 </li>
 
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
-                        data-bs-target="#QLKQHT" aria-expanded="false" aria-controls="QLKQHT">
+                <!-- <li class="sidebar-item">
+                    <a href="http://localhost/qlhs/DSdiem" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                        data-bs-target="#QLKQHT" aria-expanded="false" >
                         <i class="fa-solid fa-medal"></i>
                         <span>Quản lý kết quả học tập</span>
                     </a>
-                    <ul id="QLKQHT" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                        <li class="sidebar-item">
-                            <a href="http://localhost/qlhs/DSdiemchitiet" class="sidebar-link">Tra cứu điểm</a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="http://localhost/qlhs/DSdiem" class="sidebar-link">Điểm tổng hợp</a>
-                        </li>
-                    </ul>
+                   
+                </li> -->
+
+                <li class="sidebar-item">
+                    <a href="http://localhost/qlhs/DSdiem" class="sidebar-link">
+                    <i class="fa-solid fa-medal"></i>
+                        <span>Tra cứu kết quả học tập</span>
+                    </a>
                 </li>
 
                  <li class="sidebar-item">

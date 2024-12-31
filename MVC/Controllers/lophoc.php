@@ -27,11 +27,20 @@
 
                 // Gọi hàm cập nhật mã lớp vào bảng đăng ký môn học
                 $this->lophoc->capNhatMaLopVaoDangKy($ma_lop, $ma_mon);
-    
-                echo '<script>
-                    alert("Thêm mới thành công và đã cập nhật mã lớp vào bảng đăng ký!");
-                    window.location.href = "http://localhost/qlhs/lophoc";
-                    </script>';
+
+                $result = $this->lophoc->themDiemChiTiet($ma_lop, $ma_mon);
+
+                if ($result) {
+                    echo '<script>
+                        alert("Thêm mới thành công, đã cập nhật mã lớp và chèn dữ liệu vào bảng điểm chi tiết!");
+                        window.location.href = "http://localhost/qlhs/lophoc";
+                        </script>';
+                } else {
+                    echo '<script>
+                        alert("Thêm mới thành công, đã cập nhật mã lớp nhưng không có dữ liệu để chèn vào bảng điểm chi tiết!");
+                        window.location.href = "http://localhost/qlhs/lophoc";
+                        </script>';
+                }
                 exit(); // Thoát sau khi hiển thị thông báo
             } else {
                 echo '<script>alert("Thêm mới thất bại!");</script>';

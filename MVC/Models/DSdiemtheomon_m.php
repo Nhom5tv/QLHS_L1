@@ -1,36 +1,90 @@
 <?php 
-class Diemtheomon_m extends connectDB {
-   
-    // Hàm thêm mới điểm chi tiết
-    function diemchitiet_ins($ma_lop, $ma_sinh_vien, $lan_hoc, $lan_thi, $diem_chuyen_can, $diem_giua_ky, $diem_cuoi_ky) {
-        $sql = "INSERT INTO diem_chi_tiet (ma_lop, ma_sinh_vien, lan_hoc, lan_thi, diem_chuyen_can, diem_giua_ky, diem_cuoi_ky) 
-                VALUES ('$ma_lop', '$ma_sinh_vien', '$lan_hoc', '$lan_thi', '$diem_chuyen_can', '$diem_giua_ky', '$diem_cuoi_ky')";
-                echo $sql;
-        return mysqli_query($this->con, $sql);
+class DSdiemtheomon_m extends connectDB {
+
+    // function getClassesByLecturer($ma_giang_vien) {
+    //     $sql = "SELECT * FROM lop WHERE ma_giang_vien = '$ma_giang_vien'";
+    //     $result = mysqli_query($this->con, $sql);
+    //     // Kiểm tra nếu có kết quả
+    //     if (!$result) {
+    //         echo "Lỗi truy vấn: " . mysqli_error($this->con);
+    //         return [];
+    //     }
+
+    //     return $result;
+    // }
+    function getClassesByLecturer($ma_giang_vien) {
+        $sql = "SELECT ma_lop FROM lop WHERE ma_giang_vien = '$ma_giang_vien'";
+        $result = mysqli_query($this->con, $sql);
+        if (!$result) {
+            echo "Lỗi truy vấn: " . mysqli_error($this->con);
+            return null; // Nếu có lỗi, trả về mảng rỗng
+        }
+        return $result; // Trả về đối tượng mysqli_result
     }
+    
+    function getStudentScoresByClass($ma_lop) {
+        $sql = "SELECT 
+                    DISTINCT dct.ma_dct, 
+                    dct.ma_sinh_vien, 
+                    sv.ho_ten,
+                    dct.lan_hoc,
+                    dct.lan_thi,
+                    dct.diem_chuyen_can,
+                    dct.diem_giua_ky,
+                    dct.diem_cuoi_ky
+                FROM diem_chi_tiet dct
+           
+                JOIN sinh_vien sv ON dct.ma_sinh_vien = sv.ma_sinh_vien
+                WHERE dct.ma_lop = '$ma_lop'";
+        $result = mysqli_query($this->con, $sql);
+        // Kiểm tra nếu có kết quả
+        if (!$result) {
+            echo "Lỗi truy vấn: " . mysqli_error($this->con);
+            return [];
+        }
+        return $result;
+        
+    }
+   
+    // // Hàm thêm mới điểm chi tiết
+    // function diemtungmon_ins($ma_lop, $ma_sinh_vien, $lan_hoc, $lan_thi, $diem_chuyen_can, $diem_giua_ky, $diem_cuoi_ky) {
+    //     $sql = "INSERT INTO diem_chi_tiet (ma_lop, ma_sinh_vien, lan_hoc, lan_thi, diem_chuyen_can, diem_giua_ky, diem_cuoi_ky) 
+    //             VALUES ('$ma_lop', '$ma_sinh_vien', '$lan_hoc', '$lan_thi', '$diem_chuyen_can', '$diem_giua_ky', '$diem_cuoi_ky')";
+    //             echo $sql;
+    //     return mysqli_query($this->con, $sql);
+    // }
 
     // Hàm cập nhật điểm chi tiết
-    function diemchitiet_upd($ma_dct, $lan_hoc, $lan_thi, $diem_chuyen_can, $diem_giua_ky, $diem_cuoi_ky) {
+    function diemtungmon_upd($ma_dct, $lan_hoc, $lan_thi, $diem_chuyen_can, $diem_giua_ky, $diem_cuoi_ky) {
         $sql = "UPDATE diem_chi_tiet 
                 SET lan_hoc='$lan_hoc', lan_thi='$lan_thi', diem_chuyen_can='$diem_chuyen_can', diem_giua_ky='$diem_giua_ky', diem_cuoi_ky='$diem_cuoi_ky' 
                 WHERE ma_dct='$ma_dct'";
-                echo $sql;
         return mysqli_query($this->con, $sql);
     }
 
     // Hàm lấy danh sách điểm chi tiết
-    function getAllDiemChiTiet($ma_sinh_vien) {
-        $sql = "SELECT * FROM diem_chi_tiet where ma_sinh_vien = '$ma_sinh_vien'";
-        return mysqli_query($this->con, $sql);
-    }
+    // function getAlldiemtungmon() {
+    //     $sql = "SELECT 
+    //                 dct.ma_sinh_vien, 
+    //                 sv.ho_ten,
+    //                 dct.lan_hoc,
+    //                 dct.lan_thi,
+    //                 dct.diem_chuyen_can,
+    //                 dct.diem_giua_ky,
+    //                 dct.diem_cuoi_ky
+    //             FROM diem_chi_tiet dct
+    //             JOIN dang_ky_mon_hoc dk ON dk.ma_lop = dct.ma_lop
+    //             JOIN sinh_vien sv ON dk.ma_sinh_vien = sv.ma_sinh_vien";
+    //     return mysqli_query($this->con, $sql);
+    // }
 
     // // Hàm xóa điểm chi tiết
-    // function diemchitiet_del($ma_dct) {
+    // function diemtungmon_del($ma_dct) {
     //     $sql = "DELETE FROM diem_chi_tiet WHERE ma_dct='$ma_dct'";
     //     return mysqli_query($this->con, $sql);
     // }
 
-    function diemchitiet_find($ma_dct) {
+    function diemtungmon_find($ma_dct) {
         $sql = "SELECT * FROM diem_chi_tiet WHERE ma_dct = '$ma_dct'";
         return mysqli_query($this->con, $sql);
     }
