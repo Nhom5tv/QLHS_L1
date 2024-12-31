@@ -1,5 +1,5 @@
 <?php
-require 'vendor/autoload.php'; // Đảm bảo bạn đã cài đặt PHPSpreadsheet qua Composer
+require 'C:\xampp\htdocs\vendor\autoload.php'; // Đảm bảo bạn đã cài đặt PHPSpreadsheet qua Composer
 
 use PhpOffice\PhpSpreadsheet\IOFactory;
 class DSNganh extends controller{
