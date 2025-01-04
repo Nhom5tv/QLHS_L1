@@ -41,7 +41,7 @@ class Login extends controller{
                         // Gọi đến trang bán hàng
                         echo '<script>
                         alert("Đăng nhập thành công");
-                        window.location.href = "http://localhost/QLHS/Masterlayout_admin";
+                        window.location.href = "http://localhost/QLHS/Trangchu";
                         </script>';
                         
                         
