@@ -30,16 +30,14 @@
 </head>
 
 <body>
-    <div class="wrapper">
+    <div class="wrapper" style="background-color: transparent;">
         
-        <div class="main p-3" >
-            <!-- Nội dung chính -->
             <div class="main-content p-4" >
                 <h2 class="mb-4">Thống kê sinh viên và giảng viên</h2>
                 <div class="chart-container d-flex justify-content-between" style="background-color: transparent;">
                     <!-- Biểu đồ loại học viên -->
                     <div class="chart-box">
-                        <h3>Biểu đồ loại học viên</h3>
+                        <h3>Biểu đồ loại sinh viên</h3>
                         <canvas id="studentChart"></canvas>
                     </div>
 
@@ -51,7 +49,7 @@
                 </div>
 
             </div>
-        </div>
+    
     </div>
     <script>
         // Dữ liệu từ backend

@@ -39,11 +39,7 @@ body {
     justify-content: center;
     background: url(../Picture/nen.jpg) center / cover no-repeat;
 }
-.main-content {
-    width: 100%;
-    padding: 2rem;
-    background: transparent; /* Đảm bảo phần này không có nền */
-}
+
 
 #sidebar {
     width: 70px;
