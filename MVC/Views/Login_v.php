@@ -66,7 +66,9 @@
                     <input type="password" required name="txtMatkhau">
                     <label>Password</label>
                 </div>
-               
+                <div class="remember-forgot">
+                    <label ><input type="checkbox" >Remember me</label>
+                </div>
                 <button type="submit" class="btn" name="btnDangnhap">Đăng nhập</button>
               
             

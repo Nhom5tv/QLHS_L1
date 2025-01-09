@@ -9,11 +9,17 @@ class DSdiemchitiet extends controller {
 
     // Hiển thị danh sách điểm chi tiết
     function Get_data() {
-        $id=$_SESSION['ma_tai_khoan'];
+        $id = $_SESSION['ma_tai_khoan']; // Lấy mã tài khoản (hoặc mã sinh viên)
+
+        // Kiểm tra nếu mã lớp tồn tại
+        if (isset($_GET['ma_lop'])) {
+            $ma_lop = $_GET['ma_lop'];
+            // Xử lý với $ma_mon
+        }
         // Trả về view với dữ liệu từ model
         $this->view('Masterlayout', [
             'page' => 'DSdiemchitiet_v',
-            'dulieu' => $this->dstk->getAllDiemChiTiet($id)
+            'dulieu' => $this->dstk->getAllDiemChiTiet($id,$ma_lop)
         ]);
     }
 
