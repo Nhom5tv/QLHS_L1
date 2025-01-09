@@ -16,42 +16,31 @@
     </style>
 </head>
 <body>
-    <form method="post" action="http://localhost/qlhs/DSmonhoc/timkiem"></form>
+    <form method="post" action="http://localhost/qlhs/dsdkmonhoc/timkiem"></form>
     <main class="table" id="customers_table">
         <section class="table__header">
             <h1>Danh sách đăng ký môn học</h1>
             <div class="input-group">
-                <form action="http://localhost/qlhs/DSmonhoc/timkiem" method="post">        
-                    <input type="search" placeholder="Tên môn" name="txtTKTenMon" value="<?php if(isset($data['ten_mon'])) echo $data['ten_mon'] ?>">
+                <form action="http://localhost/qlhs/dsdkmonhoc/timkiem" method="post">        
+                    <input type="search" placeholder="Mã Sinh Viên" name="txttkmasv" value="<?php if(isset($data['ma_sinh_vien'])) echo $data['ma_sinh_vien'] ?>">
             </div>
             <div class="input-group">
-                <form action="http://localhost/qlhs/DSmonhoc/timkiem" method="post">        
-                    <input type="search" placeholder="Mã môn" name="txtTKMaMon" value="<?php if(isset($data['ma_mon'])) echo $data['ma_mon'] ?>">
+                <form action="http://localhost/qlhs/dsdkmonhoc/timkiem" method="post">        
+                    <input type="search" placeholder="Mã môn" name="txttkmamon" value="<?php if(isset($data['ma_mon'])) echo $data['ma_mon'] ?>">
             </div>
             <button style="border: none; background: transparent;" type="submit" name="btnTimkiem"><i class="fa fa-search" ></i></button>
             </form>  
-            <!-- <div class="Insert">
-                <form action="http://localhost/qlhs/qldkmonhoc" method="post">
-                <button class="button-85" role="button">Thêm môn học</button>
-                </form>
-            </div> -->
+            <div>
+            <form action="http://localhost/qlhs/qldkmonhoc/cancel" method="post">
+                                                <button class="button-85" onclick="return confirm('Bạn có chắc muốn huỷ')" role="button" >Huỷ Tất Cả</button>
+                                               </form>
+            
+                                               </div>
 
-            <div class="Upload">
-                <form action="http://localhost/qlhs/DSmonhoc/uploadExcel" method="post" enctype="multipart/form-data">
-                <input type="file" name="txtFile">
-                <button class="button-85" role="button">Upload</button>
-                </form>
-            </div>
+           
+            
 
-            <div class="export__file">
-                <label for="export-file" class="export__file-btn" title="Export File"><img src="./Public/Picture/export.png" alt="" width="20"></label>
-                <input type="checkbox" id="export-file">
-                <div class="export__file-options">
-                    <label>Export As &nbsp; &#10140;</label>
-                    <form action="http://localhost/qlhs/DSmonhoc/exportExcel" method="post">
-                    <button style="width: 176px;" name="btnXuatExcel"><label for="export-file" id="toEXCEL">EXCEL</label></button></form>
-                </div>
-            </div>
+           
         </section>
         <section class="table__body">
             <table>
@@ -63,7 +52,7 @@
                         <th>Mã Lớp <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Lịch Học Dự Kiến <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Trạng Thái <span class="icon-arrow">&UpArrow;</span></th>
-                        <th style="padding-left:50px">Chức năng <span class="icon-arrow">&UpArrow;</span></th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -79,7 +68,7 @@
                                     
                                     <td><?php echo $row['lich_hoc_du_kien'] ?></td>
                                     <td><?php echo $row['trang_thai'] ?></td>
-                                    <td class="btn_cn">
+                                    <!-- <td class="btn_cn">
                                         <form action="http://localhost/qlhs/dsdkmonhoc/sua/<?php echo $row['ma_dang_ky'] ?>" method="post">
                                             <button class="button-85" role="button">Sửa</button>
                                         </form>
@@ -87,7 +76,7 @@
                                         <form action="http://localhost/qlhs/dsdkmonhoc/xoa/<?php echo $row['ma_dang_ky'] ?>" method="post">
                                             <button class="button-85" onclick="return confirm('Bạn có chắc muốn xóa')" role="button">Xóa</button>
                                         </form>
-                                    </td>
+                                    </td> -->
                                     </tr>
                                 <?php
                             }

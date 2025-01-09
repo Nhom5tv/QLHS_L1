@@ -58,8 +58,10 @@
                                 <td><?php echo $row['danh_gia']; ?></td>
                                 <td><?php echo $row['ghi_chu']; ?></td>
                                 <td>
-                                  <a href="http://localhost/qlhs/DSdiemchitiet">Chi tiết</a>  
+                                    <a href="http://localhost/qlhs/DSdiemchitiet?ma_lop=<?php echo $row['ma_lop']; ?>">Chi tiết</a>
                                 </td>
+
+
                             </tr>
                             <?php
                         }

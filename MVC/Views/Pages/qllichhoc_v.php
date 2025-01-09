@@ -41,6 +41,12 @@
                 </form>
             
             </div>
+            <div>
+            <form action="http://localhost/qlhs/lichhoc/dongall" method="post">
+                                                <button class="button-85" onclick="return confirm('Bạn có chắc muốn đóng')" role="button" >Đóng Tất Cả</button>
+                                               </form>
+            
+                                               </div>
             <div >
                 <!-- <form action="http://localhost/qlhs/dslichhoc/timkiem" method="post">
                     <button type="submit" class="button-85" name="btnXuatExcel2">Xuất Excel</button>

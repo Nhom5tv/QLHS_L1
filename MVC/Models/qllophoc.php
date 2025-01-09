@@ -31,7 +31,7 @@ class qllophoc extends connectDB{
                 if (mysqli_num_rows($result_check) == 0) {
                     // Chèn dữ liệu nếu chưa tồn tại
                     $sql_insert = "INSERT INTO diem_chi_tiet (ma_lop, ma_sinh_vien, lan_hoc, lan_thi, diem_chuyen_can, diem_giua_ky, diem_cuoi_ky)
-                                   VALUES ('$ma_lop', '$ma_sinh_vien', 1, 1, 0, 0, 0)";
+                                   VALUES ('$ma_lop', '$ma_sinh_vien', 1, 1, NULL, NULL, NULL)";
                     mysqli_query($this->con, $sql_insert);
                 }
             }

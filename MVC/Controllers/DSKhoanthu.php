@@ -256,9 +256,9 @@ class DSKhoanthu extends controller {
     function suadl() {
         if (isset($_POST['btnLuu'])) {
             $id = $_POST['txtId'];
-            $tenKhoanThu = $_POST['txtTenkhoanthu'];
-            $loaiKhoanThu = $_POST['txtLoaikhoanthu'];
-            $soTien = $_POST['txtSoTien'];
+            // $tenKhoanThu = $_POST['txtTenkhoanthu'];
+            // $loaiKhoanThu = $_POST['txtLoaikhoanthu'];
+            // $soTien = $_POST['txtSoTien'];
             $ngayTao = $_POST['txtNgaytao'];
             $hanNop = $_POST['txtHannop'];
             
@@ -271,21 +271,12 @@ class DSKhoanthu extends controller {
                 exit();
             }
             // Cập nhật khoản thu
-            $kq = $this->dskt->khoanthu_upd($id, $tenKhoanThu, $loaiKhoanThu, $soTien, $ngayTao, $hanNop);
+            $kq = $this->dskt->khoanthu_capnhathannop($id,$hanNop);
     
             if ($kq) {
                 // Gọi hàm cập nhật miễn giảm cho sinh viên
-                $capnhatMienGiam = $this->dsmg->capnhatMienGiamKhiTaoKhoanThu($id);
-    
-                if ($capnhatMienGiam) {
-                    echo '<script>
-                            alert("Sửa khoản thu và cập nhật miễn giảm thành công!");
-                            window.location.href = "http://localhost/QLHS/DSKhoanthu";
-                          </script>';
-                    exit();
-                } else {
-                    echo '<script>alert("Sửa khoản thu thành công nhưng cập nhật miễn giảm thất bại!")</script>';
-                }
+                echo '<script>alert("Sửa khoản thu thành công!")</script>';
+               
             } else {
                 echo '<script>alert("Sửa khoản thu thất bại!")</script>';
             }

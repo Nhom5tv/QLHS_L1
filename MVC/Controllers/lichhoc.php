@@ -8,7 +8,7 @@
         // khởi tạo đối tượng model('lichhoc_m') gán cho $lichhoc
     }
     function Get_data(){
-        $this->view('Masterlayout',['page'=>'lichhoc_them']);
+        $this->view('Masterlayout_admin',['page'=>'lichhoc_them']);
         // gọi giao diện chính và truyền dữ liệu page là trang lichhoc view
     }
     function themmoi(){
@@ -30,7 +30,7 @@
             if($kq){
                 echo '<script>
                 alert("Thêm mới thành công");
-                window.location.href = "http://localhost/qlhs/lichhoc";
+                window.location.href = "http://localhost/qlhs/dslichhoc";
                 </script>';
                 // hiện thị alert trc khi chuyển trang
     exit();
@@ -52,6 +52,22 @@
             // ]);
         }
     }
+    function dongall(){
+       
+            $kq=$this->lichhoc->lichhoc_cls();
+            if($kq){
+                echo '<script>
+                alert("Đã Đóng thành công");
+                window.location.href = "http://localhost/qlhs/dslichhoc";
+                </script>';
+                // hiện thị alert trc khi chuyển trang
+    exit();
+                
+            }
+            else
+                echo'<script>alert("Đóng thất bại")</script>';
+         
     
  }
+}
  ?>

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="http://localhost/QLHS/Public/CSS/button.css">
     <link rel="stylesheet" type="text/css" href="http://localhost/QLHS/Public/CSS/styleDT.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style >
         .btn_cn {
             display: flex;
@@ -44,6 +45,28 @@
       .input-box input{
         width : 100%;
       }
+      .status-label {
+        display: inline-block !important;
+    color: #fff !important;
+    background-color: #28a745 ;
+   
+    padding: 5px 10px;
+    
+    font-weight: bold;
+    border-radius: 4px;
+    
+    margin: 10px 0;
+}
+
+.status-complete {
+    background-color: #28a745 !important; /* Màu xanh */
+}
+
+.status-incomplete {
+    background-color: #dc3545 !important; /* Màu đỏ */
+}
+
+
       
     </style>
 </head>
@@ -51,11 +74,60 @@
 <body>
     <form method="post" action="http://localhost/QLHS/DSDonhang/timkiem"></form>
     <main class="table" id="customers_table" style="margin-top: 30px;">
+            <?php
+        $tong_trang_thai = 'Đã hoàn thành';
+        if (isset($data['dsphainop']) && mysqli_num_rows($data['dsphainop']) > 0) {
+            while ($row = mysqli_fetch_assoc($data['dsphainop'])) {
+                if ($row['trang_thai_thanh_toan'] != 'Đã thanh toán') {
+                    $tong_trang_thai = 'Chưa hoàn thành';
+                    break; // Dừng vòng lặp ngay khi tìm thấy trạng thái chưa thanh toán
+                }
+            }
+            // Reset lại con trỏ kết quả để dùng tiếp bên dưới
+            mysqli_data_seek($data['dsphainop'], 0);
+        }
+        ?>
+        <?php
+$thong_bao_popup = '';
+if (isset($data['dsphainop']) && mysqli_num_rows($data['dsphainop']) > 0) {
+    while ($row = mysqli_fetch_assoc($data['dsphainop'])) {
+        $today = date('Y-m-d');
+        if (strtotime($row['han_nop']) <= strtotime($today . ' +7 days') && $row['trang_thai_thanh_toan'] != 'Đã thanh toán') {
+            $thong_bao_popup .= 'Khoản thu "' . $row['ten_khoan_thu'] . '" sắp đến hạn nộp vào ngày ' . $row['han_nop'] . '\\n';
+        }
+    }
+    mysqli_data_seek($data['dsphainop'], 0);
+}
+?>
+<script>
+    const message = '<?php echo $thong_bao_popup; ?>';
+    // console.log("Thông báo kiểm tra:", message); // Kiểm tra nội dung của biến message
+    if (message) {
+        Swal.fire({
+            title: 'Thông Báo Quan Trọng!',
+            text: message,
+            icon: 'warning',
+            confirmButtonText: 'Đã hiểu'
+        });
+    }
+</script>
+
+
         <section class="table__header">
             <h1>Các khoản phải nộp</h1>
-           
-            
+            <div style="text-align: center; margin: 10px 0;">
+    <?php
+    if ($tong_trang_thai == 'Đã hoàn thành') {
+        echo '<span class="status-label status-complete">Đã hoàn thành</span>';
+    } else {
+        echo '<span class="status-label status-incomplete">Chưa hoàn thành</span>';
+    }
+    ?>
+</div>
+
+
         </section>
+
         <section class="table__body">
             <table>
                 <thead>

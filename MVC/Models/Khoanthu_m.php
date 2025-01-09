@@ -93,6 +93,11 @@ class Khoanthu_m extends connectDB{
     
         return false; // Lỗi khi cập nhật bảng khoan_thu
     }
+    function khoanthu_capnhathannop($id,$hanNop)
+    {
+        $sql = "UPDATE khoan_thu SET han_nop = '$hanNop' WHERE ma_khoan_thu = '$id'";
+        return mysqli_query($this->con, $sql);
+    }
     
     // Hàm thêm khoản thu sinh viên tự động
     function khoanthu_sinhvien_ins($maKhoanThu, $soTienBanDau) {

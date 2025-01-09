@@ -15,15 +15,15 @@
     function Timkiem(){
         if(isset($_POST['btnTimkiemlop'])){
            
-            $ma_nganh=$_POST['txtTimkiemmanganh'];
+            $ma_mon=$_POST['txtTimkiemmamon'];
             // lay du lieu nhap tu txt  
             $ma_giang_vien=$_POST['txtTimkiemmagiangvien'];
-            $dl=$this->dslh->lophoc_find($ma_nganh,$ma_giang_vien); // goi ham tim kiem
+            $dl=$this->dslh->lophoc_find($ma_mon,$ma_giang_vien); // goi ham tim kiem
             // goi lai giao dien render lại trang va truyen $ dl ra 
             $this->view('Masterlayout_admin',[
                 'page'=>'dslophoc_v',
                 'dulieu'=>$dl,
-                'ma_nganh'=>$ma_nganh,
+                'ma_mon'=>$ma_mon,
                 'ma_giang_vien'=>$ma_giang_vien
             ]);
            
