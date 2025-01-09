@@ -66,15 +66,9 @@
                     <input type="password" required name="txtMatkhau">
                     <label>Password</label>
                 </div>
-                <div class="remember-forgot">
-                    <label ><input type="checkbox" >Remember me</label>
-                    <a href="#">Quên mật khẩu</a>
-                </div>
+               
                 <button type="submit" class="btn" name="btnDangnhap">Đăng nhập</button>
-                <div class="login-register">
-                    <p>Bạn chưa có tài khoản?&nbsp;<a href="http://localhost/QLHS/Dangky" class="register-link"> Đăng ký</a></p>
-                    
-                </div>
+              
             
         </div>
     </div>

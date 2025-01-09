@@ -7,7 +7,7 @@
     }
     // getdata de hien thi du lieu khi load trang
     function Get_data(){
-        $this->view('Masterlayout',[
+        $this->view('Masterlayout_admin',[
             'page'=>'qllichhoc_v',
             'dulieu'=>$this->dslhoc->lichhoc_find('','')
         ]);
@@ -20,7 +20,7 @@
             $lich_hoc=$_POST['txtTimkiemlichhoc'];
             $dl=$this->dslhoc->lichhoc_find($ma_mon,$lich_hoc); // goi ham tim kiem
             // goi lai giao dien render lại trang va truyen $ dl ra 
-            $this->view('Masterlayout',[
+            $this->view('Masterlayout_admin',[
                 'page'=>'qllichhoc_v',
                 'dulieu'=>$dl,
                 'ma_mon'=>$ma_mon,
@@ -49,7 +49,7 @@
 
     }
     function sua($id_lich_hoc){
-        $this->view('Masterlayout',[
+        $this->view('Masterlayout_admin',[
             'page'=>'lichhoc_sua',
             'dulieu'=>$this->dslhoc->lichhoc_findsua($id_lich_hoc,"")
         ]);
@@ -75,7 +75,7 @@
             }
             
             // gọi lại giao diện
-            $this->view('Masterlayout',[
+            $this->view('Masterlayout_admin',[
                 'page'=>'DSTaikhoan_v',
                 'dulieu'=>$this->dslhoc->lichhoc_find('','')
             ]);

@@ -10,7 +10,8 @@ class ThongTinSinhVien extends controller {
 
     // getdata để hiển thị dữ liệu khi load trang
     public function Get_data() {
-        $maSV = 'msv3';
+        $maSV=$_SESSION['ma_tai_khoan'];
+         
     
         // Lấy dữ liệu từ Model
         $result = $this->dssv1->get_sinhvien_by_msv($maSV);

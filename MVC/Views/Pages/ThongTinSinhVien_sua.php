@@ -129,7 +129,7 @@
             </tr>
         </table>
         <div class="buttons">
-            <a href="/ThongTinSinhVien/List" class="button cancel">Hủy</a>
+            <a href="http://localhost/QLHS/ThongTinSinhVien" class="button cancel">Hủy</a>
             <button type="submit"  name= "btnluu" class="button">Lưu Thay Đổi</button>
         </div>
     </form>

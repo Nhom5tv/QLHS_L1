@@ -37,8 +37,9 @@ body {
     background-color: #fafbfe;
     display: flex;
     justify-content: center;
-    background: url(../Picture/nen.jpg) center / cover;
+    background: url(../Picture/nen.jpg) center / cover no-repeat;
 }
+
 
 #sidebar {
     width: 70px;

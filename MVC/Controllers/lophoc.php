@@ -8,7 +8,7 @@
         // khởi tạo đối tượng model('lophoc_m') gán cho $lophoc
     }
     function Get_data(){
-        $this->view('Masterlayout',['page'=>'lophoc_them']);
+        $this->view('Masterlayout_admin',['page'=>'lophoc_them']);
         // gọi giao diện chính và truyền dữ liệu page là trang lophoc view
     }
     function themmoi() {
@@ -17,9 +17,10 @@
             $hoc_ky = $_POST['txthocky'];
             $ma_giang_vien = $_POST['txtmagiangvien'];
             $lich_hoc = $_POST['txtlichhoc'];
+            $trang_thai = $_POST['txttrangthai'];
     
             // Thêm mới lớp học
-            $kq = $this->lophoc->lophoc_ins($ma_mon, $hoc_ky, $ma_giang_vien, $lich_hoc);
+            $kq = $this->lophoc->lophoc_ins($ma_mon, $hoc_ky, $ma_giang_vien, $lich_hoc,$trang_thai);
     
             if ($kq) {
                 $ma_lop = $this->lophoc->getLastInsertedId();

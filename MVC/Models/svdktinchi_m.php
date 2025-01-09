@@ -40,7 +40,7 @@ GROUP BY
         
     }
     function dk_ins($ma_mon,$ma_sinh_vien,$lich_hoc_du_kien){
-        $sql="INSERT INTO dang_ky_mon_hoc(ma_mon,ma_sinh_vien,ma_lop,lich_hoc_du_kien,trang_thai) VALUES ('$ma_mon','$ma_sinh_vien',0,'$lich_hoc_du_kien',N'Đang Chờ Duyệt')";
+        $sql="INSERT INTO dang_ky_mon_hoc(ma_mon,ma_sinh_vien,ma_lop,lich_hoc_du_kien,trang_thai) VALUES ('$ma_mon','$ma_sinh_vien',NULL,'$lich_hoc_du_kien',N'Đang Chờ Duyệt')";
          return mysqli_query($this->con,$sql);
         
     }

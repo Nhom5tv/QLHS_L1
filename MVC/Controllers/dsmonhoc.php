@@ -12,7 +12,7 @@ class DSmonhoc extends controller {
 
     // Hiển thị dữ liệu khi tải trang
     function Get_data() {
-        $this->view('Masterlayout', [
+        $this->view('Masterlayout_admin', [
             'page' => 'DSmonhoc_v',
             'dulieu' => $this->dsmonhoc->monhoc_find('', '')
         ]);
@@ -25,7 +25,7 @@ class DSmonhoc extends controller {
             $ten_mon = $_POST['txtTKTenMon'];
             
             $dl = $this->dsmonhoc->monhoc_find($ma_mon, $ten_mon); // Gọi hàm tìm kiếm
-            $this->view('Masterlayout', [
+            $this->view('Masterlayout_admin', [
                 'page' => 'DSmonhoc_v',
                 'dulieu' => $dl,
                 'ma_mon' => $ma_mon,
@@ -150,7 +150,7 @@ class DSmonhoc extends controller {
 
     // Hiển thị giao diện sửa môn học
     function sua($ma_mon){
-        $this->view('Masterlayout',[
+        $this->view('Masterlayout_admin',[
             'page'=>'monhoc_sua',
             'dulieu'=>$this->dsmonhoc->monhoc_find($ma_mon,"")
         ]);
@@ -171,7 +171,7 @@ class DSmonhoc extends controller {
                 echo '<script>alert("Sửa thất bại")</script>';
             }
 
-            $this->view('Masterlayout', [
+            $this->view('Masterlayout_admin', [
                 'page' => 'DSmonhoc_v',
                 'dulieu' => $this->dsmonhoc->monhoc_find('', '')
             ]);

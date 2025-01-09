@@ -78,13 +78,20 @@ if ($conn->connect_error) {
 
                     <label>Lịch Học</label>
                 </div>
+                <label>Trạng thái lớp học</label>
+                <div class="input-box">
+                        <select name="txttrangthai">
+                        <option value="Đang mở" <?php if(isset($row['trang_thai']) && $row['trang_thai'] === 'Đang mở') echo 'selected'; ?>>Đang Mở</option>
+                        <option value="Đã kết thúc" <?php if(isset($row['trang_thai']) && $row['trang_thai'] === 'Đã kết thúc') echo 'selected'; ?>>Đóng</option>
+                        </select>
+</div>
                 
                
                 </div>
                 <button type="submit" class="btn" name="btnLuu">Lưu</button>
                 <br>
                 <div class="quaylai">
-                <a href="http://localhost/qlhs/qllophoc">Quay lại</a>
+                <a href="http://localhost/QLHS/dslophoc">Quay lại</a>
                 </div>
                 
                 

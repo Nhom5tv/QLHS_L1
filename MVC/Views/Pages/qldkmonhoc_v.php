@@ -19,7 +19,7 @@
     <form method="post" action="http://localhost/qlhs/DSmonhoc/timkiem"></form>
     <main class="table" id="customers_table">
         <section class="table__header">
-            <h1>Quản lý môn học</h1>
+            <h1>Danh sách đăng ký môn học</h1>
             <div class="input-group">
                 <form action="http://localhost/qlhs/DSmonhoc/timkiem" method="post">        
                     <input type="search" placeholder="Tên môn" name="txtTKTenMon" value="<?php if(isset($data['ten_mon'])) echo $data['ten_mon'] ?>">
@@ -30,11 +30,11 @@
             </div>
             <button style="border: none; background: transparent;" type="submit" name="btnTimkiem"><i class="fa fa-search" ></i></button>
             </form>  
-            <div class="Insert">
+            <!-- <div class="Insert">
                 <form action="http://localhost/qlhs/qldkmonhoc" method="post">
                 <button class="button-85" role="button">Thêm môn học</button>
                 </form>
-            </div>
+            </div> -->
 
             <div class="Upload">
                 <form action="http://localhost/qlhs/DSmonhoc/uploadExcel" method="post" enctype="multipart/form-data">

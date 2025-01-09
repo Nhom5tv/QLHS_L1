@@ -21,7 +21,7 @@
     <form method="post" action="http://localhost/qlhs/dslichhoc/timkiem"></form>
     <main class="table" id="customers_table">
         <section class="table__header">
-            <h1>Quản lý Đăng Ký Môn Học</h1>
+            <h1>Quản lý lịch học</h1>
            
             <div class="input-group"> 
             <form action="http://localhost/qlhs/dslichhoc/timkiem" method="post">         

@@ -62,7 +62,7 @@
                     <tr>
                         <th> Mã Khoa <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Tên Khoa <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Mã khoa<span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Liên Hệ<span class="icon-arrow">&UpArrow;</span></th>
                         <th> Thời gian đào tạo <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Bậc đào tạo <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Chức năng <span class="icon-arrow">&UpArrow;</span></th>

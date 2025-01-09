@@ -45,6 +45,14 @@
                     <input type="text" required name="txtlichhoc"  value="<?php  echo $row['lich_hoc']?>">
                     <label>Lịch Học</label>
                 </div>
+                <label>Trạng thái lớp học</label>
+                <div class="input-box">
+                        <select name="txttrangthai">
+                        <option value="Đang mở" <?php if(isset($row['trang_thai']) && $row['trang_thai'] === 'Đang mở') echo 'selected'; ?>>Đang Mở</option>
+                        <option value="Đã kết thúc" <?php if(isset($row['trang_thai']) && $row['trang_thai'] === 'Đã kết thúc') echo 'selected'; ?>>Đóng</option>
+                        </select>
+
+</div>
                 
                    
                 </div>
