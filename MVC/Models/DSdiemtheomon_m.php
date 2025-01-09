@@ -56,10 +56,47 @@ class DSdiemtheomon_m extends connectDB {
 
     // Hàm cập nhật điểm chi tiết
     function diemtungmon_upd($ma_dct, $lan_hoc, $lan_thi, $diem_chuyen_can, $diem_giua_ky, $diem_cuoi_ky) {
-        $sql = "UPDATE diem_chi_tiet 
-                SET lan_hoc='$lan_hoc', lan_thi='$lan_thi', diem_chuyen_can='$diem_chuyen_can', diem_giua_ky='$diem_giua_ky', diem_cuoi_ky='$diem_cuoi_ky' 
-                WHERE ma_dct='$ma_dct'";
-        return mysqli_query($this->con, $sql);
+        // Bước 1: Tìm dữ liệu cũ của bản ghi
+        $sql_find = "SELECT * FROM diem_chi_tiet WHERE ma_dct = '$ma_dct'";
+        $result_find = mysqli_query($this->con, $sql_find);
+        
+        if (!$result_find) {
+            echo "Lỗi truy vấn: " . mysqli_error($this->con);
+            return false;
+        }
+    
+        // Bước 2: Kiểm tra xem có kết quả không
+        $data = mysqli_fetch_assoc($result_find);
+        if (!$data) {
+            echo "Không tìm thấy bản ghi";
+            return false;
+        }
+    
+        // Bước 3: Nếu lần thi là 2, cần sao chép dữ liệu hiện tại (để giữ nguyên dữ liệu cũ)
+        if ($lan_thi == 2) {
+            // Lưu bản sao dữ liệu vào bảng diem_chi_tiet (trước khi cập nhật)
+            $sql_insert = "INSERT INTO diem_chi_tiet (ma_lop, ma_sinh_vien, lan_hoc, lan_thi, diem_chuyen_can, diem_giua_ky, diem_cuoi_ky) 
+                           VALUES ('".$data['ma_lop']."', '".$data['ma_sinh_vien']."', '".$data['lan_hoc']."', '1', '".$data['diem_chuyen_can']."', '".$data['diem_giua_ky']."', '".$data['diem_cuoi_ky']."')";
+            $result_insert = mysqli_query($this->con, $sql_insert);
+            
+            if (!$result_insert) {
+                echo "Lỗi chèn bản sao: " . mysqli_error($this->con);
+                return false;
+            }
+        }
+    
+        // Bước 4: Cập nhật thông tin lần thi mới (lan_thi = 2)
+        $sql_update = "UPDATE diem_chi_tiet 
+                       SET lan_hoc='$lan_hoc', lan_thi='$lan_thi', diem_chuyen_can='$diem_chuyen_can', diem_giua_ky='$diem_giua_ky', diem_cuoi_ky='$diem_cuoi_ky' 
+                       WHERE ma_dct='$ma_dct'";
+        $result_update = mysqli_query($this->con, $sql_update);
+        
+        if (!$result_update) {
+            echo "Lỗi cập nhật dữ liệu: " . mysqli_error($this->con);
+            return false;
+        }
+    
+        return true;
     }
 
     // Hàm lấy danh sách điểm chi tiết
