@@ -128,9 +128,9 @@ if ($formattedDate && $formattedDate->format('Y-m-d') === $ngaySinh) {
     
             // Set tiêu đề cho các cột
             $sheet->setCellValue('A1', 'Mã sinh viên');
-            $sheet->setCellValue('B1', 'Tên đăng nhập');
-            $sheet->setCellValue('C1', 'Mật khẩu');
-            $sheet->setCellValue('D1', 'Email');
+            $sheet->setCellValue('B1', 'Mã khoa');
+            $sheet->setCellValue('C1', 'Mã ngành');
+            $sheet->setCellValue('D1', 'Họ tên');
             $sheet->setCellValue('E1', 'Ngày sinh');
             $sheet->setCellValue('F1', 'Giới tính');
             $sheet->setCellValue('G1', 'Quê quán');
@@ -162,13 +162,13 @@ if (!empty($ngaySinh)) {
 }
 
 // Điền các giá trị khác
-$sheet->setCellValueExplicit('A' . $rowNumber, $row['ma_sinh_vien'] ?? 0, \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_NUMERIC);
+$sheet->setCellValueExplicit('A' . $rowNumber, $row['ma_sinh_vien'] ?? 0, \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
 $sheet->setCellValueExplicit('B' . $rowNumber, $row['ma_khoa'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_NUMERIC);
 $sheet->setCellValueExplicit('C' . $rowNumber, $row['ma_nganh'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_NUMERIC);
 $sheet->setCellValueExplicit('D' . $rowNumber, $row['ho_ten'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
 
-// Không cần đặt lại ngày sinh ở đây nữa
-// $sheet->setCellValueExplicit('E' . $rowNumber, $row['ngay_sinh'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
+
+$sheet->setCellValueExplicit('E' . $rowNumber, $row['ngay_sinh'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
 
 $sheet->setCellValueExplicit('F' . $rowNumber, $row['gioi_tinh'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
 $sheet->setCellValueExplicit('G' . $rowNumber, $row['que_quan'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);

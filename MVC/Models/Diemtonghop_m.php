@@ -30,6 +30,7 @@ class Diemtonghop_m extends connectDB {
     public function getAllSummaryScores($id) {
         $query = "SELECT 
                     dt.ma_dct, 
+                    dc.ma_lop,
                     mh.ma_mon,
                     mh.ten_mon,
                     mh.so_tin_chi,

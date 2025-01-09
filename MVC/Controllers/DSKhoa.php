@@ -110,9 +110,9 @@ class DSKhoa extends controller{
             $sheet = $spreadsheet->getActiveSheet();
     
             // Set tiêu đề cho các cột
-            $sheet->setCellValue('A1', 'Mã ngành');
-            $sheet->setCellValue('B1', 'Tên ngành');
-            $sheet->setCellValue('C1', 'Mã khoa');
+            $sheet->setCellValue('A1', 'Mã khoa');
+            $sheet->setCellValue('B1', 'Tên khoa');
+            $sheet->setCellValue('C1', 'Liên hệ');
             $sheet->setCellValue('D1', 'Thời gian đào tạo');
             $sheet->setCellValue('E1', 'Bậc đào tạo');
     
@@ -120,10 +120,10 @@ class DSKhoa extends controller{
             foreach ($data as $row) {
 $sheet->setCellValueExplicit('A' . $rowNumber, $row['ma_khoa'] ?? 0, \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_NUMERIC);
 $sheet->setCellValueExplicit('B' . $rowNumber, $row['ten_khoa'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
-$sheet->setCellValueExplicit('C' . $rowNumber, $row['lien_he'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_NUMERIC);
-$sheet->setCellValueExplicit('D' . $rowNumber, $row['ngay_thanh_lap'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_NUMERIC);
+$sheet->setCellValueExplicit('C' . $rowNumber, $row['lien_he'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
+$sheet->setCellValueExplicit('D' . $rowNumber, $row['ngay_thanh_lap'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
 
-$sheet->setCellValueExplicit('E' . $rowNumber, $row['tien_moi_tin_chi'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
+$sheet->setCellValueExplicit('E' . $rowNumber, $row['tien_moi_tin_chi'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_NUMERIC);
 $rowNumber++;
 
             }
