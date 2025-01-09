@@ -56,7 +56,7 @@
 
                 <li class="sidebar-item">
                     <a href="http://localhost/qlhs/Taichinh" class="sidebar-link">
-                        <i class="fa-solid fa-house"></i>
+                        <i class="fa-solid fa-coins"></i>
                         <span>Tài chính và học phí</span>
                     </a>
                 </li>
