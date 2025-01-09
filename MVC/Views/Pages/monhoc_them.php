@@ -58,9 +58,11 @@
                     <input type="number" required name="txtSoTiet" value="<?php if (isset($data['so_tiet'])) echo $data['so_tiet']; ?>">
                     <label>Số Tiết</label>
                 </div>
-
-                <button type="submit" class="btn" name="btnLuu">Lưu</button>
-                <br>
+                <div>
+                    <button type="submit" class="btn" name="btnLuu">Lưu</button>
+                </div>
+                
+                
                 <div class="quaylai">
                     <a href="http://localhost/qlhs/DSMonhoc">Quay lại</a>
                 </div>
