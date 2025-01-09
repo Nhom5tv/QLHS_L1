@@ -20,7 +20,7 @@ class Diemchitiet_m extends connectDB {
 
     // Hàm lấy danh sách điểm chi tiết
     function getAllDiemChiTiet($id) {
-        $sql = "SELECT * FROM diem_chi_tiet where ma_sinh_vien = '$id'";
+        $sql = "SELECT * FROM diem_chi_tiet where ma_dct = '$id' ";
         return mysqli_query($this->con, $sql);
     }
 
