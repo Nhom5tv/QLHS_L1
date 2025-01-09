@@ -111,6 +111,9 @@
                             <a href="http://localhost/QLHS/dslophoc" class="sidebar-link">Quản lý lớp học</a>
                         </li>
                         
+                        <li class="sidebar-item">
+                            <a href="http://localhost/QLHS/dsmonhoc" class="sidebar-link">Quản lý môn học</a>
+                        </li>
                     </ul>
                 </li>
 
