@@ -121,9 +121,44 @@ class DSdiemtheomon_m extends connectDB {
     //     return mysqli_query($this->con, $sql);
     // }
 
-    function diemtungmon_find($ma_dct) {
-        $sql = "SELECT * FROM diem_chi_tiet WHERE ma_dct = '$ma_dct'";
-        return mysqli_query($this->con, $sql);
+    // function diemtungmon_find($ma_dct) {
+    //     $sql = "SELECT * FROM diem_chi_tiet WHERE ma_dct = '$ma_dct'";
+    //     return mysqli_query($this->con, $sql);
+    // }
+    function diemtungmon_find($ma_lop, $ma_sinh_vien = null, $ho_ten = null ) {
+        // Bắt đầu xây dựng câu SQL tìm kiếm
+        $sql = "SELECT DISTINCT dct.ma_dct, 
+                            dct.ma_sinh_vien, 
+                            sv.ho_ten,
+                            dct.lan_hoc,
+                            dct.lan_thi,
+                            dct.diem_chuyen_can,
+                            dct.diem_giua_ky,
+                            dct.diem_cuoi_ky
+                FROM diem_chi_tiet dct
+                JOIN sinh_vien sv ON dct.ma_sinh_vien = sv.ma_sinh_vien
+                WHERE dct.ma_lop = '$ma_lop'";
+    
+        // Kiểm tra nếu có mã sinh viên thì thêm điều kiện tìm kiếm
+        if ($ma_sinh_vien) {
+            $sql .= " AND dct.ma_sinh_vien LIKE '%$ma_sinh_vien%'";
+        }
+    
+        // Kiểm tra nếu có họ tên thì thêm điều kiện tìm kiếm
+        if ($ho_ten) {
+            $sql .= " AND sv.ho_ten LIKE '%$ho_ten%'";
+        }
+       
+        // Thực thi truy vấn
+        $result = mysqli_query($this->con, $sql);
+    
+        // Kiểm tra lỗi truy vấn
+        if (!$result) {
+            echo "Lỗi truy vấn: " . mysqli_error($this->con);
+            return [];
+        }
+    
+        return $result; // Trả về kết quả tìm kiếm
     }
 }
 ?>

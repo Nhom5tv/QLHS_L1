@@ -98,7 +98,7 @@ if (isset($data['dulieu']) && mysqli_num_rows($data['dulieu']) > 0) {
                     <?php else : ?>
                     <!-- Nếu chưa đăng ký -->
                     <form action="http://localhost/QLHS/svdktinchi/dk" method="post">
-                        <input type="hidden" name="id_lich_hoc" value="<?php echo $row['id_lich_hoc']; ?>">
+                        <!-- <input type="hidden" name="id_lich_hoc" value="<?php echo $row['id_lich_hoc']; ?>"> -->
                         <input type="hidden" name="ma_mon_hoc" value="<?php echo $row['ma_mon_hoc']; ?>">
                         <input type="hidden" name="lich_hoc_du_kien" value="<?php echo $row['lich_hoc_du_kien']; ?>">
                         <button class="button-85" onclick="return confirm('Bạn có chắc muốn Đăng Ký không ?')" role="button">Đăng Ký</button>

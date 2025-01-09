@@ -16,12 +16,18 @@ class DSdiemtungmon_gv extends controller {
 
         // Lấy mã lớp được chọn từ POST hoặc GET
         $selected_class_id = isset($_POST['class_id']) ? $_POST['class_id'] : (isset($_GET['class_id']) ? $_GET['class_id'] : null);
+        // Lấy giá trị tìm kiếm từ form
+        $ma_sinh_vien = isset($_POST['txtTimkiemMaSV']) ? $_POST['txtTimkiemMaSV'] : null;
+        $ho_ten = isset($_POST['txtTimkiemHoTen']) ? $_POST['txtTimkiemHoTen'] : null;
+        
 
         // Truyền trực tiếp kết quả của các phương thức vào view
         $this->view('Masterlayout_gv', [
             'page' => 'DSdiem_gv',
             'classes' => $this->diemtungmon->getClassesByLecturer($ma_giang_vien), // Truyền danh sách lớp vào view
-            'dulieu' => $selected_class_id ? $this->diemtungmon->getStudentScoresByClass($selected_class_id) : null // Truyền danh sách điểm nếu đã chọn lớp
+            // 'dulieu' => $selected_class_id ? $this->diemtungmon->getStudentScoresByClass($selected_class_id) : null // Truyền danh sách điểm nếu đã chọn lớp
+            'dulieu' => $selected_class_id ? 
+                $this->diemtungmon->diemtungmon_find($selected_class_id, $ma_sinh_vien, $ho_ten) : null // Truyền danh sách điểm nếu đã chọn lớp và có tìm kiếm
         ]);
     }
 
