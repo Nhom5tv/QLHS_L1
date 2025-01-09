@@ -25,7 +25,7 @@
            
             <div class="input-group"> 
             <form action="http://localhost/qlhs/dslophoc/timkiem" method="post">         
-                <input type="search" placeholder="Mã Ngành Học" name="txtTimkiemmanganh" value="<?php if(isset($data['ma_nganh'])) echo $data['ma_nganh']?>">
+                <input type="search" placeholder="Mã Môn Học" name="txtTimkiemmamon" value="<?php if(isset($data['ma_mon'])) echo $data['ma_mon']?>">
                                              
             </div>
             <div class="input-group"> 

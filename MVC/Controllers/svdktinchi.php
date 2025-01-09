@@ -33,13 +33,15 @@ class Svdktinchi extends controller{
             $ma_mon_hoc = $_POST['ma_mon_hoc'];
             $lich_hoc_du_kien = $_POST['lich_hoc_du_kien'];
             $id = $_SESSION['ma_tai_khoan'];
+            $id_lich_hoc = $_POST['id_lich_hoc'];
+        
     
             // Gọi model để thêm bản ghi đăng ký môn học
             $kq = $this->svdktinchi->dk_ins($ma_mon_hoc, $id, $lich_hoc_du_kien);
     
             if ($kq) {
                 // Gọi hàm cập nhật số lượng trong bảng lich_hoc
-                $this->svdktinchi->capNhatSoLuong($ma_mon_hoc);
+                $this->svdktinchi->capNhatSoLuong($ma_mon_hoc,$lich_hoc_du_kien,$id_lich_hoc);
     
                 echo '<script>
                         alert("Đăng Ký thành công");

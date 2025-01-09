@@ -8,7 +8,7 @@
 </head>
 <body>
     <form method="post" action="http://localhost/qlhs/dslichhoc/suadl">
-    <div class="content">
+    <v class="content">
     <?php
             if (isset($data['dulieu']) && mysqli_num_rows($data['dulieu'])>0){
                 
@@ -19,27 +19,29 @@
             <h2>Sửa Thông Tin Lịch Học</h2>
             <form action="#">
             <input type="hidden" name="txtidlichhoc" value="<?php echo $row['id_lich_hoc'] ?>">  
+            <label>Mã Môn Học</label>
             <div class="input-box">
                     <span class="icon">
                     <img src="./Public/Picture/id-card_9424609.png" alt="" width="15px">
                     </span>
-                    <input type="text" required name="txtmamon"  value="<?php  echo $row['ma_mon_hoc']?>">
-                    <label>Mã Môn Học</label>
+                    <input type="text" required name="txtmamon" readonly  value="<?php  echo $row['ma_mon_hoc']?>">
+                    
                 </div> 
+                <label>Số Lượng Tối Đa</label>
                 <div class="input-box">
                     <span class="icon">
                     <img src="./Public/Picture/id-card_9424609.png" alt="" width="15px">
                     </span>
-                    <input type="text" required name="txtmaxsoluong"  value="<?php  echo $row['so_luong_toi_da']?>">
-                    <label>Số Lượng Tối Đa</label>
+                    <input type="text" required name="txtmaxsoluong" readonly  value="<?php  echo $row['so_luong_toi_da']?>">
+                  
                 </div>                    
-                               
+                <label>Lịch Học</label>      
                 <div class="input-box">
                     <span class="icon">
                     <img src="./Public/Picture/Pic_login/khoa.png" alt="" width="15px">
                     </span>
-                    <input type="text" required name="txtlichhoc"  value="<?php  echo $row['lich_hoc']?>">
-                    <label>Lịch Học</label>
+                    <input type="text" required name="txtlichhoc" readonly  value="<?php  echo $row['lich_hoc']?>">
+                  
                 </div>
                 <div class="input-box">
                         <select name="txttrangthai">
@@ -48,12 +50,13 @@
                         </select>
 </div>
                 
-                   
+<button type="submit" class="btn" name="btnLuu">Lưu</button>
+<br>
+<div class="quaylai">
+                <a href="http://localhost/QLHS/dslichhoc">Quay lại</a>
+                </div>
                 </div>
                
-                </div>
-                
-                <button type="submit" class="btn" name="btnLuu">Lưu</button>
                 <?php
                     }
             }

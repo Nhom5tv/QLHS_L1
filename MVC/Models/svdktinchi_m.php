@@ -2,7 +2,8 @@
 <?php 
 class svdktinchi_m extends connectDB{
     function tinchi_ins($ma_sinh_vien){
-        $sql="SELECT 
+        $sql="SELECT
+        lh.id_lich_hoc, 
     mh.ma_mon AS ma_mon_hoc, 
     mh.ten_mon AS ten_mon_hoc, 
     mh.so_tin_chi, 
@@ -44,29 +45,29 @@ GROUP BY
          return mysqli_query($this->con,$sql);
         
     }
-    function capNhatSoLuong($maMonHoc) {
+    function capNhatSoLuong($maMonHoc,$lich_hoc_du_kien,) {
         // Tạo biến @so_luong_da_dang_ky để lưu số lượng sinh viên đã đăng ký
         $sqlSetVariable = "
             SET @so_luong_da_dang_ky = (
                 SELECT COUNT(*) 
                 FROM dang_ky_mon_hoc 
-                WHERE ma_mon = '$maMonHoc' AND trang_thai = 'Đang Chờ Duyệt'
+                WHERE ma_mon = '$maMonHoc' AND trang_thai = 'Đang Chờ Duyệt' and lich_hoc_du_kien = '$lich_hoc_du_kien' 
             );
         ";
     
         // Câu lệnh UPDATE để cập nhật số lượng trong bảng lich_hoc
-        $sqlUpdate = "
+         $sqlUpdate = "
             UPDATE lich_hoc 
             SET so_luong = so_luong_toi_da - @so_luong_da_dang_ky
-            WHERE ma_mon_hoc = '$maMonHoc';
+            WHERE ma_mon_hoc ='$maMonHoc' ;
         ";
-    
         // Thực thi cả hai câu lệnh SQL
         $resultSetVariable = mysqli_query($this->con, $sqlSetVariable);
         $resultUpdate = mysqli_query($this->con, $sqlUpdate);
     
         // Kiểm tra nếu cả hai câu lệnh đều thực thi thành công
         return $resultSetVariable && $resultUpdate;
+        
     }
     
     
@@ -90,7 +91,7 @@ JOIN
 LEFT JOIN 
     dang_ky_mon_hoc dk ON mh.ma_mon = dk.ma_mon
 WHERE 
-    dk.ma_sinh_vien = '$ma_sinh_vien' AND dk.trang_thai = N'Đang Chờ Duyệt' and lh.trang_thai = N'Đang Mở'
+    dk.ma_sinh_vien = '$ma_sinh_vien' AND dk.trang_thai = N'Đang Chờ Duyệt' and lh.trang_thai = N'Đang Mở' AND lh.lich_hoc= dk.lich_hoc_du_kien
 GROUP BY 
     mh.ma_mon, mh.ten_mon, mh.so_tin_chi, lh.so_luong_toi_da, dk.lich_hoc_du_kien, dk.ma_dang_ky;
 ";
