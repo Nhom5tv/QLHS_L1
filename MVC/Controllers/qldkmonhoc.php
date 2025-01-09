@@ -51,6 +51,20 @@
             // ]);
         }
     }
+    function cancel(){
+        $kq=$this->dkmonhoc->qldkmonhoc_cnl();
+            if($kq){
+                echo '<script>
+                alert("Đã Huỷ Thành Công");
+                window.location.href = "http://localhost/qlhs/dsdkmonhoc";
+                </script>';
+                // hiện thị alert trc khi chuyển trang
+    exit();
+                
+            }
+            else
+                echo'<script>alert("Huỷ thất bại")</script>';
+    }
     
  }
  ?>
