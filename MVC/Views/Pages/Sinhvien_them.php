@@ -104,11 +104,10 @@
                             ?>
     </select>
 </div>
-
 <div class="input-group">
     <label for="ma_nganh">Chọn ngành</label>
     <select name="txtMaNganh" id="ma_nganh" required>
-        <<option value="">Chọn khoa</option>
+        <<option value="">Chọn ngành</option>
                                     <?php 
                             if(isset($data['nganhList']) && mysqli_num_rows($data['nganhList'])>0){
                                 

@@ -31,13 +31,18 @@ class DSSinhvien extends controller{
         if (isset($_POST['btnTimkiem'])) {
             $maSV = $_POST['txtTimkiemMaSV'];
             $hoTen = $_POST['txtTimkiemHoTen'];
+            $khoaList = $this->dssv->getKhoa(); 
+            $nganhList = $this->dssv->getNganh();
             
             $dl = $this->dssv->sinhvien_find($maSV, $hoTen);
             $this->view('Masterlayout_admin', [
                 'page' => 'DSSinhvien_v',
                 'dulieu' => $dl,
                 'ma_sinh_vien' => $maSV,
-                'ho_ten' => $hoTen
+                'ho_ten' => $hoTen,
+                'khoaList'=> $khoaList,
+                'nganhList'=> $nganhList,
+                
             ]);
         }   
     }
@@ -128,9 +133,9 @@ if ($formattedDate && $formattedDate->format('Y-m-d') === $ngaySinh) {
     
             // Set tiêu đề cho các cột
             $sheet->setCellValue('A1', 'Mã sinh viên');
-            $sheet->setCellValue('B1', 'Tên đăng nhập');
-            $sheet->setCellValue('C1', 'Mật khẩu');
-            $sheet->setCellValue('D1', 'Email');
+            $sheet->setCellValue('B1', 'Mã khoa');
+            $sheet->setCellValue('C1', 'Mã ngành');
+            $sheet->setCellValue('D1', 'Họ tên');
             $sheet->setCellValue('E1', 'Ngày sinh');
             $sheet->setCellValue('F1', 'Giới tính');
             $sheet->setCellValue('G1', 'Quê quán');
@@ -167,8 +172,8 @@ $sheet->setCellValueExplicit('B' . $rowNumber, $row['ma_khoa'] ?? '', \PhpOffice
 $sheet->setCellValueExplicit('C' . $rowNumber, $row['ma_nganh'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_NUMERIC);
 $sheet->setCellValueExplicit('D' . $rowNumber, $row['ho_ten'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
 
-// Không cần đặt lại ngày sinh ở đây nữa
-// $sheet->setCellValueExplicit('E' . $rowNumber, $row['ngay_sinh'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
+
+ $sheet->setCellValueExplicit('E' . $rowNumber, $row['ngay_sinh'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
 
 $sheet->setCellValueExplicit('F' . $rowNumber, $row['gioi_tinh'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
 $sheet->setCellValueExplicit('G' . $rowNumber, $row['que_quan'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);

@@ -23,6 +23,7 @@ function Get_data() {
 }
     function Timkiem(){
         if (isset($_POST['btnTimkiem'])) {
+            $khoaList = $this->dsnganh->getKhoa();
             $maNganh = $_POST['txtTimkiemMaNganh'];
             $tenNganh = $_POST['txtTimkiemTenNganh'];
             
@@ -31,7 +32,8 @@ function Get_data() {
                 'page' => 'DSNganh_v',
                 'dulieu' => $dl,
                 'ma_nganh' => $maNganh,
-                'ten_nganh' => $tenNganh
+                'ten_nganh' => $tenNganh,
+                'khoaList' => $khoaList,
             ]);
         }   
     }
@@ -111,7 +113,7 @@ function Get_data() {
 $sheet->setCellValueExplicit('A' . $rowNumber, $row['ma_nganh'] ?? 0, \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_NUMERIC);
 $sheet->setCellValueExplicit('B' . $rowNumber, $row['ten_nganh'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
 $sheet->setCellValueExplicit('C' . $rowNumber, $row['ma_khoa'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_NUMERIC);
-$sheet->setCellValueExplicit('D' . $rowNumber, $row['thoi_gian_dao_tao'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_NUMERIC);
+$sheet->setCellValueExplicit('D' . $rowNumber, $row['thoi_gian_dao_tao'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
 
 $sheet->setCellValueExplicit('E' . $rowNumber, $row['bac_dao_tao'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
 $rowNumber++;
