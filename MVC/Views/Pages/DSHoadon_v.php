@@ -53,6 +53,8 @@
                 <div class="export__file-options">
                     <label>Export As &nbsp; &#10140;</label>
                     <form action="http://localhost/QLHS/DSHoadon/exportExcel" method="post">
+                        <input type="hidden" name="txtTKMaSV" value="<?= isset($data['ma_sinh_vien']) ? $data['ma_sinh_vien'] : '' ?>">
+                        <input type="hidden" name="txtTKNgaythanhtoan" value="<?= isset($data['ngay_thanh_toan']) ? $data['ngay_thanh_toan'] : '' ?>">
                     <button style="width: 176px;" name="btnXuatExcel"><label for="export-file" id="toEXCEL">EXCEL</label></button></form>
                 </div>
             </div>

@@ -84,43 +84,52 @@ class DSHoadon extends controller {
     function uploadExcel() {
         if (isset($_FILES['txtFile']) && $_FILES['txtFile']['error'] === UPLOAD_ERR_OK) {
             $fileTmpPath = $_FILES['txtFile']['tmp_name'];
-
+    
             try {
                 // Đọc file Excel
                 $spreadsheet = IOFactory::load($fileTmpPath);
                 $sheet = $spreadsheet->getActiveSheet();
                 $data = $sheet->toArray();
-
+    
                 // Bỏ qua dòng tiêu đề (giả sử tiêu đề nằm ở dòng đầu tiên)
                 array_shift($data);
-
+    
                 $successCount = 0;
                 $failCount = 0;
-
+    
                 foreach ($data as $row) {
-                    // Giả sử thứ tự cột: Mã sinh viên | Mã khoản thu | Số tiền | Ngày thanh toán | Nội dung | Hình thức thanh toán
+                    // Giả sử thứ tự cột: Mã sinh viên | Mã khoản thu | Số tiền | Ngày thanh toán | Hình thức thanh toán | Nội dung
                     $maSinhVien = isset($row[0]) ? trim($row[0]) : null;
                     $maKhoanThu = isset($row[1]) ? trim($row[1]) : null;
                     $soTien = isset($row[2]) ? trim($row[2]) : null;
                     $ngayThanhToan = isset($row[3]) ? trim($row[3]) : null;
-                    $hinhThucThanhToan = isset($row[4]) ? trim($row[4]) : null; // Thêm hình thức thanh toán
+                    $hinhThucThanhToan = isset($row[4]) ? trim($row[4]) : null;
                     $noiDung = isset($row[5]) ? trim($row[5]) : null;
-
+    
                     // Bỏ qua các hàng thiếu dữ liệu cần thiết
-                    if (!$maSinhVien || !$maKhoanThu || !$soTien || !$ngayThanhToan || !$noiDung || !$hinhThucThanhToan) {
+                    if (!$maSinhVien || !$maKhoanThu || !$soTien || !$ngayThanhToan || !$hinhThucThanhToan || !$noiDung) {
                         $failCount++;
                         continue;
                     }
-
+    
                     // Lưu vào cơ sở dữ liệu
-                    $result = $this->dshd->hoadon_ins($maSinhVien, $maKhoanThu, $ngayThanhToan, $soTien,  $hinhThucThanhToan, $noiDung);
+                    $result = $this->dshd->hoadon_ins($maSinhVien, $maKhoanThu, $ngayThanhToan, $soTien, $hinhThucThanhToan, $noiDung);
+    
                     if ($result) {
-                        $successCount++;
+                        // Cập nhật trạng thái thanh toán nếu thêm hóa đơn thành công
+                        $updateStatus = $this->dshd->capnhatTrangThaiThanhToan($maKhoanThu, $maSinhVien);
+    
+                        if ($updateStatus) {
+                            $successCount++;
+                        } else {
+                            // Nếu thêm hóa đơn thành công nhưng cập nhật trạng thái thất bại
+                            $failCount++;
+                        }
                     } else {
                         $failCount++;
                     }
                 }
-
+    
                 echo "<script>
                         alert('Upload thành công: {$successCount} hàng, thất bại: {$failCount} hàng.');
                         window.location.href = 'http://localhost/QLHS/DSHoadon';
@@ -138,11 +147,15 @@ class DSHoadon extends controller {
                   </script>";
         }
     }
+    
 
     // Hàm xuất Excel
     function exportExcel() {
         try {
-            $data = $this->dshd->hoadon_find('', '');
+            $maSinhVien = $_POST['txtTKMasinhvien'] ?? null;
+            $ngayThanhToan = $_POST['txtTKNgaythanhtoan'] ?? null;
+            
+            $data = $this->dshd->searchHoaDon($maSinhVien, $ngayThanhToan);
 
             $spreadsheet = new \PhpOffice\PhpSpreadsheet\Spreadsheet();
             $sheet = $spreadsheet->getActiveSheet();
