@@ -41,22 +41,44 @@ class Khoanthusv_m extends connectDB {
 
         return mysqli_query($this->con, $sql);
     }
-    function hienthidl(){
+    function hienthidl($maSinhVien = null, $tenKhoanThu = null, $trangThai = null) {
         $sql = "SELECT 
-            ktsv.ma_khoan_thu, 
-            kt.ten_khoan_thu, 
-            ktsv.ma_sinh_vien, 
-            ktsv.so_tien_ban_dau, 
-            ktsv.so_tien_mien_giam, 
-            ktsv.so_tien_phai_nop, 
-            ktsv.trang_thai_thanh_toan
-        FROM 
-            khoan_thu_sinh_vien AS ktsv
-        JOIN 
-            khoan_thu AS kt ON ktsv.ma_khoan_thu = kt.ma_khoan_thu";
+                    ktsv.ma_khoan_thu, 
+                    kt.ten_khoan_thu, 
+                    ktsv.ma_sinh_vien, 
+                    ktsv.so_tien_ban_dau, 
+                    ktsv.so_tien_mien_giam, 
+                    ktsv.so_tien_phai_nop, 
+                    ktsv.trang_thai_thanh_toan
+                FROM 
+                    khoan_thu_sinh_vien AS ktsv
+                JOIN 
+                    khoan_thu AS kt ON ktsv.ma_khoan_thu = kt.ma_khoan_thu";
+    
+        // Mảng lưu các điều kiện
+        $conditions = [];
+    
+        // Thêm điều kiện nếu có
+        if (!empty($maSinhVien)) {
+            $conditions[] = "ktsv.ma_sinh_vien LIKE '$maSinhVien%'";
+        }
+    
+        if (!empty($tenKhoanThu)) {
+            $conditions[] = "kt.ten_khoan_thu LIKE '$tenKhoanThu%'";
+        }
+    
+        if (!empty($trangThai)) {
+            $conditions[] = "ktsv.trang_thai_thanh_toan = '$trangThai'";
+        }
+    
+        // Gắn các điều kiện vào câu SQL nếu có
+        if (!empty($conditions)) {
+            $sql .= " WHERE " . implode(' AND ', $conditions);
+        }
+    
         return mysqli_query($this->con, $sql);
-   
     }
+    
 
     // Hàm xóa khoản thu sinh viên
     function khoanthu_del($maKhoanThu, $maSinhVien) {

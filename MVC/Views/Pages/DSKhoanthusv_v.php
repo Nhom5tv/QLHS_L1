@@ -24,36 +24,36 @@
             <h1>Khoản thu sinh viên</h1>
 
             <div class="input-group">
-                <form action="http://localhost/QLHS/DSKhoanthu/timkiem" method="post">
-                    <input type="search" placeholder="Mã sinh viên" name="txtTKTenkhoanthu" value="<?php if (isset($data['ma_sinh_vien'])) echo $data['ma_sinh_vien']; ?>">
-                </form>
+                <form action="http://localhost/QLHS/DSKhoanthusv/Timkiem" method="post">
+                    <input type="search" placeholder="Mã sinh viên" name="txtTKMaSV" value="<?php if (isset($data['ma_sinh_vien'])) echo $data['ma_sinh_vien']; ?>">
+               
             </div>
             <div class="input-group">
-                <form action="http://localhost/QLHS/DSKhoanthu/timkiem" method="post">
-                    <input type="date" placeholder="Hạn nộp" name="txtTKHannop" value="<?php if (isset($data['han_nop'])) echo $data['han_nop']; ?>">
-                </form>
+                <form action="http://localhost/QLHS/DSKhoanthusv/Timkiem" method="post">
+                    <input type="search" placeholder="Tên khoản thu" name="txtTKTenKhoanThu" value="<?php if (isset($data['ten_khoan_thu'])) echo $data['ten_khoan_thu']; ?>">
+               
             </div>
+                    <label for="txtTKTrangThai">Trạng thái thanh toán:</label>
+            <select name="txtTKTrangThai" id="txtTKTrangthai">
+            <option value="" <?= isset($data['trang_thai_thanh_toan']) && $data['trang_thai_thanh_toan'] === '' ? 'selected' : '' ?>>Tất cả</option>
+            <option value="Đã thanh toán" <?= isset($data['trang_thai_thanh_toan']) && $data['trang_thai_thanh_toan'] === 'Đã thanh toán' ? 'selected' : '' ?>>Đã thanh toán</option>
+            <option value="Chưa thanh toán" <?= isset($data['trang_thai_thanh_toan']) && $data['trang_thai_thanh_toan'] === 'Chưa thanh toán' ? 'selected' : '' ?>>Chưa thanh toán</option>
+            </select>
 
             <button style="border: none; background: transparent;" type="submit" name="btnTimkiem"><i class="fa fa-search"></i></button>
-            </form>
-            <!-- <div class="Insert">
-                <form action="http://localhost/QLHS/DSKhoanthu/themmoi" method="post">
-                    <button class="button-85" role="button">Thêm khoản thu</button>
-                </form>
-            </div> -->
-            <div class="Upload">
-                <form action="http://localhost/QLHS/DSKhoanthu/uploadExcel" method="post" enctype="multipart/form-data">
-                    <input type="file" name="txtFile">
-                    <button class="button-85" role="button">Upload</button>
-                </form>
-            </div>
+            </form>          
 
             <div class="export__file">
                 <label for="export-file" class="export__file-btn" title="Export File"><img src="./Public/Picture/export.png" alt="" width="20"></label>
                 <input type="checkbox" id="export-file">
                 <div class="export__file-options">
                     <label>Export As &nbsp; &#10140;</label>
-                    <form action="http://localhost/QLHS/DSKhoanthu/exportExcel" method="post">
+                    <form action="http://localhost/QLHS/DSKhoanthusv/exportExcel" method="post">
+                           <!-- Truyền dữ liệu tìm kiếm hiện tại vào form xuất Excel -->
+                    <input type="hidden" name="txtTKMaSV" value="<?= isset($data['ma_sinh_vien']) ? $data['ma_sinh_vien'] : '' ?>">
+                    <input type="hidden" name="txtTKTenKhoanThu" value="<?= isset($data['ten_khoan_thu']) ? $data['ten_khoan_thu'] : '' ?>">
+                    <input type="hidden" name="txtTKTrangThai" value="<?= isset($data['trang_thai_thanh_toan']) ? $data['trang_thai_thanh_toan'] : '' ?>">
+
                         <button style="width: 176px;" name="btnXuatExcel"><label for="export-file" id="toEXCEL">EXCEL</label></button>
                     </form>
                 </div>
