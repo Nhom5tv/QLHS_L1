@@ -59,7 +59,7 @@
                         <th> Mã Giảng Viên <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Lịch Học <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Trạng thái <span class="icon-arrow">&UpArrow;</span></th>
-                        <th style="padding-left:50px"> TOOL <span class="icon-arrow">&UpArrow;</span></th>
+                        <th style="padding-left:50px"> Chức Năng <span class="icon-arrow">&UpArrow;</span></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -85,11 +85,7 @@
                                             <td class="btn_cn">
                                             <form action="http://localhost/qlhs/dslophoc/sua/<?php echo $row['ma_lop']?>" method="post">
                                                 <button class="button-85"  role="button">Sửa</button> &nbsp;
-                                            </form>
-                                               <form action="http://localhost/qlhs/dslophoc/xoa/<?php echo $row['ma_lop']?>" method="post">
-                                                <button class="button-85" onclick="return confirm('Bạn có chắc muốn xóa')" role="button" >Xóa</button>
-                                               </form>
-                                            </td>
+                                                                                </td>
                                         </tr>
 
                                 <?php

@@ -19,8 +19,7 @@
 </head>
 
 <body style="display: block;">
-    <form method="post" action="http://localhost/qlhs/dslophoc/timkiem"></form>
-   
+    <form method="post" action="http://localhost/qlhs/Svdktinchi/timkiem"></form>
     <!-- <script src="./Public/JS/datatable.js"></script> -->
     <div class="table-wrapper">
     <main class="table" id="customers_table">
@@ -29,7 +28,7 @@
            
             <div class="input-group"> 
             <form action="http://localhost/QLHS/Svdktinchi/timkiem" method="post">         
-                <input type="search" placeholder="Tên Môn Học" name="txtTimkiemmonhoc" value="<?php if(isset($data['ten_mon_hoc'])) echo $data['ten_mon_hoc']?>">
+                <input type="search" placeholder="Tên Môn Học" name="txtTimkiemmonhoc" value="<?php if(isset($data['ten_mon'])) echo $data['ten_mon_hoc']?>">
                                              
             </div>
             <div class="input-group"> 
@@ -62,12 +61,56 @@
                     </tr>
                 </thead>
                 <tbody>
-                <?php
-if (isset($data['dulieu']) && mysqli_num_rows($data['dulieu']) > 0) {
-    $i = 0;
-    while ($row = mysqli_fetch_assoc($data['dulieu'])) {
+    <?php
+    if (isset($data['dulieu']) && mysqli_num_rows($data['dulieu']) > 0) {
+        $i = 0;
+        while ($row = mysqli_fetch_assoc($data['dulieu'])) {
+            ?>
+            <tr>
+                <td>
+                    <?php echo $row['ma_mon_hoc']; ?>
+                </td>
+                <td>
+                    <?php echo $row['ten_mon_hoc']; ?>
+                </td>
+                <td>
+                    <?php echo $row['so_tin_chi']; ?>
+                </td>
+                <td>
+                    <?php echo $row['so_luong_toi_da']; ?>
+                </td>
+                <td>
+                    <?php echo $row['con_lai']; ?>
+                </td>
+                <td>
+                    <?php echo $row['lich_hoc_du_kien']; ?>
+                </td>
+                <td class="btn_cn">
+                    <?php if (isset($row['trang_thai_dang_ky']) && trim($row['trang_thai_dang_ky']) == 'Đang Chờ Duyệt') : ?>
+                        <!-- Nếu đã đăng ký hoặc đang chờ duyệt -->
+                        <button class="button-85" disabled style="background-color: gray; cursor: not-allowed;">Đã đăng ký</button>
+                    <?php elseif (isset($row['con_lai']) && trim($row['con_lai']) == 0) : ?>
+                        <!-- Nếu đã hết chỗ -->
+                        <button class="button-85" disabled style="background-color: gray; cursor: not-allowed;">Đã Hết Chỗ</button>
+                    <?php else : ?>
+                        <!-- Nếu có thể đăng ký -->
+                        <form action="http://localhost/QLHS/svdktinchi/dk" method="post">
+                        
+                            <input type="hidden" name="ma_mon_hoc" value="<?php echo $row['ma_mon_hoc']; ?>">
+                            <input type="hidden" name="lich_hoc_du_kien" value="<?php echo $row['lich_hoc_du_kien']; ?>">
+                            <button class="button-85" onclick="return confirm('Bạn có chắc muốn Đăng Ký không ?')" role="button">Đăng Ký</button>
+                        </form>
+                    <?php endif; ?>
+                </td>
+            </tr>
+            <?php
+        }
+    } else {
         ?>
         <tr>
+<<<<<<< HEAD
+            <td colspan="7" style="text-align: center;">Không có môn nào để đăng ký</td>
+=======
             <td>
                 <?php echo $row['ma_mon_hoc']; ?>
             </td>
@@ -105,14 +148,13 @@ if (isset($data['dulieu']) && mysqli_num_rows($data['dulieu']) > 0) {
                     </form>
                 <?php endif; ?>
             </td>
+>>>>>>> 80f5cd2a8174084b3551bdf66257fa371042f8f0
         </tr>
         <?php
     }
-}
+    ?>
+</tbody>
 
-?>
-
-            </tbody>
             </table>
         </section>
     </main>
@@ -124,17 +166,7 @@ if (isset($data['dulieu']) && mysqli_num_rows($data['dulieu']) > 0) {
             <h1>Danh Sách Đã Đăng Ký</h1>
            
             <div class="input-group"> 
-            <form action="http://localhost/qlhs/dslophoc/timkiem" method="post">         
-                <input type="search" placeholder="Tên Môn Học" name="txtTimkiemmanganh" value="<?php if(isset($data['ma_nganh'])) echo $data['ma_nganh']?>">
-                                             
-            </div>
-            <div class="input-group"> 
-                  
-                <input type="search" placeholder="Số Tín Chỉ" name="txtTimkiemmagiangvien" value="<?php if(isset($data['ma_giang_vien'])) echo $data['ma_giang_vien']?>">
-                                             
-            </div>
-            <button style="border: none; background: transparent;" type="submit" name="btnTimkiemlop"><i class="fa fa-search" ></i></button>
-            </form>
+    
            
             <div >
                 <!-- <form action="http://localhost/qlhs/dslophoc/timkiem" method="post">
@@ -157,37 +189,38 @@ if (isset($data['dulieu']) && mysqli_num_rows($data['dulieu']) > 0) {
                         <th style="padding-left:50px"> Chọn <span class="icon-arrow">&UpArrow;</span></th>
                     </tr>
                 </thead>
+               
                 <tbody>
-                    <?php
-                        if(isset($data['dulieu2']) && mysqli_num_rows($data['dulieu2'])>0 ){
-                            $i=0;
-                            while($row=mysqli_fetch_assoc($data['dulieu2'])){
-                                
-                                ?>
-                                        <tr>
-                                        <td>
-                                                <?php echo $row['ma_mon_hoc']?>
-                                            </td>
-                                            <td> <?php echo $row['ten_mon_hoc']?> </td>
-                                            <td> <?php echo $row['so_tin_chi']?> </td>
-                                            <td> <?php echo $row['so_luong_toi_da']?> </td>
-                                            <td> <?php echo $row['con_lai']?> </td>
-                                            <td> <?php echo $row['lich_hoc_du_kien']?> </td>
-                                           
-                                           
-                                            <td class="btn_cn">
-                                               <form action="http://localhost/qlhs/SVdktinchi/xoa/<?php echo $row['ma_dang_ky']?>" method="post">
-                                                <button class="button-85" onclick="return confirm('Bạn có chắc muốn xóa')" role="button" >Xóa</button>
-                                               </form>
-                                            </td>
-                                        </tr>
+    <?php
+        if (isset($data['dulieu2']) && mysqli_num_rows($data['dulieu2']) > 0) {
+            $i = 0;
+            while ($row = mysqli_fetch_assoc($data['dulieu2'])) {
+                ?>
+                <tr>
+                    <td><?php echo $row['ma_mon_hoc'] ?></td>
+                    <td><?php echo $row['ten_mon_hoc'] ?></td>
+                    <td><?php echo $row['so_tin_chi'] ?></td>
+                    <td><?php echo $row['so_luong_toi_da'] ?></td>
+                    <td><?php echo $row['con_lai'] ?></td>
+                    <td><?php echo $row['lich_hoc_du_kien'] ?></td>
+                    <td class="btn_cn">
+                        <form action="http://localhost/qlhs/SVdktinchi/xoa/<?php echo $row['ma_dang_ky'] ?>" method="post">
+                            <button class="button-85" onclick="return confirm('Bạn có chắc muốn xóa')" role="button">Xóa</button>
+                        </form>
+                    </td>
+                </tr>
+                <?php
+            }
+        } else {
+            ?>
+            <tr id="no-data-row">
+                <td colspan="7" style="text-align: center;">Không có môn học đã đăng ký</td>
+            </tr>
+            <?php
+        }
+    ?>
+</tbody>
 
-                                <?php
-
-                            }
-                        }
-                    ?>
-            </tbody>
             </table>
         </section>
     </main>

@@ -18,7 +18,7 @@ class Login extends controller{
     function dangnhap(){
         $result_mess = false;
         if(isset($_POST['btnDangnhap'])){           
-            $email=$_POST['txtEmail'];
+            $email=$_POST['txtTendangnhap'];
             $mk_input=$_POST['txtMatkhau'];            
             $kq=$this->Login->login($email);
             
