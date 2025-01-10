@@ -1,187 +1,98 @@
-<?php include_once './MVC/Core/connectDB.php'; ?>
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thống kê doanh thu và nhập hàng</title>
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+    <title>Quản lý hồ sơ sinh viên</title>
+    <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link rel="icon" href="http://localhost/qlhs/Public/Picture/favicon.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="http://localhost/qlhs/Public/CSS/layout.css?v=<?php echo time(); ?>">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <style>
+         .chart-container {
+        display: flex;
+        gap: 20px; /* Khoảng cách giữa các biểu đồ */
+        justify-content: space-around; /* Canh đều các biểu đồ */
+        background-color: transparent;
+    }
+
+    .chart-box {
+        flex: 1; /* Chia đều không gian giữa các biểu đồ */
+        text-align: center;
+    }
+</style>
 </head>
+
 <body>
-<?php
-// Kết nối cơ sở dữ liệu
-$con = mysqli_connect('localhost', 'root', '', 'qlbanhang');
+    <div class="wrapper" style="background-color: transparent;">
+        
+            <div class="main-content p-4" >
+                <h2 class="mb-4">Thống kê sinh viên và giảng viên</h2>
+                <div class="chart-container d-flex justify-content-between" style="background-color: transparent;">
+                    <!-- Biểu đồ loại học viên -->
+                    <div class="chart-box">
+                        <h3>Biểu đồ loại sinh viên</h3>
+                        <canvas id="studentChart"></canvas>
+                    </div>
 
-// Khởi tạo biến dữ liệu ban đầu
-$data = [];
-$xaxis = [];
-$dataNhapHang = [];
-$xaxisNhapHang = [];
-$initialDataNhapHang = [];
-$initialXaxisNhapHang = [];
+                    <!-- Biểu đồ tổng số giảng viên -->
+                    <div class="chart-box">
+                        <h3>Tổng số giảng viên</h3>
+                        <canvas id="teacherChart"></canvas>
+                    </div>
+                </div>
 
-// Truy vấn dữ liệu doanh thu ban đầu
-$sql = "SELECT Ngaydathang, SUM(amount_paid) AS TongTienTrongNgay
-    FROM orders
-    WHERE Trangthaidonhang = 'Thành công'
-    GROUP BY Ngaydathang";
-$res = mysqli_query($con, $sql);
+            </div>
+    
+    </div>
+    <script>
+        // Dữ liệu từ backend
+        const studentData = <?php echo json_encode($data['dulieuHocVien']); ?>;
+        const studentLabels = studentData.map(item => item.PhanLoai);
+        const studentCounts = studentData.map(item => item.SoLuong);
 
-if ($res) {
-    while ($row = mysqli_fetch_array($res)) {
-        $data[] = $row['TongTienTrongNgay'];
-        $xaxis[] = $row['Ngaydathang'];
-    }
-}
-
-// Truy vấn dữ liệu nhập hàng ban đầu
-$sqlNhapHang = "SELECT Thoigiannhap, SUM(TongTien) AS TongTienNhapTrongNgay
-    FROM qlynhaphang
-    GROUP BY Thoigiannhap";
-$resNhapHang = mysqli_query($con, $sqlNhapHang);
-
-if ($resNhapHang) {
-    while ($rowNhapHang = mysqli_fetch_array($resNhapHang)) {
-        $dataNhapHang[] = $rowNhapHang['TongTienNhapTrongNgay'];
-        $xaxisNhapHang[] = $rowNhapHang['Thoigiannhap'];
-    }
-
-    // Lưu trữ dữ liệu nhập hàng ban đầu
-    $initialDataNhapHang = $dataNhapHang;
-    $initialXaxisNhapHang = $xaxisNhapHang;
-}
-
-// Kiểm tra và xử lý form khi được gửi đi
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (isset($_POST['formType']) && $_POST['formType'] == 'doanhthu') {
-        $startDateDT = $_POST['startDateDT'];
-        $endDateDT = $_POST['endDateDT'];
-
-        // Truy vấn dữ liệu doanh thu theo khoảng thời gian
-        $sql = "SELECT Ngaydathang, SUM(amount_paid) AS TongTienTrongNgay
-            FROM orders
-            WHERE Trangthaidonhang = 'Thành công' AND Ngaydathang BETWEEN '$startDateDT' AND '$endDateDT'
-            GROUP BY Ngaydathang";
-        $res = mysqli_query($con, $sql);
-
-        if ($res) {
-            $data = [];
-            $xaxis = [];
-            while ($row = mysqli_fetch_array($res)) {
-                $data[] = $row['TongTienTrongNgay'];
-                $xaxis[] = $row['Ngaydathang'];
+        // Biểu đồ loại học viên
+        const ctx1 = document.getElementById('studentChart').getContext('2d');
+        new Chart(ctx1, {
+            type: 'pie',
+            data: {
+                labels: studentLabels,
+                datasets: [{
+                    label: 'Số lượng học viên',
+                    data: studentCounts,
+                    backgroundColor: ['#4caf50', '#ff9800', '#f44336', '#9c27b0'],
+                    borderWidth: 1
+                }]
             }
-        }
+        });
 
-        // Nếu không có dữ liệu mới từ form, sử dụng dữ liệu ban đầu
-        if (empty($data)) {
-            $data = $initialDataDoanhThu;
-            $xaxis = $initialXaxisDoanhThu;
-        }
-    }
-
-    if (isset($_POST['formType']) && $_POST['formType'] == 'nhaphang') {
-        $startDateNH = $_POST['startDateNH'];
-        $endDateNH = $_POST['endDateNH'];
-
-        // Truy vấn dữ liệu nhập hàng theo khoảng thời gian
-        $sqlNhapHang = "SELECT Thoigiannhap, SUM(TongTien) AS TongTienNhapTrongNgay
-            FROM qlynhaphang
-            WHERE Thoigiannhap BETWEEN '$startDateNH' AND '$endDateNH'
-            GROUP BY Thoigiannhap";
-        $resNhapHang = mysqli_query($con, $sqlNhapHang);
-
-        if ($resNhapHang) {
-            $dataNhapHang = [];
-            $xaxisNhapHang = [];
-            while ($rowNhapHang = mysqli_fetch_array($resNhapHang)) {
-                $dataNhapHang[] = $rowNhapHang['TongTienNhapTrongNgay'];
-                $xaxisNhapHang[] = $rowNhapHang['Thoigiannhap'];
+        // Biểu đồ tổng số giảng viên
+        const teacherCount = <?php echo $data['tongGiangVien']; ?>;
+        const ctx2 = document.getElementById('teacherChart').getContext('2d');
+        new Chart(ctx2, {
+            type: 'doughnut',
+            data: {
+                labels: ['Giảng viên'],
+                datasets: [{
+                    data: [teacherCount],
+                    backgroundColor: ['#2196f3'],
+                    borderWidth: 1
+                }]
             }
-        }
+        });
 
-        // Nếu không có dữ liệu mới từ form, sử dụng dữ liệu ban đầu
-        if (empty($dataNhapHang)) {
-            $dataNhapHang = $initialDataNhapHang;
-            $xaxisNhapHang = $initialXaxisNhapHang;
-        }
-    }
-}
-?>
-    <div class="shell" style="display:flex; margin-top:100px;">
-    <div class="bgDoanhthu" style="width:600px; background: white; margin-right:50px;">
-        <div><h3>Thống kê doanh thu</h3></div>
-        <form method="post" action="">
-            <input type="hidden" name="formType" value="doanhthu">
-            <label for="startDateDT">Từ ngày:</label>
-            <input type="date" id="startDateDT" name="startDateDT"  required>
-            
-            <label for="endDateDT">Đến ngày:</label>
-            <input type="date" id="endDateDT" name="endDateDT"  required>
-            <button type="submit">Tìm kiếm</button>
-        </form>
-        <div class="Doanhthu">
-            <div style="width: 600px; " id="chart"></div>
-            <script>
-                let options = {
-                    chart: {
-                        type: 'line'
-                    },
-                    stroke: {
-                        curve: 'smooth',
-                        width: 6,
-                    },
-                    series: [{
-                        name: 'Tổng tiền',
-                        data: <?php echo json_encode($data); ?> // Chuyển mảng data thành JSON
-                    }],
-                    xaxis: {
-                        categories: <?php echo json_encode($xaxis); ?> // Chuyển mảng xaxis thành JSON
-                    }
-                };
-
-                var chart = new ApexCharts(document.querySelector("#chart"), options);
-                chart.render();
-            </script>
-        </div>
-    </div>
-
-    <div class="bgNhaphang" style="width:600px; background: white;">
-        <div><h3>Thống kê nhập hàng</h3></div>
-        <form method="post" action="">
-            <input type="hidden" name="formType" value="nhaphang">
-            <label for="startDateNH">Từ ngày:</label>
-            <input type="date" id="startDateNH" name="startDateNH" required>
-            <label for="endDateNH">Đến ngày:</label>
-            <input type="date" id="endDateNH" name="endDateNH" required>
-            <button type="submit">Tìm kiếm</button>
-        </form>
-        <div class="NhapHang">
-            <div style="width: 600px; " id="chartNhapHang"></div>
-            <script>
-                let optionsNhapHang = {
-                    chart: {
-                        type: 'line'
-                    },
-                    stroke: {
-                        curve: 'smooth',
-                        width: 6,
-                    },
-                    series: [{
-                        name: 'Tổng tiền nhập hàng',
-                        data: <?php echo json_encode($dataNhapHang); ?> // Chuyển mảng dataNhapHang thành JSON
-                    }],
-                    xaxis: {
-                        categories: <?php echo json_encode($xaxisNhapHang); ?> // Chuyển mảng xaxisNhapHang thành JSON
-                    }
-                };
-
-                var chartNhapHang = new ApexCharts(document.querySelector("#chartNhapHang"), optionsNhapHang);
-                chartNhapHang.render();
-            </script>
-        </div>
-    </div>
-    </div>
+        // Sidebar toggle
+        const hamBurger = document.querySelector(".toggle-btn");
+        hamBurger.addEventListener("click", function () {
+            document.querySelector("#sidebar").classList.toggle("expand");
+        });
+    </script>
 </body>
+
 </html>

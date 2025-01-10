@@ -1,5 +1,5 @@
 <?php 
-class Trangchu extends controller {
+class Trangchu_gv extends controller {
     private $trangchu;
 
     function __construct() {
@@ -14,7 +14,7 @@ class Trangchu extends controller {
         $tonggiangvien = $this->trangchu->thongkegiangvien();
 
         // Chuyển dữ liệu sang View
-        $this->view('Masterlayout_admin', [
+        $this->view('Masterlayout_gv', [
             'page' => 'Trangchu_v',
             'dulieuHocVien' => $thongkeloaihocvien,
             'tongGiangVien' => $tonggiangvien

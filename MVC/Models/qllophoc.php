@@ -1,8 +1,8 @@
 <!-- truy van sql -->
 <?php 
 class qllophoc extends connectDB{
-    function lophoc_ins($ma_mon,$hoc_ky,$ma_giang_vien,$lich_hoc){
-        $sql="INSERT INTO lop(ma_mon,hoc_ky,ma_giang_vien,lich_hoc) VALUES ('$ma_mon','$hoc_ky','$ma_giang_vien','$lich_hoc')";
+    function lophoc_ins($ma_mon,$hoc_ky,$ma_giang_vien,$lich_hoc,$trang_thai){
+        $sql="INSERT INTO lop(ma_mon,hoc_ky,ma_giang_vien,lich_hoc,trang_thai) VALUES ('$ma_mon','$hoc_ky','$ma_giang_vien','$lich_hoc','$trang_thai')";
          return mysqli_query($this->con,$sql);
         
     }
@@ -31,7 +31,7 @@ class qllophoc extends connectDB{
                 if (mysqli_num_rows($result_check) == 0) {
                     // Chèn dữ liệu nếu chưa tồn tại
                     $sql_insert = "INSERT INTO diem_chi_tiet (ma_lop, ma_sinh_vien, lan_hoc, lan_thi, diem_chuyen_can, diem_giua_ky, diem_cuoi_ky)
-                                   VALUES ('$ma_lop', '$ma_sinh_vien', 1, 1, 0, 0, 0)";
+                                   VALUES ('$ma_lop', '$ma_sinh_vien', 1, 1, NULL, NULL, NULL)";
                     mysqli_query($this->con, $sql_insert);
                 }
             }
@@ -75,8 +75,8 @@ class qllophoc extends connectDB{
         $sql="DELETE FROM lop WHERE ma_lop ='$ma_lop'";
         return mysqli_query($this->con,$sql);
     }
-    function lophoc_upd($ma_lop,$ma_mon,$hoc_ky,$ma_giang_vien,$lich_hoc){
-        $sql="UPDATE lop SET ma_mon= '$ma_mon' , hoc_ky= '$hoc_ky' , ma_giang_vien= '$ma_giang_vien' , lich_hoc= N'$lich_hoc'  
+    function lophoc_upd($ma_lop,$ma_mon,$hoc_ky,$ma_giang_vien,$lich_hoc,$trang_thai){
+        $sql="UPDATE lop SET ma_mon= '$ma_mon' , hoc_ky= '$hoc_ky' , ma_giang_vien= '$ma_giang_vien' , lich_hoc= N'$lich_hoc',trang_thai= N'$trang_thai'  
         WHERE ma_lop='$ma_lop'";
         return mysqli_query($this->con,$sql);
     }

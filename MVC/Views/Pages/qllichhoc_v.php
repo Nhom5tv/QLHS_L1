@@ -21,7 +21,7 @@
     <form method="post" action="http://localhost/qlhs/dslichhoc/timkiem"></form>
     <main class="table" id="customers_table">
         <section class="table__header">
-            <h1>Quản lý Đăng Ký Môn Học</h1>
+            <h1>Quản lý lịch học</h1>
            
             <div class="input-group"> 
             <form action="http://localhost/qlhs/dslichhoc/timkiem" method="post">         
@@ -41,6 +41,12 @@
                 </form>
             
             </div>
+            <div>
+            <form action="http://localhost/qlhs/lichhoc/dongall" method="post">
+                                                <button class="button-85" onclick="return confirm('Bạn có chắc muốn đóng')" role="button" >Đóng Tất Cả</button>
+                                               </form>
+            
+                                               </div>
             <div >
                 <!-- <form action="http://localhost/qlhs/dslichhoc/timkiem" method="post">
                     <button type="submit" class="button-85" name="btnXuatExcel2">Xuất Excel</button>

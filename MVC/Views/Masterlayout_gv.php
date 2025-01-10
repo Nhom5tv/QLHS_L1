@@ -29,13 +29,13 @@
             </div>
             <ul class="sidebar-nav">
                 <li class="sidebar-item">
-                    <a href="http://localhost/qlhs/Trangchu" class="sidebar-link">
+                    <a href="http://localhost/qlhs/Trangchu_gv" class="sidebar-link">
                         <i class="fa-solid fa-house"></i>
                         <span>Trang chủ</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="http://localhost/qlhs/Trangchu" class="sidebar-link">
+                    <a href="http://localhost/qlhs/Trangchu_gv" class="sidebar-link">
                         <i class="fa-solid fa-user"></i>
                         <span>Quản lý tài khoản</span>
                     </a>

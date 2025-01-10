@@ -14,7 +14,7 @@ class DSKhoanthusv extends controller {
     function Get_data() {
         $this->view('Masterlayout_admin', [
             'page' => 'DSKhoanthusv_v',
-            'dulieu' => $this->dskt->hienthidl(),
+            'dulieu' => $this->dskt->hienthidl("","",""),
         ]);
     }
 
@@ -62,14 +62,16 @@ class DSKhoanthusv extends controller {
         if (isset($_POST['btnTimkiem'])) {
             $maSinhVien = $_POST['txtTKMaSV'];
             $trangThaiThanhToan = $_POST['txtTKTrangThai'];
+            $tenKhoanThu = $_POST['txtTKTenKhoanThu'];
 
-            $dl = $this->dskt->khoanthu_find($maSinhVien, $trangThaiThanhToan);
+            $dl = $this->dskt->hienthidl($maSinhVien,$tenKhoanThu, $trangThaiThanhToan);
 
             $this->view('Masterlayout_admin', [
                 'page' => 'DSKhoanthusv_v',
                 'dulieu' => $dl,
                 'ma_sinh_vien' => $maSinhVien,
                 'trang_thai_thanh_toan' => $trangThaiThanhToan,
+                'ten_khoan_thu' => $tenKhoanThu,
             ]);
         }
     }
@@ -130,39 +132,52 @@ class DSKhoanthusv extends controller {
     // Xuất Excel
     function exportExcel() {
         try {
-            $data = $this->dskt->khoanthu_find('', '');
-
+            // Lấy dữ liệu từ POST (nếu có tìm kiếm trước đó)
+            $maSinhVien = $_POST['txtTKMasinhvien'] ?? null;
+            $tenKhoanThu = $_POST['txtTKTenKhoanThu'] ?? null;
+            $trangThai = $_POST['txtTKTrangThai'] ?? null;
+    
+            // Lấy dữ liệu từ hàm hienthidl với các tham số tìm kiếm
+            $data = $this->dskt->hienthidl($maSinhVien, $tenKhoanThu, $trangThai);
+    
+            // Tạo file Excel
             $spreadsheet = new \PhpOffice\PhpSpreadsheet\Spreadsheet();
             $sheet = $spreadsheet->getActiveSheet();
-
+    
+            // Thiết lập tiêu đề cột
             $sheet->setCellValue('A1', 'Mã khoản thu');
-            $sheet->setCellValue('B1', 'Mã sinh viên');
-            $sheet->setCellValue('C1', 'Số tiền ban đầu');
-            $sheet->setCellValue('D1', 'Số tiền miễn giảm');
-            $sheet->setCellValue('E1', 'Số tiền phải nộp');
-            $sheet->setCellValue('F1', 'Trạng thái thanh toán');
-
+            $sheet->setCellValue('B1', 'Tên khoản thu');
+            $sheet->setCellValue('C1', 'Mã sinh viên');
+            $sheet->setCellValue('D1', 'Số tiền ban đầu');
+            $sheet->setCellValue('E1', 'Số tiền miễn giảm');
+            $sheet->setCellValue('F1', 'Số tiền phải nộp');
+            $sheet->setCellValue('G1', 'Trạng thái thanh toán');
+    
+            // Ghi dữ liệu vào file
             $rowNumber = 2;
             while ($row = mysqli_fetch_assoc($data)) {
-                $sheet->setCellValueExplicit('A' . $rowNumber, $row['ma_khoan_thu'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
-                $sheet->setCellValueExplicit('B' . $rowNumber, $row['ma_sinh_vien'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
-                $sheet->setCellValueExplicit('C' . $rowNumber, $row['so_tien_ban_dau'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_NUMERIC);
-                $sheet->setCellValueExplicit('D' . $rowNumber, $row['so_tien_mien_giam'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_NUMERIC);
-                $sheet->setCellValueExplicit('E' . $rowNumber, $row['so_tien_phai_nop'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_NUMERIC);
-                $sheet->setCellValueExplicit('F' . $rowNumber, $row['trang_thai_thanh_toan'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
+                $sheet->setCellValueExplicit('A' . $rowNumber, $row['ma_khoan_thu'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_NUMERIC);
+                $sheet->setCellValueExplicit('B' . $rowNumber, $row['ten_khoan_thu'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
+                $sheet->setCellValueExplicit('C' . $rowNumber, $row['ma_sinh_vien'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
+                $sheet->setCellValueExplicit('D' . $rowNumber, $row['so_tien_ban_dau'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_NUMERIC);
+                $sheet->setCellValueExplicit('E' . $rowNumber, $row['so_tien_mien_giam'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_NUMERIC);
+                $sheet->setCellValueExplicit('F' . $rowNumber, $row['so_tien_phai_nop'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_NUMERIC);
+                $sheet->setCellValueExplicit('G' . $rowNumber, $row['trang_thai_thanh_toan'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
                 $rowNumber++;
             }
-
+    
+            // Tự động điều chỉnh kích thước cột
             foreach (range('A', 'G') as $columnID) {
                 $sheet->getColumnDimension($columnID)->setAutoSize(true);
             }
-
+    
+            // Gửi file đến trình duyệt để tải về
             header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
             header('Content-Disposition: attachment; filename="DanhSachKhoanThuSinhVien.xlsx"');
             header('Cache-Control: no-cache, no-store, must-revalidate');
             header('Pragma: no-cache');
             header('Expires: 0');
-
+    
             $writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xlsx');
             ob_clean();
             $writer->save('php://output');
@@ -174,6 +189,7 @@ class DSKhoanthusv extends controller {
                   </script>";
         }
     }
+    
 
     // Xóa khoản thu
     function xoa() {

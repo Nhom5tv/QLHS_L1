@@ -9,7 +9,7 @@ class Giangvien extends controller{
 
     function Get_data(){
         $khoaList = $this->Giangvien->getKhoa();
-        $this->view('Masterlayout', ['page' => 'Giangvien_them','khoaList' => $khoaList ]);
+        $this->view('Masterlayout_admin', ['page' => 'Giangvien_them','khoaList' => $khoaList ]);
     }
 
 

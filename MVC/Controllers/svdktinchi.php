@@ -15,14 +15,14 @@ class Svdktinchi extends controller{
     }
     function Timkiem() {
         if (isset($_POST['btnTimkiemtin'])) {
-            $ma_mon_hoc = $_POST['txtTimkiemmonhoc'];
+            $ten_mon_hoc = $_POST['txtTimkiemmonhoc'];
             $lich_hoc_du_kien = $_POST['txtTimkiemlichhoc'];
             
-            $dl = $this->svdktinchi->tinchi_find($ma_mon_hoc, $lich_hoc_du_kien); // Gọi hàm tìm kiếm
+            $dl = $this->svdktinchi->tinchi_find($ten_mon_hoc, $lich_hoc_du_kien); // Gọi hàm tìm kiếm
             $this->view('Masterlayout', [
                 'page' => 'SVdktinchi_v',
                 'dulieu' => $dl,
-                'ma_mon_hoc' => $ma_mon_hoc,
+                'ten_mon_hoc' => $ten_mon_hoc,
                 'lich_hoc_du_kien' => $lich_hoc_du_kien
             ]);
         }
@@ -33,13 +33,15 @@ class Svdktinchi extends controller{
             $ma_mon_hoc = $_POST['ma_mon_hoc'];
             $lich_hoc_du_kien = $_POST['lich_hoc_du_kien'];
             $id = $_SESSION['ma_tai_khoan'];
+            $id_lich_hoc = $_POST['id_lich_hoc'];
+        
     
             // Gọi model để thêm bản ghi đăng ký môn học
             $kq = $this->svdktinchi->dk_ins($ma_mon_hoc, $id, $lich_hoc_du_kien);
     
             if ($kq) {
                 // Gọi hàm cập nhật số lượng trong bảng lich_hoc
-                $this->svdktinchi->capNhatSoLuong($ma_mon_hoc);
+                $this->svdktinchi->capNhatSoLuong($ma_mon_hoc,$lich_hoc_du_kien,$id_lich_hoc);
     
                 echo '<script>
                         alert("Đăng Ký thành công");

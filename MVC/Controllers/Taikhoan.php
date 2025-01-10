@@ -10,7 +10,7 @@
         // khởi tạo đối tượng model('Taikhoan_m') gán cho $taikhoan
     }
     function Get_data(){
-        $this->view('Masterlayout',['page'=>'Taikhoan_them']);
+        $this->view('Masterlayout_admin',['page'=>'Taikhoan_them']);
         // gọi giao diện chính và truyền dữ liệu page là trang taikhoan view
     }
     function themmoi(){

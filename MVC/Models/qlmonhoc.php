@@ -48,6 +48,13 @@ class qlmonhoc extends connectDB{
        
         return mysqli_query($this->con,$sql);
     }
+    function qldkmonhoc_cnl(){
+        $sql="UPDATE dang_ky_mon_hoc
+SET trang_thai = 'Huỷ'
+WHERE trang_thai = 'Đang Chờ Duyệt';
+";
+        return mysqli_query($this->con,$sql);
+    }
     
     function qldkmonhoc_del($ma_dang_ky){
         $sql="DELETE FROM dang_ky_mon_hoc WHERE ma_dang_ky ='$ma_dang_ky'";

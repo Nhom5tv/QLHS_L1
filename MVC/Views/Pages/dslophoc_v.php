@@ -25,7 +25,7 @@
            
             <div class="input-group"> 
             <form action="http://localhost/qlhs/dslophoc/timkiem" method="post">         
-                <input type="search" placeholder="Mã Ngành Học" name="txtTimkiemmanganh" value="<?php if(isset($data['ma_nganh'])) echo $data['ma_nganh']?>">
+                <input type="search" placeholder="Mã Môn Học" name="txtTimkiemmamon" value="<?php if(isset($data['ma_mon'])) echo $data['ma_mon']?>">
                                              
             </div>
             <div class="input-group"> 
@@ -58,7 +58,8 @@
                         <th> Học Kỳ <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Mã Giảng Viên <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Lịch Học <span class="icon-arrow">&UpArrow;</span></th>
-                        <th style="padding-left:50px"> TOOL <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Trạng thái <span class="icon-arrow">&UpArrow;</span></th>
+                        <th style="padding-left:50px"> Chức Năng <span class="icon-arrow">&UpArrow;</span></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -77,17 +78,14 @@
                                             <td> <?php echo $row['hoc_ky']?> </td>
                                             <td> <?php echo $row['ma_giang_vien']?> </td>
                                             <td> <?php echo $row['lich_hoc']?> </td>
+                                            <td> <?php echo $row['trang_thai']?> </td>
                                                                                       
                                            
                                            
                                             <td class="btn_cn">
                                             <form action="http://localhost/qlhs/dslophoc/sua/<?php echo $row['ma_lop']?>" method="post">
                                                 <button class="button-85"  role="button">Sửa</button> &nbsp;
-                                            </form>
-                                               <form action="http://localhost/qlhs/dslophoc/xoa/<?php echo $row['ma_lop']?>" method="post">
-                                                <button class="button-85" onclick="return confirm('Bạn có chắc muốn xóa')" role="button" >Xóa</button>
-                                               </form>
-                                            </td>
+                                                                                </td>
                                         </tr>
 
                                 <?php

@@ -167,13 +167,13 @@ if (!empty($ngaySinh)) {
 }
 
 // Điền các giá trị khác
-$sheet->setCellValueExplicit('A' . $rowNumber, $row['ma_sinh_vien'] ?? 0, \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_NUMERIC);
+$sheet->setCellValueExplicit('A' . $rowNumber, $row['ma_sinh_vien'] ?? 0, \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
 $sheet->setCellValueExplicit('B' . $rowNumber, $row['ma_khoa'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_NUMERIC);
 $sheet->setCellValueExplicit('C' . $rowNumber, $row['ma_nganh'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_NUMERIC);
 $sheet->setCellValueExplicit('D' . $rowNumber, $row['ho_ten'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
 
 
- $sheet->setCellValueExplicit('E' . $rowNumber, $row['ngay_sinh'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
+$sheet->setCellValueExplicit('E' . $rowNumber, $row['ngay_sinh'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
 
 $sheet->setCellValueExplicit('F' . $rowNumber, $row['gioi_tinh'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
 $sheet->setCellValueExplicit('G' . $rowNumber, $row['que_quan'] ?? '', \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);

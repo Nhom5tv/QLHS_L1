@@ -12,10 +12,10 @@ class DSHoadon extends controller {
 
     // Lấy dữ liệu để hiển thị khi load trang
     function Get_data() {
-        $dulieu = $this->dshd->getHoaDonWithTenKhoanThu();
+        $dl = $this->dshd->searchHoaDon("", "");
         $this->view('Masterlayout_admin', [
             'page' => 'DSHoadon_v',
-            'dulieu' => $dulieu, // Lấy danh sách hóa đơn
+            'dulieu' => $dl, // Lấy danh sách hóa đơn
         ]);
     }
 
@@ -29,7 +29,7 @@ class DSHoadon extends controller {
             $ngayThanhToan = $_POST['txtNgaythanhtoan'];
             $noiDung = $_POST['txtNoidung'];  // Thêm nội dung vào đây
             $hinhThucThanhToan = $_POST['txtHinhthucthanhtoan']; // Thêm hình thức thanh toán
-    
+            
             // Thực hiện thêm mới hóa đơn vào cơ sở dữ liệu
             $kq = $this->dshd->hoadon_ins($maSinhVien, $maKhoanThu, $ngayThanhToan, $soTien, $hinhThucThanhToan, $noiDung);
     
@@ -67,9 +67,10 @@ class DSHoadon extends controller {
         if (isset($_POST['btnTimkiem'])) {
             $maSinhVien = $_POST['txtTKMasinhvien'];
             $ngayThanhToan = $_POST['txtTKNgaythanhtoan']; // lấy dữ liệu từ form
-
-            $dl = $this->dshd->hoadon_find($maSinhVien, $ngayThanhToan); // gọi hàm tìm kiếm
+            // $dulieu = $this->dshd->getHoaDonWithTenKhoanThu();
+            // $dl = $this->dshd->hoadon_find($maSinhVien, $ngayThanhToan); // gọi hàm tìm kiếm
             // gọi lại giao diện render lại trang và truyền $dl ra
+            $dl = $this->dshd->searchHoaDon($maSinhVien, $ngayThanhToan);
             $this->view('Masterlayout_admin', [
                 'page' => 'DSHoadon_v',
                 'dulieu' => $dl,

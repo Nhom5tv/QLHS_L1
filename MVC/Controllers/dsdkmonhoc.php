@@ -7,7 +7,7 @@
     }
     // getdata de hien thi du lieu khi load trang
     function Get_data(){
-        $this->view('Masterlayout',[
+        $this->view('Masterlayout_admin',[
             'page'=>'qldkmonhoc_v',
             'dulieu'=>$this->dsmh->qldkmonhoc_find('','')
         ]);
@@ -15,12 +15,12 @@
     function Timkiem(){
         if(isset($_POST['btnTimkiem'])){
            
-            $ma_mon=$_POST['txtTimkiemmamon'];
+            $ma_mon=$_POST['txttkmamon'];
             // lay du lieu nhap tu txt  
-            $ma_sinh_vien=$_POST['txtTimkiemmasinhvien'];
+            $ma_sinh_vien=$_POST['txttkmasv'];
             $dl=$this->dsmh->qldkmonhoc_find($ma_mon,$ma_sinh_vien); // goi ham tim kiem
             // goi lai giao dien render lại trang va truyen $ dl ra 
-            $this->view('Masterlayout',[
+            $this->view('Masterlayout_admin',[
                 'page'=>'qldkmonhoc_v',
                 'dulieu'=>$dl,
                 'ma_mon'=>$ma_mon,
@@ -50,7 +50,7 @@
     }
     function sua($ma_dang_ky){
 
-        $this->view('Masterlayout',[
+        $this->view('Masterlayout_admin',[
             'page'=>'qldkmonhoc_sua',
             'dulieu'=>$this->dsmh->qldkmonhoc_findsua($ma_dang_ky)
         ]);
@@ -75,7 +75,7 @@
             }
             
             // gọi lại giao diện
-            $this->view('Masterlayout',[
+            $this->view('Masterlayout_admin',[
                 'page'=>'DSTaikhoan_v',
                 'dulieu'=>$this->dsmh->qldkmonhoc_find('','')
             ]);

@@ -15,15 +15,15 @@
     function Timkiem(){
         if(isset($_POST['btnTimkiemlop'])){
            
-            $ma_nganh=$_POST['txtTimkiemmanganh'];
+            $ma_mon=$_POST['txtTimkiemmamon'];
             // lay du lieu nhap tu txt  
             $ma_giang_vien=$_POST['txtTimkiemmagiangvien'];
-            $dl=$this->dslh->lophoc_find($ma_nganh,$ma_giang_vien); // goi ham tim kiem
+            $dl=$this->dslh->lophoc_find($ma_mon,$ma_giang_vien); // goi ham tim kiem
             // goi lai giao dien render lại trang va truyen $ dl ra 
             $this->view('Masterlayout_admin',[
                 'page'=>'dslophoc_v',
                 'dulieu'=>$dl,
-                'ma_nganh'=>$ma_nganh,
+                'ma_mon'=>$ma_mon,
                 'ma_giang_vien'=>$ma_giang_vien
             ]);
            
@@ -61,9 +61,10 @@
             $hoc_ky=$_POST['txthocky'];
             $ma_giang_vien=$_POST['txtmagiangvien'];
             $lich_hoc=$_POST['txtlichhoc'];
+            $trang_thai=$_POST['txttrangthai'];
         
                     // gọi hàm chèn dl tacgia_ins trong model tacgia_m
-            $kq=$this->dslh->lophoc_upd($ma_lop,$ma_nganh,$hoc_ky,$ma_giang_vien,$lich_hoc);
+            $kq=$this->dslh->lophoc_upd($ma_lop,$ma_nganh,$hoc_ky,$ma_giang_vien,$lich_hoc,$trang_thai);
             if($kq){
                 echo'<script>alert("Sửa thành công")
                 window.location.href = "http://localhost/qlhs/dslophoc";

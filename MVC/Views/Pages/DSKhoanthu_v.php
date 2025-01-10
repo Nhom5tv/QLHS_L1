@@ -44,13 +44,13 @@
                 </form>
             
             </div>
-            <div class="Upload">
+            <!-- <div class="Upload">
                 <form action="http://localhost/QLHS/DSKhoanthu/uploadExcel" method="post" enctype="multipart/form-data">
                 <input type="file" name="txtFile">
                 <button class="button-85" role="button">Upload</button>
                 </form>
             
-            </div>
+            </div> -->
 
             <div class="export__file">
                 <label for="export-file" class="export__file-btn" title="Export File" ><img src="./Public/Picture/export.png" alt="" width="20"></label>

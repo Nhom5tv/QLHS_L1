@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sửa Khoản Thu</title>
     <link rel="stylesheet" href="http://localhost/QLHS/Public/CSS/dulieu.css?v=<?php echo time();?>">
+    
 </head>
+
 <body>
     <form method="post" action="http://localhost/QLHS/DSKhoanthu/suadl">
     <div class="content">
@@ -25,8 +27,8 @@
                     <span class="icon">
                         <img src="./Public/Picture/Pic_login/email.png" alt="" width="15px">
                     </span>
-                    <input type="text" required name="txtTenkhoanthu" value="<?php echo $row['ten_khoan_thu'] ?>">
-                    <label>Tên Khoản Thu</label>
+                    <input type="text"  required name="txtTenkhoanthu" value="<?php echo $row['ten_khoan_thu'] ?>">
+                    <label  >Tên Khoản Thu</label>
                 </div>
 
                 <div class="input-box">
@@ -34,13 +36,14 @@
                         <img src="./Public/Picture/Pic_login/category.png" alt="" width="15px">
                     </span>
                     <!-- Input kết hợp datalist -->
+                     
                     <input 
                         type="text" 
-                        required 
+                        required  readonly  style="padding: 0px 5px 0 130px" 
                         name="txtLoaikhoanthu" 
                         list="loaikhoanthuOptions" 
                         value="<?php if(isset($row['loai_khoan_thu'])) echo $row['loai_khoan_thu']; ?>">
-                    <label>Loại Khoản Thu</label>
+                    <label >Loại Khoản Thu</label>
 
                     <!-- Datalist chứa các loại khoản thu có sẵn -->
                     <datalist id="loaikhoanthuOptions">
@@ -57,7 +60,7 @@
                     <span class="icon">
                         <img src="./Public/Picture/Pic_login/so_tien.png" alt="" width="15px">
                     </span>
-                    <input type="number" required name="txtSoTien" value="<?php echo $row['so_tien'] ?>">
+                    <input type="number" style="padding: 0px 5px 0 90px"   readonly   required name="txtSoTien" value="<?php echo $row['so_tien'] ?>">
                     <label>Số Tiền</label>
                 </div>
 
@@ -65,7 +68,7 @@
                     <span class="icon">
                         <img src="./Public/Picture/Pic_login/ngay_tao.png" alt="" width="15px">
                     </span>
-                    <input type="date" required name="txtNgaytao" value="<?php echo $row['ngay_tao'] ?>">
+                    <input type="date" style="padding: 0px 5px 0 90px"  readonly required name="txtNgaytao" value="<?php echo $row['ngay_tao'] ?>">
                     <label>Ngày Tạo</label>
                 </div>
 
@@ -73,7 +76,7 @@
                     <span class="icon">
                         <img src="./Public/Picture/Pic_login/han_nop.png" alt="" width="15px">
                     </span>
-                    <input type="date" required name="txtHannop" value="<?php echo $row['han_nop'] ?>">
+                    <input type="date" style="padding: 0px 5px 0 90px" required name="txtHannop" value="<?php echo $row['han_nop'] ?>">
                     <label>Hạn Nộp</label>
                 </div>
 

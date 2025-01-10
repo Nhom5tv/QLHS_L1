@@ -10,7 +10,7 @@ class Sinhvien extends controller{
     function Get_data(){
         $nganhList=$this->Sinhvien->getNganh();
         $khoaList = $this->Sinhvien->getKhoa();
-        $this->view('Masterlayout', ['page' => 'Sinhvien_them','khoaList' => $khoaList, 'nganhList' => $nganhList]);
+        $this->view('Masterlayout_admin', ['page' => 'Sinhvien_them','khoaList' => $khoaList, 'nganhList' => $nganhList]);
 
     }
     function themmoi(){

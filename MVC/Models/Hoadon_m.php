@@ -24,28 +24,43 @@ class Hoadon_m extends connectDB {
         return $kq;
     }
 
-    // Hàm tìm kiếm hóa đơn theo mã sinh viên hoặc loại khoản thu
-    function hoadon_find($maSinhVien, $ngayThanhToan) {
-        // Trường hợp tìm tất cả
-        if (empty($maSinhVien) && empty($ngayThanhToan)) {
-            $sql = "SELECT * FROM hoa_don";
-        }
-        // Trường hợp tìm theo mã sinh viên
-        elseif (empty($ngayThanhToan)) {
-            $sql = "SELECT * FROM hoa_don WHERE ma_sinh_vien LIKE '$maSinhVien%'";
-        }
-        // Trường hợp tìm theo ngày thanh toán
-        elseif (empty($maSinhVien)) {
-            $sql = "SELECT * FROM hoa_don WHERE ngay_thanh_toan LIKE '$ngayThanhToan%'";
-        }
-        // Trường hợp tìm theo cả mã sinh viên và ngày thanh toán
-        else {
-            $sql = "SELECT * FROM hoa_don WHERE ma_sinh_vien LIKE '$maSinhVien%' AND ngay_thanh_toan LIKE '$ngayThanhToan%'";
-        }
+    // // Hàm tìm kiếm hóa đơn theo mã sinh viên hoặc loại khoản thu
+    // function hoadon_find($maSinhVien, $ngayThanhToan) {
+    //     // Trường hợp tìm tất cả
+    //     if (empty($maSinhVien) && empty($ngayThanhToan)) {
+    //         $sql = "SELECT * FROM hoa_don";
+    //     }
+    //     // Trường hợp tìm theo mã sinh viên
+    //     elseif (empty($ngayThanhToan)) {
+    //         $sql = "SELECT * FROM hoa_don WHERE ma_sinh_vien LIKE '$maSinhVien%'";
+    //     }
+    //     // Trường hợp tìm theo ngày thanh toán
+    //     elseif (empty($maSinhVien)) {
+    //         $sql = "SELECT * FROM hoa_don WHERE ngay_thanh_toan LIKE '$ngayThanhToan%'";
+    //     }
+    //     // Trường hợp tìm theo cả mã sinh viên và ngày thanh toán
+    //     else {
+    //         $sql = "SELECT * FROM hoa_don WHERE ma_sinh_vien LIKE '$maSinhVien%' AND ngay_thanh_toan LIKE '$ngayThanhToan%'";
+    //     }
     
-        return mysqli_query($this->con, $sql);
-    }
-    function getHoaDonWithTenKhoanThu() {
+    //     return mysqli_query($this->con, $sql);
+    // }
+    // function getHoaDonWithTenKhoanThu() {
+    //     $sql = "SELECT 
+    //                 hd.ma_hoa_don,
+    //                 hd.ma_sinh_vien,
+    //                 hd.ma_khoan_thu,
+    //                 kt.ten_khoan_thu,
+    //                 hd.so_tien_da_nop,
+    //                 hd.ngay_thanh_toan,
+    //                 hd.hinh_thuc_thanh_toan,
+    //                 hd.noi_dung
+    //             FROM hoa_don AS hd
+    //             JOIN khoan_thu AS kt ON hd.ma_khoan_thu = kt.ma_khoan_thu";
+    //     return mysqli_query($this->con, $sql); // Trả về kết quả truy vấn
+    // }
+    function searchHoaDon($maSinhVien = null, $ngayThanhToan = null) {
+        // Bắt đầu câu truy vấn cơ bản
         $sql = "SELECT 
                     hd.ma_hoa_don,
                     hd.ma_sinh_vien,
@@ -57,8 +72,25 @@ class Hoadon_m extends connectDB {
                     hd.noi_dung
                 FROM hoa_don AS hd
                 JOIN khoan_thu AS kt ON hd.ma_khoan_thu = kt.ma_khoan_thu";
-        return mysqli_query($this->con, $sql); // Trả về kết quả truy vấn
+    
+        // Thêm điều kiện WHERE nếu cần thiết
+        $conditions = [];
+        if (!empty($maSinhVien)) {
+            $conditions[] = "hd.ma_sinh_vien LIKE '$maSinhVien%'";
+        }
+        if (!empty($ngayThanhToan)) {
+            $conditions[] = "hd.ngay_thanh_toan LIKE '$ngayThanhToan%'";
+        }
+    
+        // Gắn các điều kiện vào câu truy vấn
+        if (!empty($conditions)) {
+            $sql .= " WHERE " . implode(' AND ', $conditions);
+        }
+    
+        // Thực hiện truy vấn
+        return mysqli_query($this->con, $sql);
     }
+    
     
     
 
