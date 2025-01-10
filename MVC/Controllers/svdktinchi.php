@@ -15,14 +15,14 @@ class Svdktinchi extends controller{
     }
     function Timkiem() {
         if (isset($_POST['btnTimkiemtin'])) {
-            $ma_mon_hoc = $_POST['txtTimkiemmonhoc'];
+            $ten_mon_hoc = $_POST['txtTimkiemmonhoc'];
             $lich_hoc_du_kien = $_POST['txtTimkiemlichhoc'];
             
-            $dl = $this->svdktinchi->tinchi_find($ma_mon_hoc, $lich_hoc_du_kien); // Gọi hàm tìm kiếm
+            $dl = $this->svdktinchi->tinchi_find($ten_mon_hoc, $lich_hoc_du_kien); // Gọi hàm tìm kiếm
             $this->view('Masterlayout', [
                 'page' => 'SVdktinchi_v',
                 'dulieu' => $dl,
-                'ma_mon_hoc' => $ma_mon_hoc,
+                'ten_mon_hoc' => $ten_mon_hoc,
                 'lich_hoc_du_kien' => $lich_hoc_du_kien
             ]);
         }

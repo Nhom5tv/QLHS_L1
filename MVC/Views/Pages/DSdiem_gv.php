@@ -66,6 +66,19 @@
         <?php if (isset($_POST['class_id']) || isset($_GET['class_id'])): ?>
             <a href="http://localhost/qlhs/DSdiemtungmon_gv/exportExcel?class_id=<?= $_POST['class_id'] ?? $_GET['class_id'] ?>" class="button-85">Xuất Excel</a>
         <?php endif; ?>
+        <div class="input-group" style="margin-left: 150px;" > 
+            <form action="http://localhost/qlhs/DSdiemtungmon_gv/Get_data" method="post"> 
+                
+                <input type="hidden" name="class_id" value="<?php echo isset($_POST['class_id']) ? $_POST['class_id'] : ''; ?>">
+
+                <input  type="search" placeholder="Mã SV" name="txtTimkiemMaSV" value="<?php if(isset($data['ma_sinh_vien'])) echo $data['ma_sinh_vien']?>">
+                                              
+            </div>
+            <div class="input-group" style="margin-left: 150px;" >
+                <input type="search" placeholder="Họ tên" name="txtTimkiemHoTen" value="<?php if(isset($data['ho_ten'])) echo $data['ho_ten']?>">
+            </div>
+            <button style="border: none; background: transparent;" type="submit" name="btnTimkiem"><i class="fa fa-search" ></i></button>
+            </form>
     </div>
 </div>
 

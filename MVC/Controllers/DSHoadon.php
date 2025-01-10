@@ -29,7 +29,7 @@ class DSHoadon extends controller {
             $ngayThanhToan = $_POST['txtNgaythanhtoan'];
             $noiDung = $_POST['txtNoidung'];  // Thêm nội dung vào đây
             $hinhThucThanhToan = $_POST['txtHinhthucthanhtoan']; // Thêm hình thức thanh toán
-    
+            
             // Thực hiện thêm mới hóa đơn vào cơ sở dữ liệu
             $kq = $this->dshd->hoadon_ins($maSinhVien, $maKhoanThu, $ngayThanhToan, $soTien, $hinhThucThanhToan, $noiDung);
     
@@ -67,7 +67,7 @@ class DSHoadon extends controller {
         if (isset($_POST['btnTimkiem'])) {
             $maSinhVien = $_POST['txtTKMasinhvien'];
             $ngayThanhToan = $_POST['txtTKNgaythanhtoan']; // lấy dữ liệu từ form
-
+            
             $dl = $this->dshd->hoadon_find($maSinhVien, $ngayThanhToan); // gọi hàm tìm kiếm
             // gọi lại giao diện render lại trang và truyền $dl ra
             $this->view('Masterlayout_admin', [

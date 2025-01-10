@@ -11,7 +11,7 @@ class Nganh extends controller{
         $khoaList = $this->Nganh->getKhoa();
        
 
-        $this->view('Masterlayout', ['page' => 'Nganh_them','khoaList' => $khoaList ]);
+        $this->view('Masterlayout_admin', ['page' => 'Nganh_them','khoaList' => $khoaList ]);
     }
 
     function themmoi(){
